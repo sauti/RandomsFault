@@ -42,7 +42,7 @@ public class MapGenerator : MonoBehaviour
     public Transform orbitCenter;
     public GameObject orbitCenterObj;
     public Transform planet;
-    public float planetSpeed = Random.Range(20f, 70f);
+    public float planetSpeed;
     public float planetAngle = 20;
 
 
