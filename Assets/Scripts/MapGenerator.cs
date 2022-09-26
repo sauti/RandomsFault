@@ -53,9 +53,9 @@ public class MapGenerator : MonoBehaviour
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
 
 
-        for(int x  = 0; x < 7; x++)
+        for(int x  = 0; x < 5; x++)
         {            
-            for(int y = 0; y < 7; y++)
+            for(int y = 0; y < 5; y++)
             {
                 var position = new Vector3(x * (cellSize.x + offset), 0, y * (cellSize.z + offset));
 
@@ -100,9 +100,9 @@ public class MapGenerator : MonoBehaviour
         // Instantiate(Enemy, randomSpawnEnemysPosition, Quaternion.identity);
 
         Character.SetActive(true);
-        characterDirection = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
+        characterDirection = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
         Enemy.SetActive(true);
-        enemyDirection = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
+        enemyDirection = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
 
         orbitCenterObj.SetActive(true);
 

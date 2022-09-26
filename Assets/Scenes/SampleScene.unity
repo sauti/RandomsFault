@@ -781,7 +781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 2.98, y: 10, z: -1.8}
+  m_LocalPosition: {x: 2, y: 8, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   ticksPerSecond: 60
   pause: 0
   gargoylesRotationSpeed: 1
-  gargoyleOffset: 6
+  gargoyleOffset: 4
   orbitCenter: {fileID: 770222596}
   orbitCenterObj: {fileID: 770222595}
   planet: {fileID: 386049504}
