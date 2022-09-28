@@ -1378,7 +1378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 2, y: 8, z: -2}
+  m_LocalPosition: {x: 2, y: 8.25, z: -1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2409,6 +2409,7 @@ MonoBehaviour:
   CharacterMoves: {fileID: 316378904}
   Enemy: {fileID: 879401429}
   Wall: {fileID: 919132149155446097, guid: bbbadb6d2cae9c748bb6d665deb193b1, type: 3}
+  FloorEdge: {fileID: 7492060513624495233, guid: a4a1c12849413b64a9a3c3fc7dd79813, type: 3}
   Gargoyle: {fileID: 7736025848792240133, guid: c4029cb55cb3da14486e55300f0b7656, type: 3}
   swipeControls: {fileID: 1921988192}
   objectsParent: {fileID: 105755902}

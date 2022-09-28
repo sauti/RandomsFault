@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject Enemy;
     private Vector3 enemyDirection;
     public GameObject Wall;
+    public GameObject FloorEdge;
     public Transform Gargoyle;
 
     // Swipe Controls
@@ -90,8 +91,14 @@ public class MapGenerator : MonoBehaviour
             //Gargoyle.transform.eulerAngles = new Vector3(90, 0, 0);
         }
 
-        // Vector3 randomSpawnWallPosition = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
-        // Instantiate(Wall, randomSpawnWallPosition, Quaternion.identity);
+        Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity);
+        Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0));
+        Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0));
+
+        Instantiate(Wall, new Vector3(2, 0, 4.9f), Quaternion.identity);
+        Instantiate(Wall, new Vector3(-0.9f, 0, 2), Quaternion.Euler(0, -90 ,0));
+        Instantiate(Wall, new Vector3(4.9f, 0, 2), Quaternion.Euler(0, -90 ,0));
+        
 
         // Vector3 randomSpawnHerosPosition = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
         // Instantiate(Character, randomSpawnHerosPosition, Quaternion.identity);
