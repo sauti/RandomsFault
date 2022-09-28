@@ -2410,6 +2410,7 @@ MonoBehaviour:
   Enemy: {fileID: 879401429}
   Wall: {fileID: 919132149155446097, guid: bbbadb6d2cae9c748bb6d665deb193b1, type: 3}
   FloorEdge: {fileID: 7492060513624495233, guid: a4a1c12849413b64a9a3c3fc7dd79813, type: 3}
+  ExitTile: {fileID: 7503798406608587477, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
   Gargoyle: {fileID: 7736025848792240133, guid: c4029cb55cb3da14486e55300f0b7656, type: 3}
   swipeControls: {fileID: 1921988192}
   objectsParent: {fileID: 105755902}

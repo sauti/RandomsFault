@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
     private Vector3 enemyDirection;
     public GameObject Wall;
     public GameObject FloorEdge;
+    public GameObject ExitTile;
     public Transform Gargoyle;
 
     // Swipe Controls
@@ -53,16 +54,21 @@ public class MapGenerator : MonoBehaviour
 
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
 
+        int exitTileX = Random.Range(0, 5);
+        int exitTileY = Random.Range(0, 5);
 
         for(int x  = 0; x < 5; x++)
         {            
             for(int y = 0; y < 5; y++)
             {
                 var position = new Vector3(x * cellSize.x + offset, 0, y * cellSize.z + offset);
-
-                var cellGargoyle = Instantiate(gridPrefab, position, Quaternion.identity, gridParent);
-
-                cellGargoyle.name = $"X: {x} Y: {y}";
+                GameObject floorCell;
+                if (x == exitTileX && y == exitTileY) {
+                    floorCell = Instantiate(ExitTile, position, Quaternion.identity, gridParent);
+                } else {
+                    floorCell = Instantiate(gridPrefab, position, Quaternion.identity, gridParent);
+                }
+                floorCell.name = $"X: {x} Y: {y}";
             }
         }
                 
