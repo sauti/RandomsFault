@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f9f61023f2e194fbd74499000b7750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridPrefab: {fileID: 5984234339332709720, guid: a002afa7334bd2b4b8be27dc3f4b485d, type: 3}
+  gridPrefab: {fileID: 3288978755783601268, guid: 7a88b80a8b9513a4e9bee54d165631c6, type: 3}
   offset: 0
   gridParent: {fileID: 947394847}
   floorFormingSpeed: 0.05
