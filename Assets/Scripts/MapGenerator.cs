@@ -10,7 +10,7 @@ public class MapGenerator : MonoBehaviour
    [SerializeField] private Transform gridParent;
    public float floorFormingSpeed = 0.1f;
    Quaternion startAngle = Quaternion.Euler (0,0,0);
-   Quaternion finishAngle = Quaternion.Euler (90,0,0);
+   Quaternion finishAngle = Quaternion.Euler (-90,0,0);
    public Quaternion currentAngle;
   
     // Chars Randomizer
@@ -57,7 +57,7 @@ public class MapGenerator : MonoBehaviour
         {            
             for(int y = 0; y < 5; y++)
             {
-                var position = new Vector3(x * (cellSize.x + offset), 0, y * (cellSize.z + offset));
+                var position = new Vector3(x * cellSize.x + offset, 0, y * cellSize.z + offset);
 
                 var cellGargoyle = Instantiate(gridPrefab, position, Quaternion.identity, gridParent);
 

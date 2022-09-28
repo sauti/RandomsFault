@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2805492343979505358}
   - component: {fileID: 1243213371310274923}
   - component: {fileID: 3937325509299801505}
+  - component: {fileID: 4715222414923867162}
   m_Layer: 0
-  m_Name: FloorPrefab
+  m_Name: FloorTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3288978755783601268}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: -0.15, z: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1243213371310274923
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3288978755783601268}
-  m_Mesh: {fileID: -89971476586439131, guid: a0fc65d482ec99749a86e012cfccddc3, type: 3}
+  m_Mesh: {fileID: -89971476586439131, guid: 085920aa0415b454eb3ced8122dff0fb, type: 3}
 --- !u!23 &3937325509299801505
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -83,3 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4715222414923867162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288978755783601268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356c57f5f0d170d408b339ce4c4d4bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshes:
+  - {fileID: -89971476586439131, guid: 085920aa0415b454eb3ced8122dff0fb, type: 3}
+  - {fileID: -4308478601108066763, guid: 536e6b7e317a1e845b89a954521271d9, type: 3}
+  - {fileID: 4370123480706365297, guid: c09443174fe01ad47a895d7ab9ab5eb6, type: 3}
+  - {fileID: -4898356093051940232, guid: 965d4acfb74dae04d9da67bb97ee79b7, type: 3}
+  - {fileID: 6252069494116523677, guid: 48832565258426742b3cc5b7f593a51b, type: 3}
+  - {fileID: -5559429870658524165, guid: ab285e34692d31a4d9a4f9a36e5dd46b, type: 3}
