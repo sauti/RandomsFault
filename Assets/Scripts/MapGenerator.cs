@@ -8,6 +8,10 @@ public class MapGenerator : MonoBehaviour
    [SerializeField] private GameObject gridPrefab;
    [SerializeField] private float offset;
    [SerializeField] private Transform gridParent;
+   [SerializeField] private Transform wallParent;
+   public GameObject Wall;
+   public GameObject FloorEdge;
+   public GameObject ExitTile;
    public float floorFormingSpeed = 0.1f;
    Quaternion startAngle = Quaternion.Euler (0,0,0);
    Quaternion finishAngle = Quaternion.Euler (-90,0,0);
@@ -20,9 +24,6 @@ public class MapGenerator : MonoBehaviour
     private Vector3 characterDirection;
     public GameObject Enemy;
     private Vector3 enemyDirection;
-    public GameObject Wall;
-    public GameObject FloorEdge;
-    public GameObject ExitTile;
     public Transform Gargoyle;
 
     // Swipe Controls
@@ -97,13 +98,13 @@ public class MapGenerator : MonoBehaviour
             //Gargoyle.transform.eulerAngles = new Vector3(90, 0, 0);
         }
 
-        Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity);
-        Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0));
-        Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0));
+        Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity, wallParent);
+        Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
+        Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
 
-        Instantiate(Wall, new Vector3(2, 0, 4.9f), Quaternion.identity);
-        Instantiate(Wall, new Vector3(-0.9f, 0, 2), Quaternion.Euler(0, -90 ,0));
-        Instantiate(Wall, new Vector3(4.9f, 0, 2), Quaternion.Euler(0, -90 ,0));
+        Instantiate(Wall, new Vector3(2, 0, 4.9f), Quaternion.identity, wallParent);
+        Instantiate(Wall, new Vector3(-0.9f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
+        Instantiate(Wall, new Vector3(4.9f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
         
 
         // Vector3 randomSpawnHerosPosition = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
