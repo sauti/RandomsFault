@@ -21,7 +21,6 @@ public class RandomCardStats : MonoBehaviour
         for (int i = 0; i < materials.Length; i++)
         {
             string matName = materials[i].name;
-            Debug.Log(matName);
             if (Regex.Match(matName, "Health").Success)
             {
                 materials[i].SetTexture("_MainTex", textures[health]);
