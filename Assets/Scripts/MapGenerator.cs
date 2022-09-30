@@ -185,6 +185,7 @@ public class MapGenerator : MonoBehaviour
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
+        Enemy.transform.LookAt(CharacterMoves);
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
    }
