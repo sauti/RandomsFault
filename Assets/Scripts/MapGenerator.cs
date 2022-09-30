@@ -103,13 +103,28 @@ public class MapGenerator : MonoBehaviour
         }
 
 
-        // room walls
+        for (int i = 0; i < 3; i++)
+        {
+            for (int x  = 0; x < 5; x++)
+            {
+                int randomAngle = Random.Range(0, 2) * 180;
+                Vector3 position = new Vector3(x, 0, 4.9f);
+                Quaternion rotation = Quaternion.Euler(0, randomAngle, 0);
+                if (i > 0) {
+                    position = new Vector3(-0.9f, 0, x);
+                    rotation = Quaternion.Euler(0, randomAngle + 90, 0);
+                }
+                if (i == 1) {
+                    position = new Vector3(4.9f, 0, x);
+                }
+                Instantiate(Wall, position, rotation, wallParent);
+            }
+        }
+
+        // room edges
         Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity, wallParent);
         Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
         Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
-        Instantiate(Wall, new Vector3(2, 0, 4.9f), Quaternion.identity, wallParent);
-        Instantiate(Wall, new Vector3(-0.9f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
-        Instantiate(Wall, new Vector3(4.9f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
 
         // chests
         int chestsAmount = Random.Range(1, 5);
