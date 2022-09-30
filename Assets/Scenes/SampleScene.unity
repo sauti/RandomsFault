@@ -1793,6 +1793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04bfbca52dc81884b8ea028f2b357bf9, type: 3}
+--- !u!4 &1176554383 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 04bfbca52dc81884b8ea028f2b357bf9, type: 3}
+  m_PrefabInstance: {fileID: 1176554382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1186160491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6894882465225713373, guid: ef7e7db4b86fd5143a5053f13e7bf039, type: 3}
@@ -2406,7 +2411,7 @@ MonoBehaviour:
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
   Character: {fileID: 1260019079}
-  CharacterMoves: {fileID: 768215683}
+  CharacterMoves: {fileID: 1176554383}
   Enemy: {fileID: 879401429}
   Gargoyle: {fileID: 7736025848792240133, guid: c4029cb55cb3da14486e55300f0b7656, type: 3}
   swipeControls: {fileID: 1921988192}
