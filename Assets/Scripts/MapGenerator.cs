@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour
    public GameObject Wall;
    public GameObject FloorEdge;
    public GameObject ExitTile;
+   public GameObject Pillar;
    public GameObject Chest;
    public float floorFormingSpeed = 0.1f;
    Quaternion startAngle = Quaternion.Euler (0,0,0);
@@ -102,7 +103,7 @@ public class MapGenerator : MonoBehaviour
             //Gargoyle.transform.eulerAngles = new Vector3(90, 0, 0);
         }
 
-
+        // room walls
         for (int i = 0; i < 3; i++)
         {
             for (int x  = 0; x < 5; x++)
@@ -125,6 +126,33 @@ public class MapGenerator : MonoBehaviour
         Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity, wallParent);
         Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
         Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
+
+        // corner pillars
+        var pillarOffset = 5.6f;
+        for(int x  = 0; x < 2; x++)
+        {            
+            for(int y = 0; y < 2; y++)
+            {
+                var position = new Vector3(x * pillarOffset - 0.8f, 0, y * pillarOffset - 0.8f);
+                Instantiate(Pillar, position, Quaternion.identity, wallParent);
+            }
+        }
+
+        // edge pillars
+        var pillarOffset1 = 2f;
+        for(int x  = 0; x < 2; x++)
+        {            
+            var position = new Vector3(x * pillarOffset1 + 1f, 0, 4.8f);
+            Instantiate(Pillar, position, Quaternion.identity, wallParent);
+        }
+        for(int x  = 0; x < 2; x++)
+        {            
+            for(int y = 0; y < 2; y++)
+            {
+                var position = new Vector3(x * 5.6f - 0.8f, 0, y * pillarOffset1 + 1f);
+                Instantiate(Pillar, position, Quaternion.identity, wallParent);
+            }
+        }
 
         // chests
         int chestsAmount = Random.Range(1, 5);
