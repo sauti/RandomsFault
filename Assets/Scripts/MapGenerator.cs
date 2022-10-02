@@ -14,6 +14,7 @@ public class MapGenerator : MonoBehaviour
    public GameObject ExitTile;
    public GameObject Pillar;
    public GameObject Chest;
+   public GameObject Ruins;
    public float floorFormingSpeed = 0.1f;
    Quaternion startAngle = Quaternion.Euler (0,0,0);
    Quaternion finishAngle = Quaternion.Euler (-90,0,0);
@@ -161,6 +162,14 @@ public class MapGenerator : MonoBehaviour
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
             Instantiate(Chest, position, rotation, wallParent);
+        }
+
+        int ruinsAmount = Random.Range(1, 5);
+        for(int i  = 0; i < chestsAmount; i++)
+        {     
+            Vector3 position = GetRandomEmptyTile(); 
+            var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
+            Instantiate(Ruins, position, rotation, wallParent);
         }
         
 

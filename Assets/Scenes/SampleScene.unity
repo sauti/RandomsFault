@@ -1462,11 +1462,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 04bfbca52dc81884b8ea028f2b357bf9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 069b48f90ede12c40875c5755d1ad370, type: 2}
+      objectReference: {fileID: 2100000, guid: 5174e74c03b410a45a7e47aea4e0a781, type: 2}
     - target: {fileID: -5754084199372789682, guid: 04bfbca52dc81884b8ea028f2b357bf9, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -379895515128854448, guid: 857b1202d06fbbb489489b3eef4151db, type: 3}
+      objectReference: {fileID: -6492247042571898520, guid: 53e2cd7d65e37b0449d8c3aa99a7c96e, type: 3}
     - target: {fileID: 919132149155446097, guid: 04bfbca52dc81884b8ea028f2b357bf9, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -2409,6 +2409,7 @@ MonoBehaviour:
   ExitTile: {fileID: 7503798406608587477, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
   Pillar: {fileID: 919132149155446097, guid: af7b210c36769594db27bf7d83f3e9a0, type: 3}
   Chest: {fileID: 6411378618181738410, guid: 5abed8b6d8eacf545bdee829cfdbcfff, type: 3}
+  Ruins: {fileID: 2102555257077500469, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
   Character: {fileID: 1260019079}
