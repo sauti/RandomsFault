@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MapGenerator : MonoBehaviour
    Quaternion startAngle = Quaternion.Euler (0,0,0);
    Quaternion finishAngle = Quaternion.Euler (-90,0,0);
    public Quaternion currentAngle;
+   public GameObject stairs;
   
     // Chars Randomizer
     public GameObject Character;
@@ -29,8 +31,7 @@ public class MapGenerator : MonoBehaviour
     public Swipe swipeControls;
 
     // Evade physics
-    // Vector2 directionRay;
-
+    
     // Aditional effects
     [SerializeField] private Transform objectsParent;
 
@@ -145,18 +146,26 @@ public class MapGenerator : MonoBehaviour
 
         Character.transform.position =  Vector3.MoveTowards(Character.transform.position, characterDirection, 3f * Time.deltaTime);
         Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
-       
+
+       // Fight trigger
         if ((Character.transform.position.x - Enemy.transform.position.x) == 0 && (Character.transform.position.z - Enemy.transform.position.z) == 0){
             Debug.Log("Tobi Pizda!");
         }else{
-            Debug.Log("OK!");
+            
         }
 
+    
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
+
+        // End level
+        if((Character.transform.position.x - stairs.transform.position.x) == 0 && (Character.transform.position.z - stairs.transform.position.z) == 0){
+            Debug.Log("EndLVl");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
    }
 
    
