@@ -6,7 +6,13 @@ public class RandomMesh : MonoBehaviour
 {
 
     public Mesh[] meshes;
-    // Start is called before the first frame update
+    //public Transform character;
+    
+    private void Update() {
+        // if(meshes.GetValue(me) == character.transform.position){
+        //     Debug.Log ("ok!");
+        // }
+    }
     void OnEnable()
     {
         GetComponent<MeshFilter>().mesh = meshes[Random.Range(0, meshes.Length)];

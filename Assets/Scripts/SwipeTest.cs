@@ -9,7 +9,7 @@ public class SwipeTest : MonoBehaviour
     private Vector3 characterDirection;
 
     private void Awake(){
-        characterDirection = new Vector3(Random.Range(0, 7), 0.1f, Random.Range(0, 7));
+        characterDirection = new Vector3(Random.Range(0, 5), 0.1f, Random.Range(0, 5));
     }
     
     void Update()

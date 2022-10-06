@@ -229,7 +229,7 @@ public class MapGenerator : MonoBehaviour
         Gargoyle.transform.LookAt(CharacterMoves);
         }
         //Character.transform.LookAt(characterDirection);
-        Enemy.transform.LookAt(CharacterMoves); // TODO: check why disable
+        Enemy.transform.LookAt(CharacterMoves); 
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
    }
