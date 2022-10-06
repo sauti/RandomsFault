@@ -24,6 +24,6 @@ public class SwipeTest : MonoBehaviour
             characterDirection += Vector3.back;
 
         character.transform.position =  Vector3.MoveTowards(character.transform.position, characterDirection, 3f * Time.deltaTime);
-                
+        character.transform.LookAt(characterDirection);        
        }
 }

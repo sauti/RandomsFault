@@ -204,21 +204,20 @@ public class MapGenerator : MonoBehaviour
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
         }
 
-        if (swipeControls.SwipeLeft)
-            characterDirection += Vector3.left;
-        if (swipeControls.SwipeRight)
-            characterDirection += Vector3.right;
-        if (swipeControls.SwipeUp)
-            characterDirection += Vector3.forward;
-        if (swipeControls.SwipeDown)
-            characterDirection += Vector3.back;
+        // if (swipeControls.SwipeLeft)
+        //     characterDirection += Vector3.left;
+        // if (swipeControls.SwipeRight)
+        //     characterDirection += Vector3.right;
+        // if (swipeControls.SwipeUp)
+        //     characterDirection += Vector3.forward;
+        // if (swipeControls.SwipeDown)
+        //     characterDirection += Vector3.back;
 
-        Character.transform.position =  Vector3.MoveTowards(Character.transform.position, characterDirection, 3f * Time.deltaTime);
+        //Character.transform.position =  Vector3.MoveTowards(Character.transform.position, characterDirection, 3f * Time.deltaTime);
         Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
        
-        if ((Character.transform.position.x - Enemy.transform.position.x) == 0 && (Character.transform.position.z - Enemy.transform.position.z) == 0){
+        if ((Character.transform.position.x - Ruins.transform.position.x) == 0 && (Character.transform.position.z - Ruins.transform.position.z) == 0){
             Debug.Log("Tobi Pizda!");
-            //GameObject.Find("MainCamera");
             cardsCamera.gameObject.SetActive(true);
             mainCamera.gameObject.SetActive(false);
             exitBtn.gameObject.SetActive(true);
@@ -229,7 +228,7 @@ public class MapGenerator : MonoBehaviour
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
-        Character.transform.LookAt(characterDirection);
+        //Character.transform.LookAt(characterDirection);
         Enemy.transform.LookAt(CharacterMoves); // TODO: check why disable
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
@@ -266,7 +265,7 @@ public class MapGenerator : MonoBehaviour
 
     public void OnExitBtnClick(){
         Debug.Log("Exit");
-        Destroy(Enemy); // TODO: find alt
+        Destroy(Ruins); // TODO: find alt
         mainCamera.gameObject.SetActive(true);
         cardsCamera.gameObject.SetActive(false);
     }
