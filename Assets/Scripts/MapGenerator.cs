@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -53,8 +54,10 @@ public class MapGenerator : MonoBehaviour
     public float planetSpeed;
     public float planetAngle = 20;
 
+    public Transform mainCamera;
+    public Transform cardsCamera;
+    public Button exitBtn;
 
-    
    private void Awake()
    {
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
@@ -215,15 +218,19 @@ public class MapGenerator : MonoBehaviour
        
         if ((Character.transform.position.x - Enemy.transform.position.x) == 0 && (Character.transform.position.z - Enemy.transform.position.z) == 0){
             Debug.Log("Tobi Pizda!");
+            //GameObject.Find("MainCamera");
+            cardsCamera.gameObject.SetActive(true);
+            mainCamera.gameObject.SetActive(false);
+            exitBtn.gameObject.SetActive(true);
         }else{
-            Debug.Log("OK!");
+            
         }
 
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
-        Enemy.transform.LookAt(CharacterMoves);
         Character.transform.LookAt(characterDirection);
+        Enemy.transform.LookAt(CharacterMoves); // TODO: check why disable
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
    }
@@ -256,4 +263,11 @@ public class MapGenerator : MonoBehaviour
             yield return Wait;
         }
     }    
+
+    public void OnExitBtnClick(){
+        Debug.Log("Exit");
+        Destroy(Enemy); // TODO: find alt
+        mainCamera.gameObject.SetActive(true);
+        cardsCamera.gameObject.SetActive(false);
+    }
 }
