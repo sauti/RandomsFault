@@ -216,14 +216,14 @@ public class MapGenerator : MonoBehaviour
         //Character.transform.position =  Vector3.MoveTowards(Character.transform.position, characterDirection, 3f * Time.deltaTime);
         Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
        
-        if ((Character.transform.position.x - Ruins.transform.position.x) == 0 && (Character.transform.position.z - Ruins.transform.position.z) == 0){
-            Debug.Log("Tobi Pizda!");
-            cardsCamera.gameObject.SetActive(true);
-            mainCamera.gameObject.SetActive(false);
-            exitBtn.gameObject.SetActive(true);
-        }else{
+        // if ((Character.transform.position.x - Ruins.transform.position.x) == 0 && (Character.transform.position.z - Ruins.transform.position.z) == 0){
+        //     Debug.Log("Tobi Pizda!");
+        //     cardsCamera.gameObject.SetActive(true);
+        //     mainCamera.gameObject.SetActive(false);
+        //     exitBtn.gameObject.SetActive(true);
+        // }else{
             
-        }
+        // }
 
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);

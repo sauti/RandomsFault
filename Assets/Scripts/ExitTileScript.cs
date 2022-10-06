@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ExitTileScript : MonoBehaviour
 {
     public Transform exitTile;
-    public Transform Character;
     // Start is called before the first frame update
     void Start()
     {
