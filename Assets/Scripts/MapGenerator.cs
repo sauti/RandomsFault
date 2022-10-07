@@ -84,8 +84,6 @@ public class MapGenerator : MonoBehaviour
                 
         foreach (Transform gridPrefab in gridParent){
             gridPrefab.position += new Vector3(0.5f, 0, 0.5f);
-
-            //gridPrefab.transform.eulerAngles = new Vector3(90, 0, 0);
         }
 
         var gargoyleSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
@@ -98,13 +96,12 @@ public class MapGenerator : MonoBehaviour
 
                 var cell = Instantiate(Gargoyle, position, Quaternion.identity, objectsParent);
 
-                //Gargoyle.name = $"X: {x} Y: {y}";
+                Gargoyle.name = $"X: {x} Y: {y}";
             }
         }
 
         foreach (Transform Gargoyle in objectsParent){
             Gargoyle.position += new Vector3(-0.5f, 0, -0.5f);
-            //Gargoyle.transform.eulerAngles = new Vector3(90, 0, 0);
         }
 
         // room walls
@@ -159,7 +156,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         // chests
-        int chestsAmount = Random.Range(1, 5);
+        int chestsAmount = Random.Range(1, 4);
         for(int i  = 0; i < chestsAmount; i++)
         {     
             Vector3 position = GetRandomEmptyTile(); 
@@ -167,20 +164,19 @@ public class MapGenerator : MonoBehaviour
             Instantiate(Chest, position, rotation, wallParent);
         }
 
-        int ruinsAmount = Random.Range(1, 5);
-        for(int i  = 0; i < chestsAmount; i++)
+        int ruinsAmount = Random.Range(1, 4);
+        for(int i  = 0; i < ruinsAmount; i++)
         {     
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
-            Instantiate(Ruins, position, rotation, wallParent);
+            var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
+
+           //currRuin.Init(i);
+
+           if (i == ruinsAmount) {
+                //currRuin.currRuinObj = true;
+           }
         }
-        
-
-        // Vector3 randomSpawnHerosPosition = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
-        // Instantiate(Character, randomSpawnHerosPosition, Quaternion.identity);
-
-        // Vector3 randomSpawnEnemysPosition = new Vector3(Random.Range(0, 7), 0, Random.Range(0, 7));
-        // Instantiate(Enemy, randomSpawnEnemysPosition, Quaternion.identity);
 
         Character.SetActive(true);
         characterDirection = GetRandomEmptyTile();
@@ -204,31 +200,12 @@ public class MapGenerator : MonoBehaviour
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
         }
 
-        // if (swipeControls.SwipeLeft)
-        //     characterDirection += Vector3.left;
-        // if (swipeControls.SwipeRight)
-        //     characterDirection += Vector3.right;
-        // if (swipeControls.SwipeUp)
-        //     characterDirection += Vector3.forward;
-        // if (swipeControls.SwipeDown)
-        //     characterDirection += Vector3.back;
-
-        //Character.transform.position =  Vector3.MoveTowards(Character.transform.position, characterDirection, 3f * Time.deltaTime);
         Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
        
-        // if ((Character.transform.position.x - Ruins.transform.position.x) == 0 && (Character.transform.position.z - Ruins.transform.position.z) == 0){
-        //     Debug.Log("Tobi Pizda!");
-        //     cardsCamera.gameObject.SetActive(true);
-        //     mainCamera.gameObject.SetActive(false);
-        //     exitBtn.gameObject.SetActive(true);
-        // }else{
-            
-        // }
-
+        
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
-        //Character.transform.LookAt(characterDirection);
         Enemy.transform.LookAt(CharacterMoves); 
 
         planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
@@ -263,10 +240,10 @@ public class MapGenerator : MonoBehaviour
         }
     }    
 
-    public void OnExitBtnClick(){
-        Debug.Log("Exit");
-        Destroy(Ruins); // TODO: find alt
-        mainCamera.gameObject.SetActive(true);
-        cardsCamera.gameObject.SetActive(false);
-    }
+    // public void OnExitBtnClick(){
+    //     Debug.Log("Exit");
+    //     Destroy(Ruins); // TODO: find alt
+    //     mainCamera.gameObject.SetActive(true);
+    //     cardsCamera.gameObject.SetActive(false);
+    // }
 }

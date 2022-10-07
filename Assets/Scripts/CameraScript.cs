@@ -6,44 +6,48 @@ using UnityEngine.EventSystems;
 
 public class CameraScript : MonoBehaviour
 {
-    public Camera cam;
+    Camera cam;
     public float zoomMin;
     public float zoomMax;
-    public float sensitivity;
 
-    private Camera mainCamera;
+    float touchesPrevPosDifference, touchesCurrPosDifference, zoomModifier;
+    Vector2 firstTouchPrevPos, secondTouchPrevPos;
 
-    private Touch touchA;
-    private Touch touchB;
-    private Vector2 touchADir;
-    private Vector2 touchBDir;
-    private float distBtwnTouchesPosition;
-    private float distBtwnTouchesDirection;
-    private float zoom;
+    [SerializeField]
+    float zoomModifierSpeed = 0.1f;
+    [SerializeField]
+    TextAlignment text;
+   
 
     private void Awake() {
-        mainCamera = Camera.main;
+        cam = GetComponent<Camera> ();
     }
       
 
     private void Update() {
-    //     cam.fieldOfView -= 5 * Input.GetAxis("Mouse ScrollWheel");
-    //     cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomMin, zoomMax);
+        cam.fieldOfView -= 5 * Input.GetAxis("Mouse ScrollWheel");
+        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomMin, zoomMax);
 
-        if(Input.touchCount == 2){
-            touchA = Input.GetTouch(0);
-            touchA = Input.GetTouch(1);
-            touchADir = touchA.position - touchA.deltaPosition;
-            touchBDir = touchB.position - touchB.deltaPosition;
+        // if (Input.touchCount == 2){
+        //     Touch firstTouch = Input.GetTouch (0);
+        //     Touch secondTouch = Input.GetTouch(1);
+            
+        //     firstTouchPrevPos = firstTouch.position - firstTouch.deltaPosition;
+        //     secondTouchPrevPos = secondTouch.position - secondTouch.deltaPosition;
 
-            distBtwnTouchesPosition = Vector2.Distance(touchA.position, touchB.position);
-            distBtwnTouchesDirection = Vector2.Distance(touchADir, touchBDir);
+        //     touchesPrevPosDifference = (firstTouchPrevPos -secondTouchPrevPos).magnitude;
+        //     touchesCurrPosDifference = (firstTouch.position - secondTouch.position).magnitude;
 
-            zoom = distBtwnTouchesPosition - distBtwnTouchesDirection;
+        //     zoomModifier = (firstTouch.deltaPosition - secondTouch.deltaPosition).magnitude - zoomModifierSpeed;
 
-            var currentZoom = mainCamera.orthographicSize - zoom * sensitivity;
+        //     if(touchesPrevPosDifference > touchesCurrPosDifference)
+        //         cam.orthographicSize += zoomModifier;
+        //     if(touchesPrevPosDifference < touchesCurrPosDifference)
+        //         cam.orthographicSize -= zoomModifier;
+        // }
 
-            mainCamera.orthographicSize = Mathf.Clamp(currentZoom, zoomMin, zoomMax);
+        // cam.orthographicSize = Mathf.Clamp (cam.orthographicSize, 2f, 10f);
+        //text.text = "Camera size" + cam.orthographicSize;
         }
     }
-}
+
