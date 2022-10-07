@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5218068585875049249}
   - component: {fileID: 2561525328826539345}
   - component: {fileID: 1059072087416920449}
+  - component: {fileID: -995635861525141505}
   m_Layer: 0
   m_Name: Ruins
   m_TagString: Untagged
@@ -41,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102555257077500469}
-  m_Mesh: {fileID: 2113629819765333494, guid: 43fccdc00c73e254d868db0342f2da1f, type: 3}
+  m_Mesh: {fileID: 4576153622214566291, guid: 686114ddaf680fb47b3284da384380ef, type: 3}
 --- !u!23 &2561525328826539345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c7932dc94586d241ace11284dab2ffa, type: 2}
+  - {fileID: 2100000, guid: 5c43893f743b095468edf8d55998e145, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,3 +99,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ruins: {fileID: 2102555257077500469}
   currRuinObj: 0
+--- !u!114 &-995635861525141505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102555257077500469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356c57f5f0d170d408b339ce4c4d4bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshes:
+  - {fileID: 4576153622214566291, guid: 686114ddaf680fb47b3284da384380ef, type: 3}
+  - {fileID: 4245882758976152900, guid: e1832839fdd51214688be5c7d1086a64, type: 3}
+  - {fileID: 5542439255975053380, guid: aa1466d8b26143a438d01e1e900fe218, type: 3}
+  - {fileID: 4060288889812200029, guid: 4133cd9eccf751d4cb38cf99effadf8d, type: 3}
