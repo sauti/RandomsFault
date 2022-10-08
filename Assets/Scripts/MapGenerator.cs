@@ -14,6 +14,7 @@ public class MapGenerator : MonoBehaviour
    public GameObject FloorEdge;
    public GameObject ExitTile;
    public GameObject Pillar;
+   public GameObject CornerPillar;
    public GameObject Chest;
    public GameObject Ruins;
    public float floorFormingSpeed = 0.1f;
@@ -132,26 +133,23 @@ public class MapGenerator : MonoBehaviour
         var pillarOffset = 5.6f;
         for(int x  = 0; x < 2; x++)
         {            
-            for(int y = 0; y < 2; y++)
-            {
-                var position = new Vector3(x * pillarOffset - 0.8f, 0, y * pillarOffset - 0.8f);
-                Instantiate(Pillar, position, Quaternion.identity, wallParent);
-            }
+            var position = new Vector3(x * pillarOffset - 0.8f, 0, pillarOffset - 0.8f);
+            Instantiate(CornerPillar, position, Quaternion.identity, wallParent);
         }
 
         // edge pillars
-        var pillarOffset1 = 2f;
         for(int x  = 0; x < 2; x++)
         {            
-            var position = new Vector3(x * pillarOffset1 + 1f, 0, 4.8f);
+            var position = new Vector3(x * 2f + 1f, 0, 4.65f);
             Instantiate(Pillar, position, Quaternion.identity, wallParent);
         }
         for(int x  = 0; x < 2; x++)
         {            
             for(int y = 0; y < 2; y++)
             {
-                var position = new Vector3(x * 5.6f - 0.8f, 0, y * pillarOffset1 + 1f);
-                Instantiate(Pillar, position, Quaternion.identity, wallParent);
+                var position = new Vector3(x * 5.3f - 0.65f, 0, y * 2f + 1f);
+                var rotation = Quaternion.Euler(0, Random.Range(0, 1) * 180 + 90, 0);
+                Instantiate(Pillar, position, rotation, wallParent);
             }
         }
 

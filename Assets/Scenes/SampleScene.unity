@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2705,7 +2705,8 @@ MonoBehaviour:
   Wall: {fileID: 8607805860201736908, guid: 350b6a549bfc2af4d92658632325d041, type: 3}
   FloorEdge: {fileID: 7492060513624495233, guid: a4a1c12849413b64a9a3c3fc7dd79813, type: 3}
   ExitTile: {fileID: 7503798406608587477, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
-  Pillar: {fileID: 919132149155446097, guid: af7b210c36769594db27bf7d83f3e9a0, type: 3}
+  Pillar: {fileID: 3543882244381555493, guid: 24199f77bc003864980b2e027b7053ae, type: 3}
+  CornerPillar: {fileID: 7700772797022406313, guid: e4e07e4054d2f88448b9a47538f1f939, type: 3}
   Chest: {fileID: 6411378618181738410, guid: 5abed8b6d8eacf545bdee829cfdbcfff, type: 3}
   Ruins: {fileID: 2102555257077500469, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
   floorFormingSpeed: 0.05
