@@ -49,14 +49,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float gargoyleOffset;
     
 
-    public Transform orbitCenter;
-    public GameObject orbitCenterObj;
-    public Transform planet;
-    public float planetSpeed;
-    public float planetAngle = 20;
-
-    public Transform mainCamera;
-    public Transform cardsCamera;
+    public GameObject mainCamera;
+    public GameObject cardsCamera;
     public Button exitBtn;
 
    private void Awake()
@@ -167,21 +161,13 @@ public class MapGenerator : MonoBehaviour
         {     
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
-            var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
-
-           //currRuin.Init(i);
-
-           if (i == ruinsAmount) {
-                //currRuin.currRuinObj = true;
-           }
+            var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);           
         }
 
         Character.SetActive(true);
         characterDirection = GetRandomEmptyTile();
         Enemy.SetActive(true);
         enemyDirection = GetRandomEmptyTile();
-
-        orbitCenterObj.SetActive(true);
 
         StartCoroutine(GargoylesRotate());
    }
@@ -206,7 +192,14 @@ public class MapGenerator : MonoBehaviour
         }
         Enemy.transform.LookAt(CharacterMoves); 
 
-        planet.transform.RotateAround(orbitCenter.position, Vector3.up, Time.deltaTime * planetSpeed);
+        if((Ruins.transform.position.x - Character.transform.position.x) == 0){
+                 if((Ruins.transform.position.z - Character.transform.position.z) == 0){
+                Debug.Log("Tobi Pizda!");
+                mainCamera.gameObject.SetActive(false);
+                cardsCamera.gameObject.SetActive(true);
+                exitBtn.gameObject.SetActive(true);                
+            }
+        }
    }
 
    private Vector3 GetRandomEmptyTile() {
@@ -238,10 +231,10 @@ public class MapGenerator : MonoBehaviour
         }
     }    
 
-    // public void OnExitBtnClick(){
-    //     Debug.Log("Exit");
-    //     Destroy(Ruins); // TODO: find alt
-    //     mainCamera.gameObject.SetActive(true);
-    //     cardsCamera.gameObject.SetActive(false);
-    // }
+    public void OnExitBtnClick(){
+        Debug.Log("Exit");
+        Destroy(Ruins); // TODO: find alt
+        mainCamera.gameObject.SetActive(true);
+        cardsCamera.gameObject.SetActive(false);
+    }
 }
