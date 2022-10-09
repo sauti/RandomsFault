@@ -35,10 +35,7 @@ public class MapGenerator : MonoBehaviour
 
     // Swipe Controls
     public Swipe swipeControls;
-
-    // Evade physics
-    // Vector2 directionRay;
-
+    
     // Aditional effects
     [SerializeField] private Transform objectsParent;
 
@@ -168,7 +165,6 @@ public class MapGenerator : MonoBehaviour
         characterDirection = GetRandomEmptyTile();
         Enemy.SetActive(true);
         enemyDirection = GetRandomEmptyTile();
-
         StartCoroutine(GargoylesRotate());
    }
 
