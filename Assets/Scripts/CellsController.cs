@@ -1,7 +1,9 @@
 
 using UnityEngine;
 
-namespace CellsController
+//mespace CellsController//
+public class CellsController : MonoBehaviour
+
 {
     public enum CellType
     {
@@ -23,7 +25,7 @@ namespace CellsController
         public Entity Entity;
     }
 
-    public class Grid 
+    public class Grid : MonoBehaviour
     {
         public Cell[,] Cell;
 
@@ -36,7 +38,7 @@ namespace CellsController
         public bool TryMove(Vector2Int coord)
         {
             if (!isBound(coord))
-            return false;
+                return false;
 
             var cell = Cell[coord.x, coord.y];
             switch (cell.Type)

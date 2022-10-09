@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
 {
-   public float distance;
+public GameObject Ruins;
 
-   public GameObject fightScene;
+    public GameObject cardsCamera;
+    public GameObject mainCamera;
+    public GameObject exitBtn;
+    public GameObject character;
 
-//    private void Update() {
-//     if(Physics.Raycast (transform.position, transform.TransformDirection (Vector3.one), out RaycastHit hitinfo, distance)){
-//         Debug.Log("TobiPizda!");
-//         // fightScene.SetActive(true);
-//     }else{
-//         //Debug.Log("Tobi ne Pizda!");
-//         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.one) * hitinfo.distance, Color.green);
-//     }     
-//    }
+    public bool currRuinObj;
+    
+    void Start()
+    {
+       
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+            if((Ruins.transform.position.x - character.transform.position.x) == 0){
+                 if((Ruins.transform.position.z - character.transform.position.z) == 0){
+                Debug.Log("Tobi Pizda!");
+                mainCamera.SetActive(false);
+                cardsCamera.SetActive(true);
+                exitBtn.gameObject.SetActive(true);
+
+                // GameObject.Find("CardsCamera").SetActive(true);
+                // GameObject.Find("MainCamera").SetActive(false);
+                // GameObject.Find("Button").SetActive(true);
+            }
+        }
+    }
 }
