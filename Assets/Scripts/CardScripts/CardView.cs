@@ -26,11 +26,6 @@ namespace Default {
             // SetStats();
         }
 
-        // private void OnMouseDown()
-        // {
-        //     TurnAround();
-        // }
-
         public void TurnAround() {
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
