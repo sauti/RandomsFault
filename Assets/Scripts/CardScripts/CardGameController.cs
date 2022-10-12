@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class TableController : MonoBehaviour
+    public class CardGameController : MonoBehaviour
     {
         private List<CardData> _cards;
         private List<CardData> _hand;
@@ -18,9 +18,9 @@ namespace Default {
         private CardsConfig _cardsConfig;
 
         [SerializeField] 
-        private TableView _tableView;
+        private BoardView _tableView;
         [SerializeField] 
-        private TableView _handView;
+        private BoardView _handView;
 
         // Start is called before the first frame update
         void Start()
@@ -86,23 +86,29 @@ namespace Default {
                 if (!Physics.Raycast(ray, out hit)) {
                     return;
                 }  
+
+                for (var i = 0; i < _hand.Count; i++) {
+                    if (_hand[i].Name != hit.transform.name)
+                    continue;
+
+                    SelectCard(_hand[i]);
+                    break;
+                }
+
                 for (var i = 0; i < _cards.Count; i++) {
                     if (_cards[i].Name != hit.transform.name)
                     continue;
 
-                    // turn around
                     if (!_cards[i].IsRotated) {
                         RotateCard(_cards[i], i);
                         break;
                     }
 
                     if (_cards[i].Card.CanPickUp) {
-                        Debug.Log("Pick up " + _cards[i].Card.Type);
                         PickUp(_cards[i]);
                         break;
                     }
-
-                    Debug.Log(_cards[i].Card.Type);
+                
                     if (_cards[i].Card.Type == CardType.Exit) {
                         Debug.Log("Click Exit");
                         InitTableCards();
@@ -128,7 +134,6 @@ namespace Default {
             _cards.Remove(card);
             _tableCells[card.Coord.x, card.Coord.y] = false;
             _tableView.removeCard(card);
-        
 
             Vector2Int coord = FindEmptyCoordInHand();
             card.Name = "HandCard " + coord.x + " " + coord.y;
@@ -137,6 +142,11 @@ namespace Default {
             _hand.Add(card);
             _handCells[coord.x, coord.y] = true;
             _handView.addCard(card);
+        }
+
+        private void SelectCard(CardData card)
+        {
+            _handView.selectCard(card);
         }
 
         private Vector2Int FindEmptyCoordInHand()

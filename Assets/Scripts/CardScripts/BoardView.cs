@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 namespace Default {
-    public class TableView : MonoBehaviour
+    public class BoardView : MonoBehaviour
     {
         public GameObject parent;
         public GameObject cellPrefab;
@@ -16,7 +16,6 @@ namespace Default {
 
         private void Awake()
         {
-            _cards = new List<GameObject>();
         }
 
         private void ClearTable()
@@ -44,21 +43,14 @@ namespace Default {
         }
 
         public void rotateCard(CardData card) {
-            GameObject c = _cards.Find(go => go.name == card.Name);
+            GameObject c = _findCard(card);
             c.GetComponent<CardView>().TurnAround();
         }
 
         public void removeCard(CardData card) {
-            GameObject c = _cards.Find(go => go.name == card.Name);
+            GameObject c = _findCard(card);
             Destroy(c);
             _cards.Remove(c);
-            // foreach (var go in _cards) {
-            //     if (go.name == card.Name) {
-            //         Destroy(go);
-            //         // _cards.Remove(card);
-            //         break;
-            //     }
-            // }
         }
 
         public void addCard(CardData card) {
@@ -68,6 +60,15 @@ namespace Default {
             go.name = card.Name;
             go.GetComponent<CardView>().SetInitialData(card.Card);
             _cards.Add(go);
+        }
+
+        public void selectCard(CardData card) {
+            Debug.Log("select1" + card.Name);
+            foreach (var go in _cards) {
+                Debug.Log("hand name" + go.name);
+                float y = go.name == card.Name ? 0.2f : 0;
+                go.transform.position = new Vector3(go.transform.position.x, y, go.transform.position.z);
+            }
         }
 
         private void GenerateCells(Vector2Int gridSize)
@@ -86,9 +87,15 @@ namespace Default {
 
         private void GenerateCards(List<CardData> cards)
         {
+            _cards = new List<GameObject>();
             foreach (var card in cards) {
                 addCard(card);
             }
+        }
+
+        private GameObject _findCard(CardData card)
+        {
+            return _cards.Find(go => go.name == card.Name);
         }
     }
 }
