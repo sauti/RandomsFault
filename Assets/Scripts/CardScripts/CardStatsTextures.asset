@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef5041ebafc52049874d71595fcfe41, type: 3}
+  m_Name: CardStatsTextures
+  m_EditorClassIdentifier: 
+  _textures:
+  - {fileID: 2800000, guid: db8ff1192d8e40a4080a60303e34ba4f, type: 3}
+  - {fileID: 2800000, guid: 14140ad9f7b54ef479d3a66db3683fec, type: 3}
+  - {fileID: 2800000, guid: 3ef0023358bfed04abc28f2149b311ed, type: 3}
+  - {fileID: 2800000, guid: bffb1c377b831db4e806b6f7c84a9182, type: 3}
+  - {fileID: 2800000, guid: 83a62819b14545649b1d012b00ea23ae, type: 3}
+  - {fileID: 2800000, guid: d811ad3baa58ad0458533dc2e22dccd5, type: 3}
+  - {fileID: 2800000, guid: 7f63842a8c7c5e4429a651bdf192fe27, type: 3}
+  - {fileID: 2800000, guid: d0a782fb12e89e14b803fd2755008c0b, type: 3}
+  - {fileID: 2800000, guid: 9f617205ad0e2c2438e8328e003e94b4, type: 3}
+  - {fileID: 2800000, guid: c9e5822385ee5214181bb7a073ba0a26, type: 3}
