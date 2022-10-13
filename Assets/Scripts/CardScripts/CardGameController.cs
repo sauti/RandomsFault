@@ -38,5 +38,12 @@ namespace Default {
                 _tableCtrl.OnClickListener(hit);
             } 
         }
+
+        public void TryPickUp(CardData card) {
+            if (_handCtrl.CanPickUp()) {
+                _tableCtrl.PickUp(card);
+                _handCtrl.PickUp(card);
+            }
+        }
     }
 }

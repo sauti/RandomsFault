@@ -28,6 +28,21 @@ namespace Default {
             _view.GenerateBoard(grid, _cards);
         }
 
+        public bool CanPickUp() {
+            Vector2Int coord = FindEmptyCoordInHand();
+            return coord.x != -1;
+        }
+
+        public void PickUp(CardData card) {
+            Vector2Int coord = FindEmptyCoordInHand();
+            card.Name = "HandCard " + coord.x + " " + coord.y;
+            card.Coord = coord;
+            Debug.Log(card.Coord.x + " " + card.Coord.y);
+            _cards.Add(card);
+            _cells[coord.x, coord.y] = true;
+            _view.addCard(card);
+        }
+
         public void OnClickListener(RaycastHit hit) {
             for (var i = 0; i < _cards.Count; i++) {
                 if (_cards[i].Name != hit.transform.name)
@@ -41,6 +56,20 @@ namespace Default {
         private void SelectCard(CardData card)
         {
             _view.selectCard(card);
+        }
+
+        private Vector2Int FindEmptyCoordInHand()
+        {
+            for (int j = 0; j < _cells.GetLength(0); j++)
+            {
+                for (int i = 0; i < _cells.GetLength(1); i++)
+                {
+                    if (_cells[i, j] == false) {
+                        return new Vector2Int(i, j);
+                    }
+                }
+            }
+            return new Vector2Int(-1, -1);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Default {
                 }
 
                 if (_cards[i].Card.CanPickUp) {
-                    PickUp(_cards[i]);
+                    transform.parent.GetComponent<CardGameController>().TryPickUp(_cards[i]);
                     break;
                 }
 
@@ -73,20 +73,11 @@ namespace Default {
             _view.rotateCard(card);
         }
 
-        private void PickUp(CardData card)
+        public void PickUp(CardData card)
         {
-            Debug.Log("Pick up " + card.Card.Type);
             _cards.Remove(card);
             _cells[card.Coord.x, card.Coord.y] = false;
             _view.removeCard(card);
-
-            // Vector2Int coord = FindEmptyCoordInHand();
-            // card.Name = "HandCard " + coord.x + " " + coord.y;
-            // card.Coord = coord;
-            // Debug.Log(card.Coord.x + " " + card.Coord.y);
-            // _hand.Add(card);
-            // _handCells[coord.x, coord.y] = true;
-            // _handView.addCard(card);
         }
 
         private Vector2Int FindRandomEmptyCoordOnTable()
