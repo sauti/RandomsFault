@@ -40,8 +40,8 @@ namespace Default {
             {
                 Type = template.Type,
                 Prefab = template.Prefab,
-                Health = cardLevelData.Health,
-                Damage = cardLevelData.Damage,
+                Health = cardLevelData != null ? cardLevelData.Health : 1,
+                Damage = cardLevelData != null ? cardLevelData.Damage : 1,
                 CanPickUp = template.CanPickUp,
                 CanKill = template.CanKill,
             };
