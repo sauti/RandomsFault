@@ -20,10 +20,6 @@ namespace Default {
             _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         }
 
-        void Update()
-        {
-        }
-
         public void initCards(Vector2Int grid, int level)
         {
             _level = level;
@@ -31,7 +27,8 @@ namespace Default {
             _cards = new List<CardData>();
             _view = gameObject.GetComponent<BoardView>();
 
-            var cards = _cg.GenerateCardsForLevel(level);
+            _cg.Init(level);
+            var cards = _cg.GenerateCardsForLevel();
             foreach (CardData card in cards)
             {
                 Vector2Int coord = FindRandomEmptyCoordOnTable();

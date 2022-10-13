@@ -1,8 +1,25 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default
 {
+    [Serializable]
+    public class CardPerLevelData {
+        [SerializeField] 
+        private CardType _type;
+
+        [SerializeField] 
+        private int _health;
+
+        [SerializeField] 
+        private int _damage;
+
+        public CardType Type => _type;
+        public int Health => _health;
+        public int Damage => _damage;
+    }
+
     [CreateAssetMenu(menuName = "Cards/LevelConfig")]
     public class LevelConfig : ScriptableObject
     {
@@ -12,28 +29,18 @@ namespace Default
         [SerializeField] 
         private int maxCards;
 
-        public int GetCardsAmount() {
-            return Random.Range(minCards, maxCards);
+        [SerializeField] 
+        private List<CardPerLevelData> _cards;
+
+        public int GetCardsAmount()
+        {
+            return minCards;
+            // return Random.Range(minCards, maxCards);
         }
 
-        // private Dictionary<int, Texture2D> _lib;
-
-        // public void OnBeforeSerialize()
-        // {
-        // }
-
-        // public void OnAfterDeserialize()
-        // {
-        //     _lib = new Dictionary<int, Texture2D>();
-        //     for (int i = 0; i < _textures.Count; i++)
-        //     {
-        //         _lib.Add(i, _textures[i]);
-        //     }
-        // }
-
-        // public bool TryGet(int i, out Texture2D texture)
-        // {
-        //     return _lib.TryGetValue(i, out texture);
-        // }
+        public CardPerLevelData GetCardConfig(CardType type)
+        {
+            return _cards.Find(c => c.Type == type);
+        }
     }
 }

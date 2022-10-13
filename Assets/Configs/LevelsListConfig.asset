@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a331e66511ea7344bf7f2fa71235b99, type: 3}
-  m_Name: Level2
+  m_Script: {fileID: 11500000, guid: 63af0b4226b78394d8010c3ba2803f6b, type: 3}
+  m_Name: LevelsListConfig
   m_EditorClassIdentifier: 
-  minCards: 6
-  maxCards: 7
+  list:
+  - {fileID: 11400000, guid: fb7ee4ce083e8e3468bb07ea863f72b0, type: 2}
+  - {fileID: 11400000, guid: 4df0d6ed112a1464abc3b29ad658ed83, type: 2}

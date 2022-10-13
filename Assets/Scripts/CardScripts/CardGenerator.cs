@@ -10,8 +10,11 @@ namespace Default {
 
         private LevelConfig _levelConfig;
 
-        public List<CardData> GenerateCardsForLevel(int level) {
+        public void Init(int level) {
             _levelConfig = levelsListConfig.GetConfigForLevel(level);
+        }
+
+        public List<CardData> GenerateCardsForLevel() {
             int amount = _levelConfig.GetCardsAmount();
             var cards = new List<CardData>();
 
@@ -30,12 +33,14 @@ namespace Default {
 
         public CardData GenerateCardByType(CardType type, Vector2Int coord, bool IsRotated = false) {
             CardTemplate template = cardsConfig.GetByType(type);
+            CardPerLevelData cardLevelData = _levelConfig.GetCardConfig(type);
+
             var card = new Card()
             {
                 Type = template.Type,
                 Prefab = template.Prefab,
-                Health = template.Health,
-                Damage = template.Damage,
+                Health = cardLevelData.Health,
+                Damage = cardLevelData.Damage,
                 CanPickUp = template.CanPickUp,
                 CanKill = template.CanKill,
             };
