@@ -45,5 +45,13 @@ namespace Default {
                 _handCtrl.PickUp(card);
             }
         }
+
+        public void TryAttack(CardData card) {
+            CardData selectedCard = _handCtrl.GetSelectedCard();
+            if (selectedCard == null) {
+                return;
+            }
+            _tableCtrl.Attack(card, selectedCard.Card.Damage);
+        }
     }
 }

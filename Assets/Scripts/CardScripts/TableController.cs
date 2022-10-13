@@ -54,7 +54,7 @@ namespace Default {
                 }
 
                 if (_cards[i].Card.CanKill) {
-                    Attack(_cards[i], 1);
+                    transform.parent.GetComponent<CardGameController>().TryAttack(_cards[i]);
                     break;
                 }
             
@@ -77,6 +77,16 @@ namespace Default {
             RemoveCard(card);
         }
 
+        public void Attack(CardData card, int damage) {
+            Debug.Log("Attack " + damage);
+            card.Card.SetHealth(card.Card.Health - damage);
+            if (card.Card.Health <= 0) {
+                RemoveCard(card);
+            } else {
+                _view.AttackCard(card);
+            }
+        }
+
         private Vector2Int FindRandomEmptyCoordOnTable()
         {
             while (true)
@@ -94,16 +104,6 @@ namespace Default {
             _cards.Remove(card);
             _cells[card.Coord.x, card.Coord.y] = false;
             _view.removeCard(card);
-        }
-
-        private void Attack(CardData card, int damage) {
-            Debug.Log("Attack " + damage);
-            card.Card.SetHealth(card.Card.Health - damage);
-            if (card.Card.Health <= 0) {
-                RemoveCard(card);
-            } else {
-                _view.AttackCard(card);
-            }
         }
     }
 }

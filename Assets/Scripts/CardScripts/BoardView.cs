@@ -70,6 +70,12 @@ namespace Default {
             }
         }
 
+        public void resetSelection() {
+            foreach (var go in _cards) {
+                go.transform.position = new Vector3(go.transform.position.x, 0, go.transform.position.z);
+            }
+        }
+
         public void AttackCard(CardData card) {
             GameObject c = _findCard(card);
             c.GetComponent<CardView>().SetHealth(card.Card.Health);
