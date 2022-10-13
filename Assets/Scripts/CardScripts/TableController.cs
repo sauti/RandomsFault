@@ -8,6 +8,7 @@ namespace Default {
         public CardGenerator _cg;
 
         private BoardView _view;
+        private PlayerStats _playerStats;
 
         private List<CardData> _cards;
         private bool[,] _cells;
@@ -15,6 +16,7 @@ namespace Default {
         void Start()
         {
             _view = gameObject.GetComponent<BoardView>();
+            _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         }
 
         void Update()
@@ -70,6 +72,9 @@ namespace Default {
 
         private void RotateCard(CardData card, int i) {
             Debug.Log("Rotate " + _cards[i].Card.Type + "  index: " + i);
+            if (card.Card.Type == CardType.Trap) {
+                _playerStats.GetDamage(card.Card.Damage);
+            }
             _cards[i].IsRotated = true;
             _view.rotateCard(card);
         }
@@ -79,6 +84,7 @@ namespace Default {
             RemoveCard(card);
         }
 
+        // player attacks a card on the table
         public void Attack(CardData card, int damage) {
             Debug.Log("Attack " + damage);
             card.Card.SetHealth(card.Card.Health - damage);
