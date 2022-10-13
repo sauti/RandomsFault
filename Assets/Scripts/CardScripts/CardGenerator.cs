@@ -5,8 +5,23 @@ using UnityEngine;
 namespace Default {
     public class CardGenerator: MonoBehaviour
     {
-        [SerializeField]
-        private CardsConfig _cardsConfig;
+        public CardsConfig cardsConfig;
+        public LevelsList levelsListConfig;
+
+        private LevelConfig _levelConfig;
+
+        public List<CardData> GenerateCardsForLevel(int level) {
+            _levelConfig = levelsListConfig.GetConfigForLevel(level);
+            int amount = _levelConfig.GetCardsAmount();
+            var cards = new List<CardData>();
+
+            for (var i = 0; i < amount; i++) {
+                CardData card = GenerateRandomCard(new Vector2Int(0, 0));
+                cards.Add(card);
+            }
+
+            return cards;
+        }
 
         public CardData GenerateRandomCard(Vector2Int coord) {
             CardType type = GetRandomCardType();
@@ -14,7 +29,7 @@ namespace Default {
         }
 
         public CardData GenerateCardByType(CardType type, Vector2Int coord, bool IsRotated = false) {
-            CardTemplate template = _cardsConfig.GetByType(type);
+            CardTemplate template = cardsConfig.GetByType(type);
             var card = new Card()
             {
                 Type = template.Type,

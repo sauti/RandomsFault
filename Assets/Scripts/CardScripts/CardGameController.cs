@@ -5,10 +5,11 @@ using UnityEngine;
 namespace Default {
     public class CardGameController : MonoBehaviour
     {
-        public Vector2Int _gridSize = new Vector2Int(4, 3);
-        public Vector2Int _handSize = new Vector2Int(4, 2);
-        public GameObject _tableGo;
-        public GameObject _handGo;
+        public Vector2Int gridSize = new Vector2Int(4, 3);
+        public Vector2Int handSize = new Vector2Int(4, 2);
+        public GameObject tableGo;
+        public GameObject handGo;
+        public int level = 1;
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
@@ -17,10 +18,10 @@ namespace Default {
 
         void Start()
         {
-            _tableCtrl = _tableGo.GetComponent<TableController>();
-            _handCtrl = _handGo.GetComponent<HandController>();
-            _tableCtrl.initCards(_gridSize);
-            _handCtrl.initCards(_handSize);
+            _tableCtrl = tableGo.GetComponent<TableController>();
+            _handCtrl = handGo.GetComponent<HandController>();
+            _tableCtrl.initCards(gridSize, level);
+            _handCtrl.initCards(handSize);
 
             state = BattleState.PlayerTurn;
         }
@@ -75,6 +76,7 @@ namespace Default {
             state = BattleState.EnemyTurn;
             _handCtrl.DeselectCard();
             Debug.Log("Enemy turn...");
+            yield return new WaitForSeconds(1);
             yield return _tableCtrl.AttackPlayerWithOpenCards();
             state = BattleState.PlayerTurn;
             Debug.Log("Your turn...");

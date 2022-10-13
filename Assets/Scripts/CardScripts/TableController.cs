@@ -12,6 +12,7 @@ namespace Default {
 
         private List<CardData> _cards;
         private bool[,] _cells;
+        private int _level;
 
         void Start()
         {
@@ -23,18 +24,18 @@ namespace Default {
         {
         }
 
-        public void initCards(Vector2Int grid)
+        public void initCards(Vector2Int grid, int level)
         {
+            _level = level;
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
             _view = gameObject.GetComponent<BoardView>();
 
-            int maxCardsAmount = grid.x * grid.y;
-            int amount = Random.Range(2, maxCardsAmount);
-
-            for (var i = 0; i < amount; i++) {
+            var cards = _cg.GenerateCardsForLevel(level);
+            foreach (CardData card in cards)
+            {
                 Vector2Int coord = FindRandomEmptyCoordOnTable();
-                CardData card = _cg.GenerateRandomCard(coord);
+                card.Coord = coord;
                 _cells[coord.x, coord.y] = true;
                 _cards.Add(card);
             }
@@ -64,7 +65,7 @@ namespace Default {
             
                 if (_cards[i].Card.Type == CardType.Exit) {
                     Debug.Log("Click Exit");
-                    initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)));
+                    initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), _level);
                     break;
                 }
             }

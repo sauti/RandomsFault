@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Default
 {
-    [CreateAssetMenu(menuName = "Example/CardStatsConfig")]
+    [CreateAssetMenu(menuName = "Cards/CardStatsConfig")]
     public class CardStatsConfig : ScriptableObject, ISerializationCallbackReceiver
     {
         [SerializeField] 

@@ -235,10 +235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d1c3ad95da3f34c889fd23094d0847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridSize: {x: 4, y: 3}
-  _handSize: {x: 4, y: 2}
-  _tableGo: {fileID: 268818198}
-  _handGo: {fileID: 1646391452}
+  gridSize: {x: 4, y: 3}
+  handSize: {x: 4, y: 2}
+  tableGo: {fileID: 268818198}
+  handGo: {fileID: 1646391452}
+  level: 0
 --- !u!4 &185806407
 Transform:
   m_ObjectHideFlags: 0
@@ -331,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
+  cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
+  levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
 --- !u!1 &269818193
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,4 +939,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
+  cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
+  levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
