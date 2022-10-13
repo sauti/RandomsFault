@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Default
 {
     [Serializable]
-    public class Card
+    public class CardTemplate
     {
         [SerializeField] 
         private CardType _type;
@@ -30,5 +30,20 @@ namespace Default
         public int Damage => _damage;
         public bool CanPickUp => _canPickUp;
         public bool CanKill => _canKill;
+    }
+
+    public class Card
+    {
+        public CardType Type;
+        public GameObject Prefab;
+        public int Health;
+        public int Damage;
+        public bool CanPickUp;
+        public bool CanKill;
+
+        public void SetHealth(int val)
+        {
+            Health = val;
+        }
     }
 }

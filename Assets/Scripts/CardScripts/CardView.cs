@@ -47,7 +47,7 @@ namespace Default {
             // SetStats(card.Health, card.Damage);
         }
 
-        private void SetHealth(int health) {
+        public void SetHealth(int health) {
             SetStat("Health", health);
         }
 

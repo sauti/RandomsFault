@@ -22,7 +22,7 @@ namespace Default {
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
 
-            CardData card = _cg.GenerateCardByType(CardType.Attack, new Vector2Int(0, 0), "Hand", true);
+            CardData card = _cg.GenerateCardByType(CardType.Attack, new Vector2Int(0, 0), true);
             _cards.Add(card);
             _cells[0, 0] = true;
             _view.GenerateBoard(grid, _cards);
@@ -35,9 +35,8 @@ namespace Default {
 
         public void PickUp(CardData card) {
             Vector2Int coord = FindEmptyCoordInHand();
-            card.Name = "HandCard " + coord.x + " " + coord.y;
             card.Coord = coord;
-            Debug.Log(card.Coord.x + " " + card.Coord.y);
+            Debug.Log("Pick up: " + card.Coord.x + " " + card.Coord.y);
             _cards.Add(card);
             _cells[coord.x, coord.y] = true;
             _view.addCard(card);
@@ -45,7 +44,7 @@ namespace Default {
 
         public void OnClickListener(RaycastHit hit) {
             for (var i = 0; i < _cards.Count; i++) {
-                if (_cards[i].Name != hit.transform.name)
+                if (_cards[i].Id != hit.transform.name)
                 continue;
 
                 SelectCard(_cards[i]);
@@ -60,9 +59,9 @@ namespace Default {
 
         private Vector2Int FindEmptyCoordInHand()
         {
-            for (int j = 0; j < _cells.GetLength(0); j++)
+            for (int j = 0; j < _cells.GetLength(1); j++)
             {
-                for (int i = 0; i < _cells.GetLength(1); i++)
+                for (int i = 0; i < _cells.GetLength(0); i++)
                 {
                     if (_cells[i, j] == false) {
                         return new Vector2Int(i, j);

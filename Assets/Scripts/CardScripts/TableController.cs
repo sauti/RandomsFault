@@ -19,7 +19,6 @@ namespace Default {
 
         void Update()
         {
-            // OnClickListener();
         }
 
         public void initCards(Vector2Int grid)
@@ -31,7 +30,7 @@ namespace Default {
 
             for (var i = 0; i < amount; i++) {
                 Vector2Int coord = FindRandomEmptyCoordOnTable();
-                CardData card = _cg.GenerateRandomCard(coord, "Table");
+                CardData card = _cg.GenerateRandomCard(coord);
                 _cells[coord.x, coord.y] = true;
                 _cards.Add(card);
             }
@@ -41,7 +40,7 @@ namespace Default {
 
         public void OnClickListener(RaycastHit hit) {
             for (var i = 0; i < _cards.Count; i++) {
-                if (_cards[i].Name != hit.transform.name)
+                if (_cards[i].Id != hit.transform.name)
                 continue;
 
                 if (!_cards[i].IsRotated) {
@@ -75,9 +74,7 @@ namespace Default {
 
         public void PickUp(CardData card)
         {
-            _cards.Remove(card);
-            _cells[card.Coord.x, card.Coord.y] = false;
-            _view.removeCard(card);
+            RemoveCard(card);
         }
 
         private Vector2Int FindRandomEmptyCoordOnTable()
@@ -93,8 +90,20 @@ namespace Default {
             }
         }
 
+        private void RemoveCard(CardData card) {
+            _cards.Remove(card);
+            _cells[card.Coord.x, card.Coord.y] = false;
+            _view.removeCard(card);
+        }
+
         private void Attack(CardData card, int damage) {
             Debug.Log("Attack " + damage);
+            card.Card.SetHealth(card.Card.Health - damage);
+            if (card.Card.Health <= 0) {
+                RemoveCard(card);
+            } else {
+                _view.AttackCard(card);
+            }
         }
     }
 }

@@ -57,23 +57,22 @@ namespace Default {
             Vector2Int coord = card.Coord;
             GameObject go = Instantiate(cardPrefab, _cells[coord.x, coord.y].transform);
             go.transform.rotation = Quaternion.Euler(0, 0, card.IsRotated ? 0 : 180);
-            go.name = card.Name;
+            go.name = card.Id;
             go.GetComponent<CardView>().SetInitialData(card.Card);
             _cards.Add(go);
         }
 
         public void selectCard(CardData card) {
-            Debug.Log("select1" + card.Name);
             foreach (var go in _cards) {
-                Debug.Log("hand name" + go.name);
-                float y = go.name == card.Name ? 0.2f : 0;
+                Debug.Log("Select: " + go.name);
+                float y = go.name == card.Id ? 0.2f : 0;
                 go.transform.position = new Vector3(go.transform.position.x, y, go.transform.position.z);
             }
         }
 
-        public void attackCard(CardData card, int damage) {
-            // GameObject c = _findCard(card);
-            // c.decreaseHealth(damage);
+        public void AttackCard(CardData card) {
+            GameObject c = _findCard(card);
+            c.GetComponent<CardView>().SetHealth(card.Card.Health);
         }
 
         private void GenerateCells(Vector2Int gridSize)
@@ -100,7 +99,7 @@ namespace Default {
 
         private GameObject _findCard(CardData card)
         {
-            return _cards.Find(go => go.name == card.Name);
+            return _cards.Find(go => go.name == card.Id);
         }
     }
 }
