@@ -12,6 +12,8 @@ namespace Default {
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
+        
+        private BattleState state = BattleState.Start;
 
         void Start()
         {
@@ -19,11 +21,15 @@ namespace Default {
             _handCtrl = _handGo.GetComponent<HandController>();
             _tableCtrl.initCards(_gridSize);
             _handCtrl.initCards(_handSize);
+
+            state = BattleState.PlayerTurn;
         }
 
         void Update()
         {
-            OnClickListener();
+            if (state == BattleState.PlayerTurn) {
+                OnClickListener();
+            }
         }
         
         public void OnClickListener() {
@@ -43,6 +49,7 @@ namespace Default {
             if (_handCtrl.CanPickUp()) {
                 _tableCtrl.PickUp(card);
                 _handCtrl.PickUp(card);
+                TriggerEnemyTurn();
             }
         }
 
@@ -52,6 +59,19 @@ namespace Default {
                 return;
             }
             _tableCtrl.Attack(card, selectedCard.Card.Damage);
+            TriggerEnemyTurn();
+        }
+
+        private void TriggerEnemyTurn() {
+            StartCoroutine(StartEnemyTurn());
+        }
+
+        private IEnumerator StartEnemyTurn() {
+            state = BattleState.EnemyTurn;
+            Debug.Log("Enemy turn...");
+            yield return _tableCtrl.AttackPlayerWithOpenCards();
+            state = BattleState.PlayerTurn;
+            Debug.Log("Your turn...");
         }
     }
 }

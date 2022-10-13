@@ -48,7 +48,7 @@ namespace Default {
                 continue;
 
                 if (!_cards[i].IsRotated) {
-                    RotateCard(_cards[i], i);
+                    RotateCard(_cards[i]);
                     break;
                 }
 
@@ -70,12 +70,12 @@ namespace Default {
             }
         }
 
-        private void RotateCard(CardData card, int i) {
-            Debug.Log("Rotate " + _cards[i].Card.Type + "  index: " + i);
+        private void RotateCard(CardData card) {
+            Debug.Log("Rotate " + card.Card.Type);
             if (card.Card.Type == CardType.Trap) {
                 _playerStats.GetDamage(card.Card.Damage);
             }
-            _cards[i].IsRotated = true;
+            card.IsRotated = true;
             _view.rotateCard(card);
         }
 
@@ -93,6 +93,16 @@ namespace Default {
             } else {
                 _view.AttackCard(card);
             }
+        }
+
+        // cards attack a player
+        public IEnumerator AttackPlayerWithOpenCards() {
+            foreach (CardData card in _cards) {
+                if (!card.IsRotated || !card.Card.CanKill) continue;
+                _playerStats.GetDamage(card.Card.Damage);
+                yield return _view.DealDamageWithCard(card);
+            }
+            Debug.Log("Done all damage");
         }
 
         private Vector2Int FindRandomEmptyCoordOnTable()

@@ -39,12 +39,18 @@ namespace Default {
             SetDamage(card.Damage);
         }
 
-        public void decreaseHealth(int damage) {
-            // var item = Instantiate(card.Prefab, gameObject.transform, false);
-            // item.transform.position = gameObject.transform.position;
-       
-            // _renderer = GetComponent<Renderer>();
-            // SetStats(card.Health, card.Damage);
+        public IEnumerator DealDamageToPlayer() {
+            gameObject.transform.position += new Vector3(0, 0.1f, 0.2f);
+            yield return new WaitForSeconds(1.5f);
+            gameObject.transform.position += new Vector3(0, -0.1f, -0.2f);
+        }
+
+        public void SelectCard() {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0.2f, gameObject.transform.position.z);
+        }
+
+        public void DeselectCard() {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
         }
 
         public void SetHealth(int health) {

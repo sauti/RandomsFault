@@ -61,20 +61,30 @@ namespace Default {
         public void selectCard(CardData card) {
             foreach (var go in _cards) {
                 Debug.Log("Select: " + go.name);
-                float y = go.name == card.Id ? 0.2f : 0;
-                go.transform.position = new Vector3(go.transform.position.x, y, go.transform.position.z);
+                if (go.name == card.Id) {
+                    go.GetComponent<CardView>().SelectCard();
+                } else {
+                    go.GetComponent<CardView>().DeselectCard();
+                }
             }
         }
 
         public void resetSelection() {
             foreach (var go in _cards) {
-                go.transform.position = new Vector3(go.transform.position.x, 0, go.transform.position.z);
+                go.GetComponent<CardView>().DeselectCard();
             }
         }
 
+        // player attacks a card
         public void AttackCard(CardData card) {
             GameObject c = _findCard(card);
             c.GetComponent<CardView>().SetHealth(card.Card.Health);
+        }
+
+        // cards attacks a player
+        public IEnumerator DealDamageWithCard(CardData card) {
+            GameObject c = _findCard(card);
+            yield return c.GetComponent<CardView>().DealDamageToPlayer();
         }
 
         private void GenerateCells(Vector2Int gridSize)
