@@ -19,6 +19,9 @@ namespace Default
         private bool _canPickUp;
 
         [SerializeField] 
+        private bool _canKill;
+
+        [SerializeField] 
         private GameObject _prefab;
 
         public CardType Type => _type;
@@ -26,5 +29,6 @@ namespace Default
         public int Health => _health;
         public int Damage => _damage;
         public bool CanPickUp => _canPickUp;
+        public bool CanKill => _canKill;
     }
 }

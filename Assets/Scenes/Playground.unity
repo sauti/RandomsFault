@@ -238,10 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridSize: {x: 4, y: 3}
   _handSize: {x: 4, y: 2}
-  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
   _tableGo: {fileID: 268818198}
   _handGo: {fileID: 1646391452}
-  _cg: {fileID: 185806410}
 --- !u!4 &185806407
 Transform:
   m_ObjectHideFlags: 0
@@ -282,6 +280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 268818199}
   - component: {fileID: 268818200}
+  - component: {fileID: 268818201}
+  - component: {fileID: 268818202}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -320,6 +320,32 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
+--- !u!114 &268818201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268818198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1bbcc291995384ca29143fd4cfca47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cg: {fileID: 268818202}
+--- !u!114 &268818202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268818198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
 --- !u!1 &857115957
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +534,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1646391453}
   - component: {fileID: 1646391454}
+  - component: {fileID: 1646391456}
+  - component: {fileID: 1646391455}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -547,3 +575,29 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
+--- !u!114 &1646391455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646391452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155a8a04b1e22fd419230791d2e0d536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cg: {fileID: 1646391456}
+--- !u!114 &1646391456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646391452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}

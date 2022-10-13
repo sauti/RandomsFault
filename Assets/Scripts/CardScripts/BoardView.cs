@@ -71,6 +71,11 @@ namespace Default {
             }
         }
 
+        public void attackCard(CardData card, int damage) {
+            // GameObject c = _findCard(card);
+            // c.decreaseHealth(damage);
+        }
+
         private void GenerateCells(Vector2Int gridSize)
         {
             _cells = new GameObject[gridSize.x, gridSize.y];

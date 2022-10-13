@@ -35,28 +35,38 @@ namespace Default {
             item.transform.position = gameObject.transform.position;
        
             _renderer = GetComponent<Renderer>();
-            SetStats(card.Health, card.Damage);
+            SetHealth(card.Health);
+            SetDamage(card.Damage);
         }
 
-        private void SetStats(int health, int damage) {
+        public void decreaseHealth(int damage) {
+            // var item = Instantiate(card.Prefab, gameObject.transform, false);
+            // item.transform.position = gameObject.transform.position;
+       
+            // _renderer = GetComponent<Renderer>();
+            // SetStats(card.Health, card.Damage);
+        }
+
+        private void SetHealth(int health) {
+            SetStat("Health", health);
+        }
+
+        private void SetDamage(int damage) {
+            SetStat("Damage", damage);
+        }
+
+        private void SetStat(string name, int value) {
             Material[] materials = _renderer.materials;
-            for (int i = 0; i < _renderer.materials.Length; i++)
+            for (int i = 0; i < materials.Length; i++)
             {
                 string matName = materials[i].name;
-                if (Regex.Match(matName, "Health").Success)
-                {
-                    if (!_statsTexturesConfig.TryGet(health, out var healthTexture))
-                    continue;
-                    materials[i].SetTexture("_MainTex", healthTexture);
-                }
-                
-                if (Regex.Match(matName, "Damage").Success)
+                if (Regex.Match(matName, name).Success)
                 {
                     {
-                    if (!_statsTexturesConfig.TryGet(damage, out var damageTexture))
-                    continue;
-                    materials[i].SetTexture("_MainTex", damageTexture);
-                }
+                        if (!_statsTexturesConfig.TryGet(value, out var texture))
+                        continue;
+                        materials[i].SetTexture("_MainTex", texture);
+                    }
                 }
             }
         }
