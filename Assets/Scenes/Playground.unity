@@ -216,7 +216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 185806407}
   - component: {fileID: 185806406}
-  - component: {fileID: 185806408}
   m_Layer: 0
   m_Name: CardGameController
   m_TagString: Untagged
@@ -258,20 +257,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &185806408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185806405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
-  levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
 --- !u!1 &268818198
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +268,6 @@ GameObject:
   - component: {fileID: 268818199}
   - component: {fileID: 268818201}
   - component: {fileID: 268818200}
-  - component: {fileID: 268818202}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -334,21 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1bbcc291995384ca29143fd4cfca47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cg: {fileID: 268818202}
---- !u!114 &268818202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268818198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
-  levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
+  _cg: {fileID: 11400000, guid: d4d2580f92ffc914ab728a8a8c1ca8c4, type: 2}
 --- !u!1 &269818193
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +859,6 @@ GameObject:
   - component: {fileID: 1646391453}
   - component: {fileID: 1646391455}
   - component: {fileID: 1646391454}
-  - component: {fileID: 1646391456}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -941,18 +910,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155a8a04b1e22fd419230791d2e0d536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cg: {fileID: 1646391456}
---- !u!114 &1646391456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646391452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
-  levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
+  _cg: {fileID: 11400000, guid: d4d2580f92ffc914ab728a8a8c1ca8c4, type: 2}

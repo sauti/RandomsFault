@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class CardGenerator: MonoBehaviour
+    [CreateAssetMenu(menuName = "Cards/CardGenerator")]
+    public class CardGenerator: ScriptableObject
     {
         public CardsConfig cardsConfig;
         public LevelsList levelsListConfig;

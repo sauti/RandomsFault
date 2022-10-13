@@ -34,8 +34,7 @@ namespace Default
 
         public int GetCardsAmount()
         {
-            return minCards;
-            // return Random.Range(minCards, maxCards);
+            return UnityEngine.Random.Range(minCards, maxCards);
         }
 
         public CardPerLevelData GetCardConfig(CardType type)
