@@ -62,6 +62,11 @@ namespace Default {
             TriggerEnemyTurn();
         }
 
+        public void RotateCard(CardData card) {
+            _tableCtrl.RotateCard(card);
+            TriggerEnemyTurn();
+        }
+
         private void TriggerEnemyTurn() {
             StartCoroutine(StartEnemyTurn());
         }
