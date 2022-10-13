@@ -14,10 +14,6 @@ namespace Default {
         private List<GameObject> _cards = new List<GameObject>();
         private GameObject[,] _cells;
 
-        private void Awake()
-        {
-        }
-
         private void ClearBoard()
         {
             if (_cells != null) {

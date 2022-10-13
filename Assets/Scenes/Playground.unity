@@ -265,8 +265,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268818199}
-  - component: {fileID: 268818200}
   - component: {fileID: 268818201}
+  - component: {fileID: 268818200}
   - component: {fileID: 268818202}
   m_Layer: 0
   m_Name: Table
@@ -823,8 +823,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646391453}
-  - component: {fileID: 1646391454}
   - component: {fileID: 1646391455}
+  - component: {fileID: 1646391454}
   - component: {fileID: 1646391456}
   m_Layer: 0
   m_Name: Hand

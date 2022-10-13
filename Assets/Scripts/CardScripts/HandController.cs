@@ -20,6 +20,7 @@ namespace Default {
 
         public void initCards(Vector2Int grid)
         {
+            _view = gameObject.GetComponent<BoardView>();
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
 
@@ -65,6 +66,7 @@ namespace Default {
         {
             if (_selectedCard != null && _selectedCard.Id == card.Id) {
                 _view.resetSelection();
+                _selectedCard = null;
             } else {
                 _selectedCard = card;
                 _view.selectCard(card);

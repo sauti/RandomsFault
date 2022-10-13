@@ -25,6 +25,8 @@ namespace Default {
         {
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
+            _view = gameObject.GetComponent<BoardView>();
+
             int maxCardsAmount = grid.x * grid.y;
             int amount = Random.Range(2, maxCardsAmount);
 
