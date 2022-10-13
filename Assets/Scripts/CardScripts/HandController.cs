@@ -62,11 +62,16 @@ namespace Default {
             return _selectedCard;
         }
 
+        public void DeselectCard()
+        {
+            _view.resetSelection();
+            _selectedCard = null;
+        }
+
         private void SelectCard(CardData card)
         {
             if (_selectedCard != null && _selectedCard.Id == card.Id) {
-                _view.resetSelection();
-                _selectedCard = null;
+                DeselectCard();
             } else {
                 _selectedCard = card;
                 _view.selectCard(card);

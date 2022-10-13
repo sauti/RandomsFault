@@ -73,6 +73,7 @@ namespace Default {
 
         private IEnumerator StartEnemyTurn() {
             state = BattleState.EnemyTurn;
+            _handCtrl.DeselectCard();
             Debug.Log("Enemy turn...");
             yield return _tableCtrl.AttackPlayerWithOpenCards();
             state = BattleState.PlayerTurn;

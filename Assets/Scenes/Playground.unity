@@ -844,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
+  MaxHealth: 5
   textObj: {fileID: 269818195}
 --- !u!4 &1523613444
 Transform:
