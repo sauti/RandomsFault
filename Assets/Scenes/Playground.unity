@@ -215,9 +215,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185806407}
-  - component: {fileID: 185806408}
-  - component: {fileID: 185806409}
   - component: {fileID: 185806406}
+  - component: {fileID: 185806410}
   m_Layer: 0
   m_Name: CardGameController
   m_TagString: Untagged
@@ -240,8 +239,9 @@ MonoBehaviour:
   _gridSize: {x: 4, y: 3}
   _handSize: {x: 4, y: 2}
   _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
-  _tableView: {fileID: 185806408}
-  _handView: {fileID: 185806409}
+  _tableGo: {fileID: 268818198}
+  _handGo: {fileID: 1646391452}
+  _cg: {fileID: 185806410}
 --- !u!4 &185806407
 Transform:
   m_ObjectHideFlags: 0
@@ -253,11 +253,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 268818199}
+  - {fileID: 1646391453}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &185806408
+--- !u!114 &185806410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,29 +268,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 185806405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8c95f4035170a4abbbe4111f09b8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7766c7135c4396e45ba31983c0d40e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 268818198}
-  cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
-  cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
-  padding: {x: 0.6, y: 0.9}
---- !u!114 &185806409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185806405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8c95f4035170a4abbbe4111f09b8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1646391452}
-  cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
-  cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
-  padding: {x: 0.6, y: 0.9}
+  _cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
 --- !u!1 &268818198
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268818199}
+  - component: {fileID: 268818200}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -312,14 +296,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268818198}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 185806407}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &268818200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268818198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c95f4035170a4abbbe4111f09b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 268818198}
+  cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
+  cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
+  padding: {x: 0.6, y: 0.9}
 --- !u!1 &857115957
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646391453}
+  - component: {fileID: 1646391454}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -521,12 +522,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646391452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 116092044}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 185806407}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646391454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646391452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c95f4035170a4abbbe4111f09b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1646391452}
+  cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
+  cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
+  padding: {x: 0.6, y: 0.9}

@@ -5,28 +5,26 @@ using UnityEngine;
 namespace Default {
     public class CardGameController : MonoBehaviour
     {
+        public Vector2Int _gridSize = new Vector2Int(4, 3);
+        public Vector2Int _handSize = new Vector2Int(4, 2);
+        public CardsConfig _cardsConfig;
+        public GameObject _tableGo;
+        public GameObject _handGo;
+        public CardGenerator _cg;
+
+        private BoardView _tableView;
+        private BoardView _handView;
+
         private List<CardData> _cards;
         private List<CardData> _hand;
         private bool[,] _tableCells;
         private bool[,] _handCells;
 
-        [SerializeField] 
-        private Vector2Int _gridSize = new Vector2Int(4, 3);
-        [SerializeField] 
-        private Vector2Int _handSize = new Vector2Int(4, 2);
-        [SerializeField]
-        private CardsConfig _cardsConfig;
-
-        [SerializeField] 
-        private BoardView _tableView;
-        [SerializeField] 
-        private BoardView _handView;
-
-        // Start is called before the first frame update
         void Start()
         {
             _hand = new List<CardData>();
-            _tableCells = new bool[_gridSize.x, _gridSize.y];
+            _tableView = _tableGo.GetComponent<BoardView>();
+            _handView = _handGo.GetComponent<BoardView>();
             _handCells = new bool[_handSize.x, _handSize.y];
             InitTableCards();
             InitHandCards();
@@ -38,45 +36,27 @@ namespace Default {
         }
 
         private void InitHandCards() {
-            Card card = _cardsConfig.GetByType(CardType.Attack) as Card;
-            CardData data = new CardData()
-            {
-                Name = "HandCard " + 0 + " " + 0,
-                Card = card,
-                Coord = new Vector2Int(0, 0),
-                IsRotated = true
-            };
-            _hand.Add(data);
+            CardData card = _cg.GenerateCardByType(CardType.Attack, new Vector2Int(0, 0), "Hand", true);
+            _hand.Add(card);
             _handCells[0, 0] = true;
-            _handView.GenerateTable(_handSize, _hand);
+            _handView.GenerateBoard(_handSize, _hand);
         }
 
         public void InitTableCards()
         {
+            _tableCells = new bool[_gridSize.x, _gridSize.y];
             _cards = new List<CardData>();
+            int maxCardsAmount = _gridSize.x * _gridSize.y;
+            int amount = Random.Range(2, maxCardsAmount);
 
-            for (var i = 0; i != _gridSize.x; i++)
-            {
-                for (var j = 0; j != _gridSize.y; j++)
-                {
-                    bool hasCard = Random.Range(0, 1f) > 0.3;
-                    if (hasCard) {
-                        CardType type = GetRandomCardType();
-                        Card card = _cardsConfig.GetByType(type) as Card;
-                        CardData data = new CardData()
-                        {
-                            Name = "Card " + i + " " + j,
-                            Card = card,
-                            Coord = new Vector2Int(i, j),
-                            IsRotated = false
-                        };
-                        _tableCells[i, j] = true;
-                        _cards.Add(data);
-                    }
-                }
+            for (var i = 0; i < amount; i++) {
+                Vector2Int coord = FindRandomEmptyCoordOnTable();
+                CardData card = _cg.GenerateRandomCard(coord, "Table");
+                _tableCells[coord.x, coord.y] = true;
+                _cards.Add(card);
             }
 
-            _tableView.GenerateTable(_gridSize, _cards);
+            _tableView.GenerateBoard(_gridSize, _cards);
         }
         
         public void OnClickListener() {
@@ -118,11 +98,6 @@ namespace Default {
             } 
         }
 
-        private CardType GetRandomCardType()
-        {
-            return (CardType)Random.Range(0, System.Enum.GetValues(typeof(CardType)).Length);
-        }
-
         private void RotateCard(CardData card, int i) {
             Debug.Log("Rotate " + _cards[i].Card.Type + "  index: " + i);
             _cards[i].IsRotated = true;
@@ -161,6 +136,18 @@ namespace Default {
                 }
             }
             return new Vector2Int(-1, -1);
+        }
+
+        private Vector2Int FindRandomEmptyCoordOnTable()
+        {
+            while (true)
+            {
+                var coord = new Vector2Int(
+                    Random.Range(0, _gridSize.x),
+                    Random.Range(0, _gridSize.y));
+                if (_tableCells[coord.x, coord.y] == false)
+                    return coord;
+            }
         }
     }
 }

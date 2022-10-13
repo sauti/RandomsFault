@@ -18,7 +18,7 @@ namespace Default {
         {
         }
 
-        private void ClearTable()
+        private void ClearBoard()
         {
             if (_cells != null) {
                 for (var i = 0; i != _cells.GetLength(0); i++)
@@ -36,8 +36,8 @@ namespace Default {
             }
         }
 
-        public void GenerateTable(Vector2Int gridSize, List<CardData> cards) {
-            ClearTable();
+        public void GenerateBoard(Vector2Int gridSize, List<CardData> cards) {
+            ClearBoard();
             GenerateCells(gridSize);
             GenerateCards(cards);
         }
