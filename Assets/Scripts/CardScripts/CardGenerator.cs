@@ -18,18 +18,25 @@ namespace Default {
         public List<CardData> GenerateCardsForLevel() {
             int amount = _levelConfig.GetCardsAmount();
             var cards = new List<CardData>();
+            Vector2Int coord = new Vector2Int(0, 0);
 
-            for (var i = 0; i < amount; i++) {
-                CardData card = GenerateRandomCard(new Vector2Int(0, 0));
+            for (var i = 0; i < amount - 1; i++) {
+                CardData card = GenerateRandomCard(coord);
                 cards.Add(card);
             }
+            cards.Add(GenerateCardByType(CardType.Exit, coord));
 
             return cards;
         }
 
         public CardData GenerateRandomCard(Vector2Int coord) {
-            CardType type = GetRandomCardType();
-            return GenerateCardByType(type, coord);
+            // todo
+            while (true) {
+                CardType type = GetRandomCardType();
+                if (type != CardType.Exit) {
+                    return GenerateCardByType(type, coord);
+                }
+            }
         }
 
         public CardData GenerateCardByType(CardType type, Vector2Int coord, bool IsRotated = false) {
