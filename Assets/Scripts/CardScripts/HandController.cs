@@ -69,6 +69,17 @@ namespace Default {
             _selectedCard = null;
         }
 
+        public void RemoveCard() {
+            if (_selectedCard == null) {
+                return;
+            }
+
+            _cards.Remove(_selectedCard);
+            _cells[_selectedCard.Coord.x, _selectedCard.Coord.y] = false;
+            _view.removeCard(_selectedCard);
+            _selectedCard = null;
+        }
+
         private void SelectCard(CardData card)
         {
             if (_selectedCard != null && _selectedCard.Id == card.Id) {
