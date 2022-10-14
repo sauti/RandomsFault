@@ -1235,7 +1235,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1646391455}
         m_TargetAssemblyTypeName: Default.HandController, Assembly-CSharp
-        m_MethodName: RemoveCard
+        m_MethodName: RemoveSelectedCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a331e66511ea7344bf7f2fa71235b99, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  minCards: 3
+  minCards: 4
   maxCards: 5
   _cards:
   - _type: 0
