@@ -75,7 +75,7 @@ namespace Default {
         }
 
         // player attacks a card
-        public void AttackCard(CardData card) {
+        public void DealDamageToCard(CardData card) {
             GameObject c = _findCard(card);
             c.GetComponent<CardView>().SetHealth(card.Card.Health);
         }

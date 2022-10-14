@@ -60,6 +60,7 @@ namespace Default {
                 return;
             }
             _tableCtrl.Attack(card, selectedCard.Card.Damage);
+            _handCtrl.RemoveSelectedCard();
             TriggerEnemyTurn();
         }
 

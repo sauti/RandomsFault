@@ -71,7 +71,7 @@ namespace Default {
             _selectedCard = null;
         }
 
-        public void RemoveCard() {
+        public void RemoveSelectedCard() {
             if (_selectedCard == null) {
                 return;
             }
@@ -96,7 +96,7 @@ namespace Default {
         private void UseHealCard() {
             Debug.Log("Heal: " + _selectedCard.Card.Health);
             _playerStats.Heal(_selectedCard.Card.Health);
-            RemoveCard();
+            RemoveSelectedCard();
         }
 
         private void SelectCard(CardData card)

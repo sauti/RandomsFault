@@ -89,7 +89,7 @@ namespace Default {
             if (card.Card.Health <= 0) {
                 RemoveCard(card);
             } else {
-                _view.AttackCard(card);
+                _view.DealDamageToCard(card);
             }
         }
 
