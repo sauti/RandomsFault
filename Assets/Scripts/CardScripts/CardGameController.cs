@@ -76,7 +76,7 @@ namespace Default {
             state = BattleState.EnemyTurn;
             _handCtrl.DeselectCard();
             Debug.Log("Enemy turn...");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             yield return _tableCtrl.AttackPlayerWithOpenCards();
             state = BattleState.PlayerTurn;
             Debug.Log("Your turn...");

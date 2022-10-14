@@ -60,7 +60,6 @@ namespace Default {
 
         public void selectCard(CardData card) {
             foreach (var go in _cards) {
-                Debug.Log("Select: " + go.name);
                 if (go.name == card.Id) {
                     go.GetComponent<CardView>().SelectCard();
                 } else {
@@ -81,7 +80,7 @@ namespace Default {
             c.GetComponent<CardView>().SetHealth(card.Card.Health);
         }
 
-        // cards attacks a player
+        // card attacks a player
         public IEnumerator DealDamageWithCard(CardData card) {
             GameObject c = _findCard(card);
             yield return c.GetComponent<CardView>().DealDamageToPlayer();

@@ -14,32 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cards:
   - _type: 3
-    _health: 2
-    _damage: 1
     _canPickUp: 0
     _canKill: 1
+    _canHeal: 0
     _prefab: {fileID: 8234385486033655754, guid: 62c5b22094f7cbb4d8e40c0e2e404d7c, type: 3}
   - _type: 2
-    _health: 1
-    _damage: 1
     _canPickUp: 0
     _canKill: 0
+    _canHeal: 0
     _prefab: {fileID: 8234385486033655754, guid: 8a1419167fa1c264985827024ed0a5be, type: 3}
   - _type: 1
-    _health: 0
-    _damage: 1
     _canPickUp: 1
     _canKill: 0
+    _canHeal: 0
     _prefab: {fileID: 8234385486033655754, guid: cf56f56c1732df941a825afbb6fd5632, type: 3}
   - _type: 0
-    _health: 2
-    _damage: 0
     _canPickUp: 1
     _canKill: 0
+    _canHeal: 1
     _prefab: {fileID: 8234385486033655754, guid: 630f5718ac95582409d4faf8b96fddc9, type: 3}
   - _type: 4
-    _health: 1
-    _damage: 0
     _canPickUp: 0
     _canKill: 0
+    _canHeal: 0
     _prefab: {fileID: 8234385486033655754, guid: a5ea47aa8e18b574082ac1e06681248e, type: 3}

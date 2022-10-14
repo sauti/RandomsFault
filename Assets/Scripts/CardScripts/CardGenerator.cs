@@ -44,6 +44,7 @@ namespace Default {
                 Damage = cardLevelData != null ? cardLevelData.Damage : 1,
                 CanPickUp = template.CanPickUp,
                 CanKill = template.CanKill,
+                CanHeal = template.CanHeal,
             };
 
             CardData data = new CardData()

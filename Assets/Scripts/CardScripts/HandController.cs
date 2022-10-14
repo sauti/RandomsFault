@@ -8,6 +8,7 @@ namespace Default {
         public CardGenerator _cg;
 
         private BoardView _view;
+        private PlayerStats _playerStats;
 
         private List<CardData> _cards;
         private bool[,] _cells;
@@ -16,6 +17,18 @@ namespace Default {
         void Start()
         {
             _view = gameObject.GetComponent<BoardView>();
+            _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        }
+
+        public void OnClickListener(RaycastHit hit)
+        {
+            for (var i = 0; i < _cards.Count; i++) {
+                if (_cards[i].Id != hit.transform.name)
+                continue;
+
+                SelectCard(_cards[i]);
+                break;
+            }
         }
 
         public void initCards(Vector2Int grid)
@@ -41,21 +54,10 @@ namespace Default {
         {
             Vector2Int coord = FindEmptyCoordInHand();
             card.Coord = coord;
-            Debug.Log("Pick up: " + card.Coord.x + " " + card.Coord.y);
+            Debug.Log("Pick up: " + card.Card.Type);
             _cards.Add(card);
             _cells[coord.x, coord.y] = true;
             _view.addCard(card);
-        }
-
-        public void OnClickListener(RaycastHit hit)
-        {
-            for (var i = 0; i < _cards.Count; i++) {
-                if (_cards[i].Id != hit.transform.name)
-                continue;
-
-                SelectCard(_cards[i]);
-                break;
-            }
         }
 
         public CardData GetSelectedCard()
@@ -78,6 +80,23 @@ namespace Default {
             _cells[_selectedCard.Coord.x, _selectedCard.Coord.y] = false;
             _view.removeCard(_selectedCard);
             _selectedCard = null;
+        }
+
+        public void UseCard() {
+            if (_selectedCard == null) {
+                return;
+            }
+            
+            Debug.Log(_selectedCard.Card.CanHeal);
+            if (_selectedCard.Card.CanHeal) {
+                UseHealCard();
+            }
+        }
+
+        private void UseHealCard() {
+            Debug.Log("Heal: " + _selectedCard.Card.Health);
+            _playerStats.Heal(_selectedCard.Card.Health);
+            RemoveCard();
         }
 
         private void SelectCard(CardData card)

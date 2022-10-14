@@ -22,6 +22,9 @@ namespace Default
         private bool _canKill;
 
         [SerializeField] 
+        private bool _canHeal;
+
+        [SerializeField] 
         private GameObject _prefab;
 
         public CardType Type => _type;
@@ -30,6 +33,7 @@ namespace Default
         // public int Damage => _damage;
         public bool CanPickUp => _canPickUp;
         public bool CanKill => _canKill;
+        public bool CanHeal => _canHeal;
     }
 
     public class Card
@@ -40,6 +44,7 @@ namespace Default
         public int Damage;
         public bool CanPickUp;
         public bool CanKill;
+        public bool CanHeal;
 
         public void SetHealth(int val)
         {
