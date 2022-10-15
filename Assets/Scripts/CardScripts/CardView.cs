@@ -46,11 +46,11 @@ namespace Default {
         }
 
         public void SelectCard() {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0.2f, gameObject.transform.position.z);
+            gameObject.transform.localPosition += new Vector3(0, 0.2f, 0);
         }
 
         public void DeselectCard() {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
+            gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
 
         public void SetHealth(int health) {
