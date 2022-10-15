@@ -56,7 +56,7 @@ namespace Default {
 
         public void TryAttack(CardData card) {
             CardData selectedCard = _handCtrl.GetSelectedCard();
-            if (selectedCard == null) {
+            if (selectedCard == null || !selectedCard.Card.IsWeapon) {
                 return;
             }
             _tableCtrl.Attack(card, selectedCard.Card.Damage);

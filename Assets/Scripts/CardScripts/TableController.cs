@@ -55,7 +55,7 @@ namespace Default {
                     break;
                 }
 
-                if (_cards[i].Card.CanKill) {
+                if (_cards[i].Card.CanBeKilled) {
                     transform.parent.GetComponent<CardGameController>().TryAttack(_cards[i]);
                     break;
                 }
@@ -70,7 +70,7 @@ namespace Default {
 
         public void RotateCard(CardData card) {
             Debug.Log("Rotate " + card.Card.Type);
-            if (card.Card.Type == CardType.Trap) {
+            if (card.Card.IsTrap) {
                 _playerStats.GetDamage(card.Card.Damage);
             }
             card.IsRotated = true;
@@ -96,7 +96,7 @@ namespace Default {
         // cards attack a player
         public IEnumerator AttackPlayerWithOpenCards() {
             foreach (CardData card in _cards) {
-                if (!card.IsRotated || !card.Card.CanKill) continue;
+                if (!card.IsRotated || !card.Card.CanBeKilled) continue;
                 _playerStats.GetDamage(card.Card.Damage);
                 yield return _view.DealDamageWithCard(card);
             }
