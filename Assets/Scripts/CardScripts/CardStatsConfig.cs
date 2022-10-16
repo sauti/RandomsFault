@@ -7,9 +7,13 @@ namespace Default
     public class CardStatsConfig : ScriptableObject, ISerializationCallbackReceiver
     {
         [SerializeField] 
-        private List<Texture2D> _textures;
+        private List<Texture2D> _dmgTextures;
 
-        private Dictionary<int, Texture2D> _lib;
+        [SerializeField] 
+        private List<Texture2D> _healthTextures;
+
+        private Dictionary<int, Texture2D> _dmgLib;
+        private Dictionary<int, Texture2D> _healthLib;
 
         public void OnBeforeSerialize()
         {
@@ -17,16 +21,26 @@ namespace Default
 
         public void OnAfterDeserialize()
         {
-            _lib = new Dictionary<int, Texture2D>();
-            for (int i = 0; i < _textures.Count; i++)
+            _dmgLib = new Dictionary<int, Texture2D>();
+            for (int i = 0; i < _dmgTextures.Count; i++)
             {
-                _lib.Add(i, _textures[i]);
+                _dmgLib.Add(i, _dmgTextures[i]);
+            }
+
+            _healthLib = new Dictionary<int, Texture2D>();
+            for (int i = 0; i < _healthTextures.Count; i++)
+            {
+                _healthLib.Add(i, _healthTextures[i]);
             }
         }
 
-        public bool TryGet(int i, out Texture2D texture)
+        public bool TryGet(int i, string name, out Texture2D texture)
         {
-            return _lib.TryGetValue(i, out texture);
+            if (name == "Health") {
+                return _healthLib.TryGetValue(i, out texture);
+            }
+
+            return _dmgLib.TryGetValue(i, out texture);
         }
     }
 }

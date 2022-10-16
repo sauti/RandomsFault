@@ -6,25 +6,10 @@ using System.Text.RegularExpressions;
 namespace Default {
     public class CardView : MonoBehaviour
     {
-        // public int health;
-        // public int damage;
-        // public GameObject Item;
-
         [SerializeField] 
         private CardStatsConfig _statsTexturesConfig;
 
         private Renderer _renderer;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-            // SetStats();
-        }
 
         public void TurnAround() {
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -69,7 +54,7 @@ namespace Default {
                 if (Regex.Match(matName, name).Success)
                 {
                     {
-                        if (!_statsTexturesConfig.TryGet(value, out var texture))
+                        if (!_statsTexturesConfig.TryGet(value, name, out var texture))
                         continue;
                         materials[i].SetTexture("_MainTex", texture);
                     }
