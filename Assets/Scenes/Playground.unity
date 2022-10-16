@@ -344,7 +344,7 @@ MonoBehaviour:
   handSize: {x: 4, y: 2}
   tableGo: {fileID: 268818198}
   handGo: {fileID: 1646391452}
-  level: 1
+  level: 0
 --- !u!4 &185806407
 Transform:
   m_ObjectHideFlags: 0
