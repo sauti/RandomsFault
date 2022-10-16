@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,26 +18,24 @@ namespace Default {
 
         public List<CardData> GenerateCardsForLevel() {
             int amount = _levelConfig.GetCardsAmount();
-            var cards = new List<CardData>();
+            List<CardPerLevelData> conf = _levelConfig.GetCardsConfig();
+            List<CardData> cards = new List<CardData>();
             Vector2Int coord = new Vector2Int(0, 0);
+            
+            List<CardType> types = GenerateRequiredCardTypes(conf, amount);
+            if (types.Count < amount) {
+                types.AddRange(GetRandomTypesByChance(conf, amount - types.Count));
+            }
 
-            for (var i = 0; i < amount - 1; i++) {
-                CardData card = GenerateRandomCard(coord);
+            string debugStr = ""; 
+            for (var i = 0; i < types.Count; i++) {
+                debugStr += (types[i] + ", ");
+                CardData card = GenerateCardByType(types[i], coord);
                 cards.Add(card);
             }
-            cards.Add(GenerateCardByType(CardType.Exit, coord));
+            Debug.Log(debugStr);
 
             return cards;
-        }
-
-        public CardData GenerateRandomCard(Vector2Int coord) {
-            // todo
-            while (true) {
-                CardType type = GetRandomCardType();
-                if (type != CardType.Exit) {
-                    return GenerateCardByType(type, coord);
-                }
-            }
         }
 
         public CardData GenerateCardByType(CardType type, Vector2Int coord, bool IsRotated = false) {
@@ -65,14 +64,69 @@ namespace Default {
             return data;
         }
 
-        private CardType GetRandomCardType()
-        {
-            return (CardType)Random.Range(0, System.Enum.GetValues(typeof(CardType)).Length);
-        }
-
         private string GetUuid()
         {
             return System.Guid.NewGuid().ToString("N");
+        }
+
+        private List<CardType> GenerateRequiredCardTypes(List<CardPerLevelData> list, int amount) {
+            List<CardType> types = new List<CardType>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                CardPerLevelData current = list[i];
+                if (current.MinAmount > 0) {
+                    for (int j = 0; j < current.MinAmount; j++) {
+                        types.Add(current.Type);
+                    }
+                }
+            }
+
+            if (types.Count > amount) {
+                throw new ArgumentOutOfRangeException("Can't generate more cards with minAmount than total cards for this level.");
+            }
+
+            return types;
+        }
+
+        private List<CardType> GetRandomTypesByChance(List<CardPerLevelData> list, int amount) {
+            int chanceSum = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                CardPerLevelData current = list[i];
+                chanceSum += current.Chance;
+                if (i == 0) {
+                    current.minChance = 0;
+                    current.maxChance = current.Chance;
+                } else {
+                    current.minChance = list[i - 1].maxChance;
+                    current.maxChance = current.minChance + current.Chance;
+                }
+            }
+
+            List<CardType> types = new List<CardType>();
+            for (var i = 0; i < amount; i++) {
+                CardType? type = GetRandomTypeByChance(list, chanceSum);
+                if (type is CardType) {
+                    types.Add((CardType)type);
+                }
+            }
+
+            return types;
+        }
+
+        private CardType? GetRandomTypeByChance(List<CardPerLevelData> list, int chanceSum)
+        {
+            int rand = UnityEngine.Random.Range(0, chanceSum);
+            for (int i = 0; i < list.Count; i++)
+            {
+                CardPerLevelData current = list[i];
+                if (rand >= current.minChance && rand < current.maxChance)
+                {
+                    return current.Type;
+                }
+            }
+
+            return null;
         }
     }
 }
