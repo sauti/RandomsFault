@@ -14,7 +14,6 @@ namespace Default {
 
         public void Flip() {
             StartCoroutine(PlayAnimationAndWait("card_flip"));
-            // _animator.Play("card_flip");
         }
 
         public void SetInitialData(CardData card) {

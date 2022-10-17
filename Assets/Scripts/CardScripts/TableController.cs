@@ -95,12 +95,16 @@ namespace Default {
 
         // cards attack a player
         public IEnumerator AttackPlayerWithOpenCards() {
-            foreach (CardData card in _cards) {
-                if (!card.IsRotated || !card.Card.CanBeKilled) continue;
-                _playerStats.GetDamage(card.Card.Damage);
-                yield return _view.DealDamageWithCard(card);
+            List<CardData> enemyCards = _cards.FindAll(card => card.IsRotated && card.Card.CanBeKilled);
+            if (enemyCards.Count > 0) {
+                yield return new WaitForSeconds(0.5f);
+                foreach (CardData card in _cards) {
+                    if (!card.IsRotated || !card.Card.CanBeKilled) continue;
+                    _playerStats.GetDamage(card.Card.Damage);
+                    yield return _view.DealDamageWithCard(card);
+                }
+                Debug.Log("Done all damage");
             }
-            Debug.Log("Done all damage");
         }
 
         private Vector2Int FindRandomEmptyCoordOnTable()
