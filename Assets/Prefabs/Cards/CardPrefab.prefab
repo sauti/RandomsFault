@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6524031250164369520}
   - component: {fileID: 9038430413764738234}
   - component: {fileID: -9169185389782566064}
-  - component: {fileID: -1998726645262992410}
+  - component: {fileID: 6098850477432645386}
+  - component: {fileID: -1305508355392833707}
   m_Layer: 0
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -100,7 +101,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statsTexturesConfig: {fileID: 11400000, guid: 09e9a7e8961bc0e4dbac35b27e8e04cc, type: 2}
---- !u!65 &-1998726645262992410
+--- !u!95 &6098850477432645386
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380846610041216367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b88ec224bd69fa1449587ac678c71b38, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &-1305508355392833707
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,5 +132,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.50000024, y: 0.050000004, z: 0.8000002}
-  m_Center: {x: 0.000000014901161, y: 0.024999905, z: -0.052769586}
+  m_Size: {x: 0.58396435, y: 0.16039632, z: 0.81522846}
+  m_Center: {x: -0.0028767735, y: 0.018601157, z: -0.009204373}

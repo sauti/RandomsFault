@@ -40,7 +40,7 @@ namespace Default {
 
         public void rotateCard(CardData card) {
             GameObject c = _findCard(card);
-            c.GetComponent<CardView>().TurnAround();
+            c.GetComponent<CardView>().Flip();
         }
 
         public void removeCard(CardData card) {
@@ -52,9 +52,7 @@ namespace Default {
         public void addCard(CardData card) {
             Vector2Int coord = card.Coord;
             GameObject go = Instantiate(cardPrefab, _cells[coord.x, coord.y].transform);
-            go.transform.rotation = Quaternion.Euler(0, 0, card.IsRotated ? 0 : 180);
-            go.name = card.Id;
-            go.GetComponent<CardView>().SetInitialData(card.Card);
+            go.GetComponent<CardView>().SetInitialData(card);
             _cards.Add(go);
         }
 

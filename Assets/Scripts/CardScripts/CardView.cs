@@ -10,32 +10,41 @@ namespace Default {
         private CardStatsConfig _statsTexturesConfig;
 
         private Renderer _renderer;
+        private Animator _animator;
 
-        public void TurnAround() {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        public void Flip() {
+            StartCoroutine(PlayAnimationAndWait("card_flip"));
+            // _animator.Play("card_flip");
         }
 
-        public void SetInitialData(Card card) {
-            var item = Instantiate(card.Prefab, gameObject.transform, false);
+        public void SetInitialData(CardData card) {
+            gameObject.name = card.Id;
+
+            GameObject item = Instantiate(card.Card.Prefab, gameObject.transform, false);
             item.transform.position = gameObject.transform.position;
        
             _renderer = GetComponent<Renderer>();
-            SetHealth(card.Health);
-            SetDamage(card.Damage);
+            _animator = GetComponent<Animator>();
+
+            if (card.IsRotated) {
+                _animator.Play("card_state_default");
+            }
+
+            SetHealth(card.Card.Health);
+            SetDamage(card.Card.Damage);
         }
 
         public IEnumerator DealDamageToPlayer() {
-            gameObject.transform.position += new Vector3(0, 0.1f, 0.2f);
-            yield return new WaitForSeconds(1.5f);
-            gameObject.transform.position += new Vector3(0, -0.1f, -0.2f);
+            yield return new WaitForSeconds(0.5f);
+            yield return PlayAnimationAndWait("card_attack_player");
         }
 
         public void SelectCard() {
-            gameObject.transform.localPosition += new Vector3(0, 0.2f, 0);
+            _animator.SetBool("isSelected", true);
         }
 
         public void DeselectCard() {
-            gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            _animator.SetBool("isSelected", false);
         }
 
         public void SetHealth(int health) {
@@ -60,6 +69,12 @@ namespace Default {
                     }
                 }
             }
+        }
+
+        private IEnumerator PlayAnimationAndWait(string anim) {
+            _animator.Play(anim);
+            float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSecondsRealtime(animationLength);
         }
     }
 }
