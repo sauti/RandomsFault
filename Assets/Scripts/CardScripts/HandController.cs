@@ -31,6 +31,16 @@ namespace Default {
             }
         }
 
+        public void OnLongClick(RaycastHit hit)
+        {
+            for (var i = 0; i < _cards.Count; i++) {
+                if (_cards[i].Id != hit.transform.name)
+                continue;
+
+                _view.LongClickCard(_cards[i]);
+            }
+        }
+
         public void initCards(Vector2Int grid)
         {
             _view = gameObject.GetComponent<BoardView>();

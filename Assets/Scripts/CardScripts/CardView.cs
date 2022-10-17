@@ -18,11 +18,12 @@ namespace Default {
 
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
+            GameObject cardGo = gameObject.transform.Find("Card").gameObject;
 
-            GameObject item = Instantiate(card.Card.Prefab, gameObject.transform, false);
+            GameObject item = Instantiate(card.Card.Prefab, cardGo.transform, false);
             item.transform.position = gameObject.transform.position;
-       
-            _renderer = GetComponent<Renderer>();
+
+            _renderer = cardGo.GetComponent<Renderer>();
             _animator = GetComponent<Animator>();
 
             if (card.IsRotated) {

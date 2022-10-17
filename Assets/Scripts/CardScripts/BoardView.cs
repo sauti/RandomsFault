@@ -84,6 +84,12 @@ namespace Default {
             yield return c.GetComponent<CardView>().DealDamageToPlayer();
         }
 
+        public void LongClickCard(CardData card) {
+            GameObject c = _findCard(card);
+            Debug.Log("move card " + card.Card.Type);
+            c.transform.position = new Vector3(15, 3, -1);
+        }
+
         private void GenerateCells(Vector2Int gridSize)
         {
             _cells = new GameObject[gridSize.x, gridSize.y];
