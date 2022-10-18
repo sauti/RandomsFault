@@ -30,7 +30,7 @@ MonoBehaviour:
     _isWeapon: 1
     _canHeal: 0
     _isTrap: 0
-    _prefab: {fileID: 8234385486033655754, guid: cf56f56c1732df941a825afbb6fd5632, type: 3}
+    _prefab: {fileID: 3776292417895247429, guid: 4ec891e38060a8746997e3bfbd5c72d7, type: 3}
   - _type: 0
     _canBeKilled: 0
     _isWeapon: 0
