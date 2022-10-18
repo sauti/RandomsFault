@@ -13,31 +13,41 @@ MonoBehaviour:
   m_Name: CardsConfig
   m_EditorClassIdentifier: 
   _cards:
-  - _type: 3
+  - _cardId: 3
+    _name: 
+    _description: 
     _canBeKilled: 1
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
     _prefab: {fileID: 8234385486033655754, guid: 62c5b22094f7cbb4d8e40c0e2e404d7c, type: 3}
-  - _type: 2
+  - _cardId: 2
+    _name: 
+    _description: 
     _canBeKilled: 0
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 1
     _prefab: {fileID: 8234385486033655754, guid: 8a1419167fa1c264985827024ed0a5be, type: 3}
-  - _type: 1
+  - _cardId: 1
+    _name: 
+    _description: 
     _canBeKilled: 0
     _isWeapon: 1
     _canHeal: 0
     _isTrap: 0
     _prefab: {fileID: 3776292417895247429, guid: 4ec891e38060a8746997e3bfbd5c72d7, type: 3}
-  - _type: 0
+  - _cardId: 0
+    _name: 
+    _description: 
     _canBeKilled: 0
     _isWeapon: 0
     _canHeal: 1
     _isTrap: 0
     _prefab: {fileID: 8234385486033655754, guid: 630f5718ac95582409d4faf8b96fddc9, type: 3}
-  - _type: 4
+  - _cardId: 4
+    _name: 
+    _description: 
     _canBeKilled: 0
     _isWeapon: 0
     _canHeal: 0
