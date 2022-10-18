@@ -22,7 +22,7 @@ namespace Default {
             List<CardData> cards = new List<CardData>();
             Vector2Int coord = new Vector2Int(0, 0);
             
-            List<CardType> types = GenerateRequiredCardTypes(conf, amount);
+            List<CardId> types = GenerateRequiredCardTypes(conf, amount);
             if (types.Count < amount) {
                 types.AddRange(GetRandomTypesByChance(conf, amount - types.Count));
             }
@@ -38,13 +38,13 @@ namespace Default {
             return cards;
         }
 
-        public CardData GenerateCardByType(CardType type, Vector2Int coord, bool IsRotated = false) {
-            CardTemplate template = cardsConfig.GetByType(type);
-            CardPerLevelData cardLevelData = _levelConfig.GetCardConfig(type);
+        public CardData GenerateCardByType(CardId cardId, Vector2Int coord, bool IsRotated = false) {
+            CardTemplate template = cardsConfig.GetByType(cardId);
+            CardPerLevelData cardLevelData = _levelConfig.GetCardConfig(cardId);
 
             var card = new Card()
             {
-                Type = template.Type,
+                CardId = template.CardId,
                 Prefab = template.Prefab,
                 Health = cardLevelData != null ? cardLevelData.Health : 0,
                 Damage = cardLevelData != null ? cardLevelData.Damage : 0,
@@ -69,14 +69,14 @@ namespace Default {
             return System.Guid.NewGuid().ToString("N");
         }
 
-        private List<CardType> GenerateRequiredCardTypes(List<CardPerLevelData> list, int amount) {
-            List<CardType> types = new List<CardType>();
+        private List<CardId> GenerateRequiredCardTypes(List<CardPerLevelData> list, int amount) {
+            List<CardId> types = new List<CardId>();
             for (int i = 0; i < list.Count; i++)
             {
                 CardPerLevelData current = list[i];
                 if (current.MinAmount > 0) {
                     for (int j = 0; j < current.MinAmount; j++) {
-                        types.Add(current.Type);
+                        types.Add(current.CardId);
                     }
                 }
             }
@@ -88,7 +88,7 @@ namespace Default {
             return types;
         }
 
-        private List<CardType> GetRandomTypesByChance(List<CardPerLevelData> list, int amount) {
+        private List<CardId> GetRandomTypesByChance(List<CardPerLevelData> list, int amount) {
             int chanceSum = 0;
             for (int i = 0; i < list.Count; i++)
             {
@@ -103,18 +103,18 @@ namespace Default {
                 }
             }
 
-            List<CardType> types = new List<CardType>();
+            List<CardId> cardIds = new List<CardId>();
             for (var i = 0; i < amount; i++) {
-                CardType? type = GetRandomTypeByChance(list, chanceSum);
-                if (type is CardType) {
-                    types.Add((CardType)type);
+                CardId? cardId = GetRandomTypeByChance(list, chanceSum);
+                if (cardId is CardId) {
+                    cardIds.Add((CardId)cardId);
                 }
             }
 
-            return types;
+            return cardIds;
         }
 
-        private CardType? GetRandomTypeByChance(List<CardPerLevelData> list, int chanceSum)
+        private CardId? GetRandomTypeByChance(List<CardPerLevelData> list, int chanceSum)
         {
             int rand = UnityEngine.Random.Range(0, chanceSum);
             for (int i = 0; i < list.Count; i++)
@@ -122,7 +122,7 @@ namespace Default {
                 CardPerLevelData current = list[i];
                 if (rand >= current.minChance && rand < current.maxChance)
                 {
-                    return current.Type;
+                    return current.CardId;
                 }
             }
 

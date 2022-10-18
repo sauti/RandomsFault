@@ -48,7 +48,7 @@ namespace Default {
             _cards = new List<CardData>();
 
             _cg.Init(0);
-            CardData card = _cg.GenerateCardByType(CardType.Attack, new Vector2Int(0, 0), true);
+            CardData card = _cg.GenerateCardByType(CardId.Attack, new Vector2Int(0, 0), true);
             _cards.Add(card);
             _cells[0, 0] = true;
             _view.GenerateBoard(grid, _cards);
@@ -64,7 +64,7 @@ namespace Default {
         {
             Vector2Int coord = FindEmptyCoordInHand();
             card.Coord = coord;
-            Debug.Log("Pick up: " + card.Card.Type);
+            Debug.Log("Pick up: " + card.Card.CardId);
             _cards.Add(card);
             _cells[coord.x, coord.y] = true;
             _view.addCard(card);

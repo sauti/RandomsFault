@@ -9,7 +9,7 @@ namespace Default
         [SerializeField] 
         private List<CardTemplate> _cards;
 
-        private Dictionary<CardType, CardTemplate> _lib;
+        private Dictionary<CardId, CardTemplate> _lib;
 
         public void OnBeforeSerialize()
         {
@@ -17,21 +17,21 @@ namespace Default
 
         public void OnAfterDeserialize()
         {
-            _lib = new Dictionary<CardType, CardTemplate>();
+            _lib = new Dictionary<CardId, CardTemplate>();
             foreach (var card in _cards)
             {
-                _lib.Add(card.Type, card);
+                _lib.Add(card.CardId, card);
             }
         }
 
-        public bool TryGet(CardType type, out CardTemplate card)
+        public bool TryGet(CardId cardId, out CardTemplate card)
         {
-            return _lib.TryGetValue(type, out card);
+            return _lib.TryGetValue(cardId, out card);
         }
 
-        public CardTemplate GetByType(CardType type)
+        public CardTemplate GetByType(CardId cardId)
         {
-            return _lib[type];
+            return _lib[cardId];
         }
     }
 }

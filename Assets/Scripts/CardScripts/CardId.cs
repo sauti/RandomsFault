@@ -1,6 +1,6 @@
 namespace Default
 {
-    public enum CardType
+    public enum CardId
     {
         Protein,
         Attack,

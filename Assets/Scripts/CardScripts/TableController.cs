@@ -60,7 +60,7 @@ namespace Default {
                     break;
                 }
             
-                if (_cards[i].Card.Type == CardType.Exit) {
+                if (_cards[i].Card.CardId == CardId.Exit) {
                     Debug.Log("Click Exit");
                     initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), _level);
                     break;
@@ -69,7 +69,7 @@ namespace Default {
         }
 
         public void RotateCard(CardData card) {
-            Debug.Log("Rotate " + card.Card.Type);
+            Debug.Log("Rotate " + card.Card.CardId);
             if (card.Card.IsTrap) {
                 _playerStats.GetDamage(card.Card.Damage);
             }

@@ -86,7 +86,7 @@ namespace Default {
 
         public void LongClickCard(CardData card) {
             GameObject c = _findCard(card);
-            Debug.Log("move card " + card.Card.Type);
+            Debug.Log("move card " + card.Card.CardId);
             c.transform.position = new Vector3(15, 3, -1);
         }
 

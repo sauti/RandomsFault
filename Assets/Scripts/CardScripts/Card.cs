@@ -7,7 +7,13 @@ namespace Default
     public class CardTemplate
     {
         [SerializeField] 
-        private CardType _type;
+        private CardId _cardId;
+        
+        [SerializeField] 
+        private string _name;
+
+        [SerializeField] 
+        private string _description;
 
         [SerializeField] 
         private bool _canBeKilled;
@@ -24,8 +30,10 @@ namespace Default
         [SerializeField] 
         private GameObject _prefab;
 
-        public CardType Type => _type;
+        public CardId CardId => _cardId;
         public GameObject Prefab => _prefab;
+        public string Name => _name;
+        public string Description => _description;
         public bool CanBeKilled => _canBeKilled;
         public bool CanHeal => _canHeal;
         public bool IsWeapon => _isWeapon;
@@ -34,7 +42,7 @@ namespace Default
 
     public class Card
     {
-        public CardType Type;
+        public CardId CardId;
         public GameObject Prefab;
         public int Health;
         public int Damage;
