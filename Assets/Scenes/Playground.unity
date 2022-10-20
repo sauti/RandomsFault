@@ -345,6 +345,7 @@ MonoBehaviour:
   tableGo: {fileID: 268818198}
   handGo: {fileID: 1646391452}
   level: 0
+  ClickDuration: 1
 --- !u!4 &185806407
 Transform:
   m_ObjectHideFlags: 0

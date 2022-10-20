@@ -10,9 +10,9 @@ namespace Default {
         public GameObject tableGo;
         public GameObject handGo;
         public int level = 1;
-        // bool clicking = false;
-        // float totalDownTime = 0;
-        // public float ClickDuration = 1;
+        bool clicking = false;
+        float totalDownTime = 0;
+        public float ClickDuration = 1;
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
@@ -37,59 +37,47 @@ namespace Default {
         }
         
         public void OnClickListener() {
-            // Detect the first click
-            // if (Input.GetMouseButtonDown(0))
-            // {
-            //     totalDownTime = 0;
-            //     clicking = true;
-            // }
+            if (Input.GetMouseButtonDown(0))
+            {
+                totalDownTime = 0;
+                clicking = true;
+            }
 
-            // if (clicking && Input.GetMouseButton(0))
-            // {
-            //     totalDownTime += Time.deltaTime;
-            //     if (totalDownTime >= ClickDuration)
-            //     {
-            //         Debug.Log("Long click");
-            //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-            //         RaycastHit hit;  
-            //         if (!Physics.Raycast(ray, out hit)) {
-            //             return;
-            //         }  
+            if (clicking && Input.GetMouseButton(0))
+            {
+                totalDownTime += Time.deltaTime;
+                if (totalDownTime >= ClickDuration)
+                {
+                    Debug.Log("Long click");
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
+                    RaycastHit hit;  
+                    if (!Physics.Raycast(ray, out hit)) {
+                        return;
+                    }  
 
-            //         _handCtrl.OnLongClick(hit);
-            //         // _tableCtrl.OnLongClick(hit);
+                    _handCtrl.OnLongClick(hit);
+                    _tableCtrl.OnLongClick(hit);
 
-            //         clicking = false;
-            //     }
-            // }
+                    clicking = false;
+                }
+            }
 
-            // if (clicking && Input.GetMouseButtonUp(0))
-            // {
-            //     if (totalDownTime < ClickDuration)
-            //     {
-            //         Debug.Log("Short click");
-            //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-            //         RaycastHit hit;  
-            //         if (!Physics.Raycast(ray, out hit)) {
-            //             return;
-            //         }  
+            if (clicking && Input.GetMouseButtonUp(0))
+            {
+                if (totalDownTime < ClickDuration)
+                {
+                    Debug.Log("Short click");
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
+                    RaycastHit hit;  
+                    if (!Physics.Raycast(ray, out hit)) {
+                        return;
+                    }  
 
-            //         _handCtrl.OnClickListener(hit);
-            //         _tableCtrl.OnClickListener(hit);
-            //         clicking = false;
-            //     }
-            // }
-
-            if (Input.GetMouseButtonDown(0)) {  
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-                RaycastHit hit;  
-                if (!Physics.Raycast(ray, out hit)) {
-                    return;
-                }  
-
-                _handCtrl.OnClickListener(hit);
-                _tableCtrl.OnClickListener(hit);
-            } 
+                    _handCtrl.OnClickListener(hit);
+                    _tableCtrl.OnClickListener(hit);
+                    clicking = false;
+                }
+            }
         }
 
         public void TryPickUp(CardData card) {
