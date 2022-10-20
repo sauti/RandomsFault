@@ -27,8 +27,7 @@ namespace Default {
             for (var i = 0; i < _cards.Count; i++) {
                 if (_cards[i].Id != hit.transform.name)
                 continue;
-                
-                _view.LongClickCard(_cards[i]);
+
                 _closeupController.Open(_cards[i]);
             }
         }

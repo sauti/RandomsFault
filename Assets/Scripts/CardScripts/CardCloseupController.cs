@@ -8,36 +8,67 @@ namespace Default {
         public GameObject canvas;
         public GameObject cardPrefab;
         public GameObject cardParent;
-        public Camera camera;
 
         private GameObject card;
+        private CardView view;
+        
+        private float duration = 0.2f;
+
+        private Vector3 inspectPos = new Vector3(15, 3, -1);
+        private Quaternion inspectRotation = Quaternion.Euler(-90, 180, 180);
+        private float targetScale = 5;
+        private float scaleModifier = 1;
+        
+        private Vector3 defaultPos;
+        private Quaternion defaultRotation;
 
         public void Open(CardData cardData) {
-            Debug.Log("Open card");
-            canvas.SetActive(true);
+            card = GameObject.Find(cardData.Id);
+            view = card.GetComponent<CardView>();
+            defaultPos = card.transform.position;
+            defaultRotation = card.transform.rotation;
 
-            card = Instantiate(cardPrefab, cardParent.transform);
-            card.transform.parent = cardParent.transform;
-            
-            CardView view = card.GetComponent<CardView>();
-            view.SetInitialData(cardData);
-            view.PlayCloseupAnimation();
-            SetLayerAllChildren(card, cardParent.layer);
+            canvas.SetActive(true);
+            SetLayer("Card");
+            view.Inspect();
+            StartCoroutine(LerpTransform(inspectPos, inspectRotation, targetScale, duration));
         }
 
         public void Close() {
-            Debug.Log("Close");
+            SetLayer("Default");
             canvas.SetActive(false);
-            Destroy(card);
+            view.CloseInspect();
+            view = null;
+            StartCoroutine(LerpTransform(defaultPos, defaultRotation, 1, duration));
         }
 
-        void SetLayerAllChildren(GameObject root, int layer)
+        private void SetLayer(string layer)
         {
-            card.layer = cardParent.layer;
-            var children = root.transform.GetComponentsInChildren<Transform>(includeInactive: true);
+            var layerIndex = LayerMask.NameToLayer(layer);
+            card.layer = layerIndex;
+            var children = card.transform.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
             {
-                child.gameObject.layer = layer;
+                child.gameObject.layer = layerIndex;
+            }
+        }
+
+        IEnumerator LerpTransform(Vector3 targetPosition, Quaternion targetRotation, float targetScale, float duration)
+        {
+            float time = 0;
+            float startValue = 1;
+            Vector3 startPosition = card.transform.position;
+            Quaternion startRotation = transform.rotation;
+            Vector3 startScale = transform.localScale;
+
+            while (time < duration)
+            {
+                card.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+                card.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / duration);
+                scaleModifier = Mathf.Lerp(startValue, targetScale, time / duration);
+                card.transform.localScale = startScale * scaleModifier;
+                time += Time.deltaTime;
+                yield return null;
             }
         }
     }
