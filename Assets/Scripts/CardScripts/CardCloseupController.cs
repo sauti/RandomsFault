@@ -6,6 +6,7 @@ namespace Default {
     public class CardCloseupController : MonoBehaviour
     {
         public GameObject canvas;
+        public GameObject gameCanvas;
         public GameObject cardPrefab;
         public GameObject cardParent;
 
@@ -28,6 +29,7 @@ namespace Default {
             defaultPos = card.transform.position;
             defaultRotation = card.transform.rotation;
 
+            gameCanvas.SetActive(false);
             canvas.SetActive(true);
             SetLayer("Card");
             view.Inspect();
@@ -37,6 +39,7 @@ namespace Default {
         public void Close() {
             SetLayer("Default");
             canvas.SetActive(false);
+            gameCanvas.SetActive(true);
             view.CloseInspect();
             view = null;
             StartCoroutine(LerpTransform(defaultPos, defaultRotation, 1, duration));

@@ -37,6 +37,7 @@ namespace Default {
             if (state == BattleState.PlayerTurn) {
                 _handCtrl.OnLongClick(hit);
                 _tableCtrl.OnLongClick(hit);
+                state = BattleState.Inspect;
             }
         }
 
