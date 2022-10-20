@@ -39,6 +39,10 @@ namespace Default {
             StartCoroutine(PlayAnimationAndWait("card_flip"));
         }
 
+        public void PlayCloseupAnimation() {
+            _animator.Play("card_closeup");
+        }
+
         public void SelectCard() {
             _animator.SetBool("isSelected", true);
         }

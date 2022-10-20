@@ -19,7 +19,9 @@ namespace Default {
             card = Instantiate(cardPrefab, cardParent.transform);
             card.transform.parent = cardParent.transform;
             
-            card.GetComponent<CardView>().SetInitialData(cardData);
+            CardView view = card.GetComponent<CardView>();
+            view.SetInitialData(cardData);
+            view.PlayCloseupAnimation();
             SetLayerAllChildren(card, cardParent.layer);
         }
 
