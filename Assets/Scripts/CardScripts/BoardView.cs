@@ -38,7 +38,7 @@ namespace Default {
             GenerateCards(cards);
         }
 
-        public void rotateCard(CardData card) {
+        public void FlipCard(CardData card) {
             GameObject c = _findCard(card);
             c.GetComponent<CardView>().Flip();
         }
@@ -85,9 +85,10 @@ namespace Default {
         }
 
         public void LongClickCard(CardData card) {
-            GameObject c = _findCard(card);
-            Debug.Log("move card " + card.Card.CardId);
-            c.transform.position = new Vector3(15, 3, -1);
+            // GameObject c = _findCard(card);
+            // Debug.Log("move card " + card.Card.CardId);
+            // c.layer = LayerMask.NameToLayer("Card");
+            // c.transform.position = new Vector3(15, 3, -1);
         }
 
         private void GenerateCells(Vector2Int gridSize)

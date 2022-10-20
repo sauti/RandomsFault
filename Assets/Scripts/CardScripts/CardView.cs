@@ -12,10 +12,6 @@ namespace Default {
         private Renderer _renderer;
         private Animator _animator;
 
-        public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip"));
-        }
-
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
             GameObject cardGo = gameObject.transform.Find("Card").gameObject;
@@ -37,6 +33,10 @@ namespace Default {
         public IEnumerator DealDamageToPlayer() {
             yield return new WaitForSeconds(0.5f);
             yield return PlayAnimationAndWait("card_attack_player");
+        }
+
+        public void Flip() {
+            StartCoroutine(PlayAnimationAndWait("card_flip"));
         }
 
         public void SelectCard() {

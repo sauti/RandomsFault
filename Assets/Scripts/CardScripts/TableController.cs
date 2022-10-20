@@ -31,7 +31,7 @@ namespace Default {
                 continue;
 
                 if (!_cards[i].IsRotated) {
-                    transform.parent.GetComponent<CardGameController>().RotateCard(_cards[i]);
+                    transform.parent.GetComponent<CardGameController>().FlipCard(_cards[i]);
                     break;
                 }
 
@@ -53,10 +53,10 @@ namespace Default {
             }
         }
 
-        public void RotateCard(CardData card) {
-            Debug.Log("Rotate " + card.Card.CardId);
+        public void FlipCard(CardData card) {
+            Debug.Log("Flip " + card.Card.CardId);
             card.IsRotated = true;
-            _view.rotateCard(card);
+            _view.FlipCard(card);
             if (card.Card.IsTrap) {
                 _playerStats.GetDamage(card.Card.Damage);
             }
