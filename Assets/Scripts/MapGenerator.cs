@@ -26,29 +26,12 @@ public class MapGenerator : MonoBehaviour
   
     // Chars Randomizer
     public GameObject Character;
-    public Transform CharacterMoves;
-
     private Vector3 characterDirection;
-    // public GameObject Enemy;
-    // private Vector3 enemyDirection;
-    public Transform Gargoyle;
-
     // Swipe Controls
     public Swipe swipeControls;
-    
-    // Aditional effects
+
     [SerializeField] private Transform objectsParent;
-
-    public float gargoylesRotationAmount = 2f;
-    public int ticksPerSecond = 60;
-    public bool pause = false;
-    public float gargoylesRotationSpeed = 1f;  
-    [SerializeField] private float gargoyleOffset;
     
-
-    public GameObject mainCamera;
-    public GameObject cardsCamera;
-    public Button exitBtn;
 
    private void Awake()
    {
@@ -76,25 +59,7 @@ public class MapGenerator : MonoBehaviour
                 
         foreach (Transform gridPrefab in gridParent){
             gridPrefab.position += new Vector3(0.5f, 0, 0.5f);
-        }
-
-        var gargoyleSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
-
-        for(int x  = 0; x < 2; x++)
-        {            
-            for(int y = 0; y < 2; y++)
-            {
-                var position = new Vector3(x * (gargoyleSize.x + gargoyleOffset), 0, y * (gargoyleSize.z + gargoyleOffset));
-
-                var cell = Instantiate(Gargoyle, position, Quaternion.identity, objectsParent);
-
-                Gargoyle.name = $"X: {x} Y: {y}";
-            }
-        }
-
-        foreach (Transform Gargoyle in objectsParent){
-            Gargoyle.position += new Vector3(-0.5f, 0, -0.5f);
-        }
+        }        
 
         // room walls
         for (int i = 0; i < 3; i++)
@@ -161,16 +126,9 @@ public class MapGenerator : MonoBehaviour
             var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);           
         }
 
-        Character.SetActive(true);
-        characterDirection = GetRandomEmptyTile();
-        // Enemy.SetActive(true);
-        // enemyDirection = GetRandomEmptyTile();
-        StartCoroutine(GargoylesRotate());
+        characterDirection = GetRandomEmptyTile();        
    }
-
-   private void Start() {
-        
-   }
+  
    private void Update() {
 
         foreach (Transform gridPrefab in gridParent){
@@ -178,24 +136,7 @@ public class MapGenerator : MonoBehaviour
             currentAngle = startAngle;
             ChangeCurrentFloorAngle();
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
-        }
-
-        // Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
-       
-        
-        foreach (Transform Gargoyle in objectsParent){            
-        Gargoyle.transform.LookAt(CharacterMoves);
-        }
-        // Enemy.transform.LookAt(CharacterMoves); 
-
-        if((Ruins.transform.position.x - Character.transform.position.x) == 0){
-                 if((Ruins.transform.position.z - Character.transform.position.z) == 0){
-                Debug.Log("Tobi Pizda!");
-                mainCamera.gameObject.SetActive(false);
-                cardsCamera.gameObject.SetActive(true);
-                exitBtn.gameObject.SetActive(true);                
-            }
-        }
+        }           
    }
 
    private Vector3 GetRandomEmptyTile() {
@@ -212,25 +153,5 @@ public class MapGenerator : MonoBehaviour
     if(currentAngle.eulerAngles.x == startAngle.eulerAngles.x){
                 currentAngle = finishAngle;
             }
-   }
-
-   //---------------------------------------------------------------Gargoyles--------------------------------------------------------------------------------------
-
-    private IEnumerator GargoylesRotate(){
-        WaitForSeconds Wait = new WaitForSeconds(1 / ticksPerSecond);
-
-        while (true){
-            if(!pause){
-                Gargoyle.transform.Rotate(Vector3.up * gargoylesRotationAmount);
-            }
-            yield return Wait;
-        }
-    }    
-
-    public void OnExitBtnClick(){
-        Debug.Log("Exit");
-        Destroy(Ruins); // TODO: find alt
-        mainCamera.gameObject.SetActive(true);
-        cardsCamera.gameObject.SetActive(false);
-    }
+   }   
 }
