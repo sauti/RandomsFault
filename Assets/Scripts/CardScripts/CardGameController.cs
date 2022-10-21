@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class CardGameController : MonoBehaviour
+    public class CardGameController : OnClickListener
     {
         public Vector2Int gridSize = new Vector2Int(4, 3);
         public Vector2Int handSize = new Vector2Int(4, 2);
         public GameObject tableGo;
         public GameObject handGo;
         public int level = 1;
-        // bool clicking = false;
-        // float totalDownTime = 0;
-        // public float ClickDuration = 1;
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
@@ -29,67 +26,19 @@ namespace Default {
             state = BattleState.PlayerTurn;
         }
 
-        void Update()
-        {
+        protected override void OnClick(RaycastHit hit) {
             if (state == BattleState.PlayerTurn) {
-                OnClickListener();
-            }
-        }
-        
-        public void OnClickListener() {
-            // Detect the first click
-            // if (Input.GetMouseButtonDown(0))
-            // {
-            //     totalDownTime = 0;
-            //     clicking = true;
-            // }
-
-            // if (clicking && Input.GetMouseButton(0))
-            // {
-            //     totalDownTime += Time.deltaTime;
-            //     if (totalDownTime >= ClickDuration)
-            //     {
-            //         Debug.Log("Long click");
-            //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-            //         RaycastHit hit;  
-            //         if (!Physics.Raycast(ray, out hit)) {
-            //             return;
-            //         }  
-
-            //         _handCtrl.OnLongClick(hit);
-            //         // _tableCtrl.OnLongClick(hit);
-
-            //         clicking = false;
-            //     }
-            // }
-
-            // if (clicking && Input.GetMouseButtonUp(0))
-            // {
-            //     if (totalDownTime < ClickDuration)
-            //     {
-            //         Debug.Log("Short click");
-            //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-            //         RaycastHit hit;  
-            //         if (!Physics.Raycast(ray, out hit)) {
-            //             return;
-            //         }  
-
-            //         _handCtrl.OnClickListener(hit);
-            //         _tableCtrl.OnClickListener(hit);
-            //         clicking = false;
-            //     }
-            // }
-
-            if (Input.GetMouseButtonDown(0)) {  
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-                RaycastHit hit;  
-                if (!Physics.Raycast(ray, out hit)) {
-                    return;
-                }  
-
                 _handCtrl.OnClickListener(hit);
                 _tableCtrl.OnClickListener(hit);
-            } 
+            }
+        }
+
+        protected override void OnLongClick(RaycastHit hit) {
+            if (state == BattleState.PlayerTurn) {
+                _handCtrl.OnLongClick(hit);
+                _tableCtrl.OnLongClick(hit);
+                state = BattleState.Inspect;
+            }
         }
 
         public void TryPickUp(CardData card) {
@@ -110,8 +59,12 @@ namespace Default {
             TriggerEnemyTurn();
         }
 
-        public void RotateCard(CardData card) {
-            _tableCtrl.RotateCard(card);
+        public void SetPlayerTurn() {
+            state = BattleState.PlayerTurn;
+        }
+
+        public void FlipCard(CardData card) {
+            _tableCtrl.FlipCard(card);
             TriggerEnemyTurn();
         }
 

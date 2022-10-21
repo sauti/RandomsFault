@@ -6,6 +6,7 @@ public enum BattleState {
     Start,
     PlayerTurn,
     EnemyTurn,
+    Inspect,
     Win,
     Lost
 }

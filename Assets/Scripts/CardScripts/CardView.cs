@@ -12,10 +12,6 @@ namespace Default {
         private Renderer _renderer;
         private Animator _animator;
 
-        public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip"));
-        }
-
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
             GameObject cardGo = gameObject.transform.Find("Card").gameObject;
@@ -34,9 +30,29 @@ namespace Default {
             SetDamage(card.Card.Damage);
         }
 
+        public void Inspect() {
+            // _isInspect = true;
+            // SetLayer("Card");
+            _animator.Play("card_closeup");
+        }
+
+        public void CloseInspect() {
+            // _isInspect = false;
+            // SetLayer("Default");
+            _animator.Play("card_state_default");
+        }
+
         public IEnumerator DealDamageToPlayer() {
             yield return new WaitForSeconds(0.5f);
             yield return PlayAnimationAndWait("card_attack_player");
+        }
+
+        public void Flip() {
+            StartCoroutine(PlayAnimationAndWait("card_flip"));
+        }
+
+        public void PlayCloseupAnimation() {
+            _animator.Play("card_closeup");
         }
 
         public void SelectCard() {

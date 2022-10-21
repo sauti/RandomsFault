@@ -3,23 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class TableController : MonoBehaviour
+    public class TableController : BoardController
     {
-        public CardGenerator _cg;
-
-        private BoardView _view;
-        private PlayerStats _playerStats;
-
-        private List<CardData> _cards;
-        private bool[,] _cells;
-        private int _level;
-
-        void Start()
-        {
-            _view = gameObject.GetComponent<BoardView>();
-            _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        }
-
         public void initCards(Vector2Int grid, int level)
         {
             _level = level;
@@ -46,7 +31,7 @@ namespace Default {
                 continue;
 
                 if (!_cards[i].IsRotated) {
-                    transform.parent.GetComponent<CardGameController>().RotateCard(_cards[i]);
+                    transform.parent.GetComponent<CardGameController>().FlipCard(_cards[i]);
                     break;
                 }
 
@@ -68,13 +53,13 @@ namespace Default {
             }
         }
 
-        public void RotateCard(CardData card) {
-            Debug.Log("Rotate " + card.Card.CardId);
+        public void FlipCard(CardData card) {
+            Debug.Log("Flip " + card.Card.CardId);
+            card.IsRotated = true;
+            _view.FlipCard(card);
             if (card.Card.IsTrap) {
                 _playerStats.GetDamage(card.Card.Damage);
             }
-            card.IsRotated = true;
-            _view.rotateCard(card);
         }
 
         public void PickUp(CardData card)
@@ -120,10 +105,10 @@ namespace Default {
             }
         }
 
-        private void RemoveCard(CardData card) {
-            _cards.Remove(card);
-            _cells[card.Coord.x, card.Coord.y] = false;
-            _view.removeCard(card);
-        }
+        // private void RemoveCard(CardData card) {
+        //     _cards.Remove(card);
+        //     _cells[card.Coord.x, card.Coord.y] = false;
+        //     _view.removeCard(card);
+        // }
     }
 }

@@ -3,22 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class HandController : MonoBehaviour
+    public class HandController : BoardController
     {
-        public CardGenerator _cg;
-
-        private BoardView _view;
-        private PlayerStats _playerStats;
-
-        private List<CardData> _cards;
-        private bool[,] _cells;
         private CardData _selectedCard;
-
-        void Start()
-        {
-            _view = gameObject.GetComponent<BoardView>();
-            _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        }
 
         public void OnClickListener(RaycastHit hit)
         {
@@ -28,16 +15,6 @@ namespace Default {
 
                 SelectCard(_cards[i]);
                 break;
-            }
-        }
-
-        public void OnLongClick(RaycastHit hit)
-        {
-            for (var i = 0; i < _cards.Count; i++) {
-                if (_cards[i].Id != hit.transform.name)
-                continue;
-
-                _view.LongClickCard(_cards[i]);
             }
         }
 
@@ -85,10 +62,7 @@ namespace Default {
             if (_selectedCard == null) {
                 return;
             }
-
-            _cards.Remove(_selectedCard);
-            _cells[_selectedCard.Coord.x, _selectedCard.Coord.y] = false;
-            _view.removeCard(_selectedCard);
+            base.RemoveCard(_selectedCard);
             _selectedCard = null;
         }
 

@@ -38,7 +38,7 @@ namespace Default {
             GenerateCards(cards);
         }
 
-        public void rotateCard(CardData card) {
+        public void FlipCard(CardData card) {
             GameObject c = _findCard(card);
             c.GetComponent<CardView>().Flip();
         }
@@ -82,12 +82,6 @@ namespace Default {
         public IEnumerator DealDamageWithCard(CardData card) {
             GameObject c = _findCard(card);
             yield return c.GetComponent<CardView>().DealDamageToPlayer();
-        }
-
-        public void LongClickCard(CardData card) {
-            GameObject c = _findCard(card);
-            Debug.Log("move card " + card.Card.CardId);
-            c.transform.position = new Vector3(15, 3, -1);
         }
 
         private void GenerateCells(Vector2Int gridSize)
