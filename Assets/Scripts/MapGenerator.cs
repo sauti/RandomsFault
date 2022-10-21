@@ -29,8 +29,8 @@ public class MapGenerator : MonoBehaviour
     public Transform CharacterMoves;
 
     private Vector3 characterDirection;
-    public GameObject Enemy;
-    private Vector3 enemyDirection;
+    // public GameObject Enemy;
+    // private Vector3 enemyDirection;
     public Transform Gargoyle;
 
     // Swipe Controls
@@ -163,8 +163,8 @@ public class MapGenerator : MonoBehaviour
 
         Character.SetActive(true);
         characterDirection = GetRandomEmptyTile();
-        Enemy.SetActive(true);
-        enemyDirection = GetRandomEmptyTile();
+        // Enemy.SetActive(true);
+        // enemyDirection = GetRandomEmptyTile();
         StartCoroutine(GargoylesRotate());
    }
 
@@ -180,13 +180,13 @@ public class MapGenerator : MonoBehaviour
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
         }
 
-        Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
+        // Enemy.transform.position =  Vector3.MoveTowards(Enemy.transform.position, enemyDirection, 3f * Time.deltaTime);
        
         
         foreach (Transform Gargoyle in objectsParent){            
         Gargoyle.transform.LookAt(CharacterMoves);
         }
-        Enemy.transform.LookAt(CharacterMoves); 
+        // Enemy.transform.LookAt(CharacterMoves); 
 
         if((Ruins.transform.position.x - Character.transform.position.x) == 0){
                  if((Ruins.transform.position.z - Character.transform.position.z) == 0){
