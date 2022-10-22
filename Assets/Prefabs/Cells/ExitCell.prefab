@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6108802890727645130}
   - component: {fileID: 8296233685580229376}
   - component: {fileID: 1281830599485540736}
-  - component: {fileID: 2968084117660325288}
+  - component: {fileID: 55640865268095815}
   m_Layer: 0
   m_Name: ExitCell
   m_TagString: Untagged
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitTile: {fileID: 7163265788826898543}
---- !u!114 &2968084117660325288
+--- !u!114 &55640865268095815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

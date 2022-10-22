@@ -37,7 +37,6 @@ public class MapGenerator : MonoBehaviour
 
     private Vector2 cellSize;
     [SerializeField] 
-    private EntityView playerEntityView;
     private List<EntityView> _entities;
 
     public GameObject mainCamera;
@@ -182,19 +181,6 @@ public class MapGenerator : MonoBehaviour
                 currentAngle = finishAngle;
             }
    }   
-
-   public void MoveEntityTo(int idx, Vector2Int coord)
-        {
-            var pos = cellSize * coord;
-            EntityView entityView = null;
-            if (playerEntityView.Idx == idx)
-                entityView = playerEntityView;
-            else
-                entityView = _entities.FirstOrDefault(x => x.Idx == idx);
-            
-            if (entityView)
-                entityView.SetPos(pos);
-        }
 
     public void OnCardGameStart(){
         mainCamera.SetActive(false);

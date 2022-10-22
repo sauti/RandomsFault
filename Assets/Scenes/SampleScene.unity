@@ -4375,7 +4375,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1921988189}
   - component: {fileID: 1921988188}
-  - component: {fileID: 1921988192}
   - component: {fileID: 1921988193}
   - component: {fileID: 1921988194}
   m_Layer: 0
@@ -4411,13 +4410,12 @@ MonoBehaviour:
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
   Character: {fileID: 919132148050294495}
-  swipeControls: {fileID: 1921988192}
   objectsParent: {fileID: 1135768942}
-  tile: {fileID: 2968084117660325288, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
-  ruinID: {fileID: 0}
-  playerEntityView: {fileID: 919132148050294505}
+  tile: {fileID: 55640865268095815, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
+  _entities: []
   mainCamera: {fileID: 963194225}
   cardGame: {fileID: 1778960866}
+  Swipe: {fileID: 768215680}
 --- !u!4 &1921988189
 Transform:
   m_ObjectHideFlags: 0
@@ -4433,19 +4431,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1921988192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921988187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d808b5bda6438284f890052871a1bc2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveDir: 0
 --- !u!82 &1921988193
 AudioSource:
   m_ObjectHideFlags: 0
