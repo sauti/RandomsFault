@@ -7,41 +7,29 @@ public class RuinScript : MonoBehaviour
 {
     public GameObject Ruins;
 
-    private GameObject cardsCamera;
+    private GameObject cardGame;
     private GameObject mainCamera;
-    private GameObject exitBtn;
     GameObject character;
+    GameObject mainCam;
 
-    public bool currRuinObj;
-    
-    // Start is called before the first frame update
+        
+   
     void Start()
     {
         character = GameObject.Find("Character");
-        cardsCamera = GameObject.Find("CardsCamera");
+        cardGame = GameObject.Find("CardGame");
         mainCamera = GameObject.Find("MainCamera");
-        exitBtn = GameObject.Find("RayExitButton");
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        
             if((Ruins.transform.position.x - character.transform.position.x) == 0){
                  if((Ruins.transform.position.z - character.transform.position.z) == 0){
                 Debug.Log("Tobi Pizda!");
-                mainCamera.SetActive(false);
-                cardsCamera.SetActive(true);
-                // exitBtn.gameObject.SetActive(true);
-
-                // GameObject.Find("CardsCamera").SetActive(true);
-                // GameObject.Find("MainCamera").SetActive(false);
-                // GameObject.Find("Button").SetActive(true);
+                mainCamera.SetActive(false);                               
             }
-        }
-    }
-
-    public void Init(int id, string ruinName, bool currRuinObj){
-        Debug.Log ($"Obj id {id} {gameObject.name}");
-    }
+        }         
+    }     
 }
 
