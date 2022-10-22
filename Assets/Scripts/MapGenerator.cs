@@ -30,13 +30,10 @@ public class MapGenerator : MonoBehaviour
     // Chars Randomizer
     public GameObject Character;
     private Vector3 characterDirection;
-    // Swipe Controls
-    public Swipe swipeControls;
-
+   
     [SerializeField] private Transform objectsParent;
 
     public Tile tile;
-    public RuinID ruinID;
 
     private Vector2 cellSize;
     [SerializeField] 
@@ -45,6 +42,7 @@ public class MapGenerator : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject cardGame;
+    public GameObject Swipe;
 
     
 
@@ -164,8 +162,9 @@ public class MapGenerator : MonoBehaviour
         } 
 
         // 
-        if (mainCamera.activeInHierarchy == false)
+        if (mainCamera.activeInHierarchy == false){
                 OnCardGameStart();        
+        }
    }
 
    private Vector3 GetRandomEmptyTile() {
@@ -200,7 +199,7 @@ public class MapGenerator : MonoBehaviour
     public void OnCardGameStart(){
         mainCamera.SetActive(false);
         cardGame.gameObject.SetActive(true);
-        swipeControls.gameObject.SetActive(false);
+        Swipe.gameObject.SetActive(false);
     }
 }
 }
