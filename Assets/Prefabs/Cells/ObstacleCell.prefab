@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2561525328826539345}
   - component: {fileID: 1059072087416920449}
   - component: {fileID: -995635861525141505}
-  - component: {fileID: 1842780146137095759}
+  - component: {fileID: -2193431145126198376}
   m_Layer: 0
-  m_Name: Ruins
+  m_Name: ObstacleCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 4245882758976152900, guid: e1832839fdd51214688be5c7d1086a64, type: 3}
   - {fileID: 5542439255975053380, guid: aa1466d8b26143a438d01e1e900fe218, type: 3}
   - {fileID: 4060288889812200029, guid: 4133cd9eccf751d4cb38cf99effadf8d, type: 3}
---- !u!114 &1842780146137095759
+--- !u!114 &-2193431145126198376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,4 +129,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ruin: {fileID: 174357778234765112}
-  thisRuin: 1
