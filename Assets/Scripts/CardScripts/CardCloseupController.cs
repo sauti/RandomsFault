@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace Default {
     public class CardCloseupController : MonoBehaviour
@@ -9,6 +11,7 @@ namespace Default {
         public GameObject gameCanvas;
         public GameObject cardPrefab;
         public GameObject cardParent;
+        public TMP_Text thought;
 
         private GameObject card;
         private CardView view;
@@ -31,16 +34,18 @@ namespace Default {
 
             gameCanvas.SetActive(false);
             canvas.SetActive(true);
+
             SetLayer("Card");
             view.Inspect();
-            Debug.Log(cardData.Card.Thought);
+            thought.text = cardData.Card.Thought;
             StartCoroutine(LerpTransform(inspectPos, inspectRotation, targetScale, duration));
         }
 
         public void Close() {
-            SetLayer("Default");
             canvas.SetActive(false);
             gameCanvas.SetActive(true);
+
+            SetLayer("Default");
             view.CloseInspect();
             view = null;
             StartCoroutine(LerpTransform(defaultPos, defaultRotation, 1, duration));

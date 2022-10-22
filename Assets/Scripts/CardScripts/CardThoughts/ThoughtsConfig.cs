@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Default
 {
-    [CreateAssetMenu(menuName = "Cards/ThoughtsConfig")]
+    // [CreateAssetMenu(menuName = "Cards/ThoughtsConfig")]
     public class ThoughtsConfig: ScriptableObject, ISerializationCallbackReceiver
     {
         private Dictionary<CardId, List<Thought>> list;
@@ -25,6 +25,10 @@ namespace Default
             {
                 return value;
             }
+            return defaultList;
+        }
+
+        public List<Thought> getDefaultList() {
             return defaultList;
         }
     }

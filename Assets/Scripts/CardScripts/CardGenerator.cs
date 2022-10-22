@@ -13,10 +13,12 @@ namespace Default {
 
         private LevelConfig _levelConfig;
         private int _level;
+        private List<Thought> _defaultThoughts;
 
         public void Init(int level) {
             _level = level;
             _levelConfig = levelsListConfig.GetConfigForLevel(level);
+            _defaultThoughts = thoughtsConfig.getDefaultList();
         }
 
         public List<CardData> GenerateCardsForLevel() {
@@ -76,14 +78,25 @@ namespace Default {
         private string GetRandomThought(CardId cardId)
         {
             List<Thought> cardThoughts = thoughtsConfig.getListByCardId(cardId);
-            List<string> thoughts = new List<string>();
-            foreach (Thought t in cardThoughts) {
-                // if (t.levels.Contains(_level)) {
-                //     thoughts.Add(t.text);
-                // }
-                thoughts.Add(t.text);
+            List<string> thoughts = GetThoughtsByLevel(cardThoughts);
+
+            if (thoughts.Count < 1) {
+                thoughts = GetThoughtsByLevel(_defaultThoughts);
             }
-            return thoughts[0];
+
+            int rand = UnityEngine.Random.Range(0, thoughts.Count);
+            return thoughts[rand];
+        }
+
+        private List<string> GetThoughtsByLevel(List<Thought> allThoughts)
+        {
+            List<string> thoughts = new List<string>();
+            foreach (Thought t in allThoughts) {
+                if (t.levels.Contains(_level)) {
+                    thoughts.Add(t.text);
+                }
+            }
+            return thoughts;
         }
 
         private List<CardId> GenerateRequiredCardTypes(List<CardPerLevelData> list, int amount) {

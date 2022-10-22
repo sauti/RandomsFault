@@ -7,8 +7,8 @@ namespace Default {
     {
         public AttackThoughts()
         {
-            Add("Strong attack!", new int[] { 0, 1 });
-            Add("Awesome attack!", new int[] { 0, 1 });
+            Add("Strong attack!", new List<int>() { 0, 1 });
+            Add("Awesome attack!", new List<int>() { 0, 1 });
         }
     }
 }

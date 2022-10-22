@@ -7,7 +7,7 @@ namespace Default {
     {
         public DefaultThoughts()
         {
-            Add("No idea what is this card", new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            Add("No idea what is this card", new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
         }
     }
 }

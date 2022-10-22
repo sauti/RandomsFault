@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Default {
     public class ProteinThoughts: CardThoughts
     {
-        public ProteinThoughts()
+        public ProteinThoughts() : base()
         {
-            Add("Nice protein!", new int[] { 0, 2 });
-            Add("Awesome protein!", new int[] { 0, 1 });
+            Add("Nice protein!", new List<int>() { 0, 2 });
+            Add("Awesome protein!", new List<int>() { 0, 1 });
         }
     }
 }
