@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace Default {
     public class PlayerStats : MonoBehaviour
@@ -26,9 +27,14 @@ namespace Default {
             Health -= points;
             if (Health <= 0) {
                 textObj.text = "You died :(";
+                Delay();
+                SceneManager.LoadScene("MainMenu");
             } else {
                 textObj.text = Health.ToString();
             }
+        }
+        public IEnumerator Delay(){
+            yield return new WaitForSeconds(1f);
         }
     }
 }
