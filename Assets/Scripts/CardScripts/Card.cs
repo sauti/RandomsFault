@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default
@@ -44,6 +46,7 @@ namespace Default
     {
         public CardId CardId;
         public GameObject Prefab;
+        public string Thought;
         public int Health;
         public int Damage;
         public bool CanBeKilled;

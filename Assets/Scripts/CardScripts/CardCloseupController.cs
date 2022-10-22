@@ -33,6 +33,7 @@ namespace Default {
             canvas.SetActive(true);
             SetLayer("Card");
             view.Inspect();
+            Debug.Log(cardData.Card.Thought);
             StartCoroutine(LerpTransform(inspectPos, inspectRotation, targetScale, duration));
         }
 

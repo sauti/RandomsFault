@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsConfig: {fileID: 11400000, guid: 4c033efdc51ee304bb2f63c0a3fbbf83, type: 2}
   levelsListConfig: {fileID: 11400000, guid: d869e475435b78841bfc17c3da42a090, type: 2}
+  thoughtsConfig: {fileID: 11400000, guid: 55165cf3bae57104ea9d51f1183a3a67, type: 2}

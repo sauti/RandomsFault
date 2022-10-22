@@ -9,10 +9,13 @@ namespace Default {
     {
         public CardsConfig cardsConfig;
         public LevelsList levelsListConfig;
+        public ThoughtsConfig thoughtsConfig;
 
         private LevelConfig _levelConfig;
+        private int _level;
 
         public void Init(int level) {
+            _level = level;
             _levelConfig = levelsListConfig.GetConfigForLevel(level);
         }
 
@@ -52,6 +55,7 @@ namespace Default {
                 CanHeal = template.CanHeal,
                 IsWeapon = template.IsWeapon,
                 IsTrap = template.IsTrap,
+                Thought = GetRandomThought(cardId),
             };
 
             CardData data = new CardData()
@@ -67,6 +71,19 @@ namespace Default {
         private string GetUuid()
         {
             return System.Guid.NewGuid().ToString("N");
+        }
+
+        private string GetRandomThought(CardId cardId)
+        {
+            List<Thought> cardThoughts = thoughtsConfig.getListByCardId(cardId);
+            List<string> thoughts = new List<string>();
+            foreach (Thought t in cardThoughts) {
+                // if (t.levels.Contains(_level)) {
+                //     thoughts.Add(t.text);
+                // }
+                thoughts.Add(t.text);
+            }
+            return thoughts[0];
         }
 
         private List<CardId> GenerateRequiredCardTypes(List<CardPerLevelData> list, int amount) {
