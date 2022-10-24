@@ -26,27 +26,33 @@ public class MapGenerator : MonoBehaviour
    public Quaternion currentAngle;
 
    private List<Vector3> occupiedPositions = new List<Vector3>();
+   public Vector3 position;
   
     // Chars Randomizer
-    public GameObject Character;
-    private Vector3 characterDirection;
+    //public GameObject Character;
+    //private Vector3 characterDirection;
    
     [SerializeField] private Transform objectsParent;
 
-    public Tile tile;
+    //public Tile tile;
+    public RuinID ruinPrefab;
 
-    private Vector2 cellSize;
-    [SerializeField] 
-    private List<EntityView> _entities;
+    //private Vector2 cellSize;
+    //[SerializeField] 
+    //private List<EntityView> _entities;
 
     public GameObject mainCamera;
     public GameObject cardGame;
     public GameObject Swipe;
+    public SwipeTest swipe;
+
+    //public MainMenuScript mainMS;
+    //public var currRuin;
 
     
 
-   private void Awake()
-   {
+   private void Start()
+   {        
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
         int exitTileX = Random.Range(0, 5);
         int exitTileY = Random.Range(0, 5);
@@ -56,16 +62,13 @@ public class MapGenerator : MonoBehaviour
         {            
             for(int y = 0; y < 5; y++)
             {
-                var position = new Vector3(x, 0, y);
+                var position = new Vector3(x, 0, y) ;
                 Vector3 offsetVector = new Vector3(offset, 0, offset);
                 GameObject floorCell;
                 if (x == exitTileX && y == exitTileY) {
                     floorCell = Instantiate(ExitTile, position + offsetVector, Quaternion.identity, gridParent);
                     occupiedPositions.Add(position);
-
-                    tile.Init(x, y);
-                    
-                    tile.isExit = true;
+                    position = GetRandomEmptyTile();
                 } else {
                     floorCell = Instantiate(gridPrefab, position + offsetVector, Quaternion.identity, gridParent);
                 }
@@ -125,30 +128,9 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        // chests
-        int chestsAmount = Random.Range(1, 4);
-        for(int i  = 0; i < chestsAmount; i++)
-        {     
-            Vector3 position = GetRandomEmptyTile(); 
-            var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
-            Instantiate(Chest, position, rotation, wallParent);
-        }
-
-        // ruins
-        int ruinsAmount = Random.Range(1, 4);
-        for(int i  = 0; i < ruinsAmount; i++)
-        {     
-            Vector3 position = GetRandomEmptyTile(); 
-            var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
-            var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);  
-
-            // ruinID.Init(i);
-
-            // if (i == ruinsAmount)
-            //     ruinID.thisRuin = true;
-        }
-
-        characterDirection = GetRandomEmptyTile();        
+        ChestsGen();
+        
+        RuinsGen();            
    }
   
    private void Update() {
@@ -160,22 +142,46 @@ public class MapGenerator : MonoBehaviour
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
         } 
 
-        // 
         if (mainCamera.activeInHierarchy == false){
-                OnCardGameStart();        
+            OnCardGameStart();        
+        } 
+
+        // if (ruinPrefab.objPos == swipe.characterDirection)
+        // Object.Destroy(ruinPrefab);                   
+    }
+
+   public void RuinsGen(){
+        var ruinsAmount = Random.Range(1, 4);
+        for(int i  = 0; i < ruinsAmount; i++)
+        {     
+            Vector3 position = GetRandomEmptyTile(); 
+            var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
+            var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
+            //ruinPrefab.Init(pos);                                     
+        }        
+   }
+
+   public void ChestsGen(){
+    int chestsAmount = Random.Range(1, 4);
+        for(int i  = 0; i < chestsAmount; i++)
+        {     
+            Vector3 position = GetRandomEmptyTile(); 
+            var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
+            Instantiate(Chest, position, rotation, wallParent);
         }
    }
 
-   private Vector3 GetRandomEmptyTile() {
-        Vector3 position = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+   public Vector3 GetRandomEmptyTile() {
+        Vector3 position = new Vector3(Random.Range(0, 4), 0, Random.Range(0, 4));
         while (occupiedPositions.Contains(position))
         {
-            position = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+            position = new Vector3(Random.Range(0, 4), 0, Random.Range(0, 4));
         }
         occupiedPositions.Add(position);
         return position;
    }
 
+   
    void ChangeCurrentFloorAngle(){
     if(currentAngle.eulerAngles.x == startAngle.eulerAngles.x){
                 currentAngle = finishAngle;
@@ -187,5 +193,7 @@ public class MapGenerator : MonoBehaviour
         cardGame.gameObject.SetActive(true);
         Swipe.gameObject.SetActive(false);
     }
+
+    
 }
 }

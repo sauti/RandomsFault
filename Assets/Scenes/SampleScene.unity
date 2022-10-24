@@ -1594,6 +1594,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cg: {fileID: 11400000, guid: d4d2580f92ffc914ab728a8a8c1ca8c4, type: 2}
+  mainCamera: {fileID: 963194225}
+  cardGame: {fileID: 1778960866}
+  Swipe: {fileID: 768215680}
+  Ruin: {fileID: 2102555257077500469, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
+  mapG: {fileID: 0}
 --- !u!1 &584719984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +1994,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeControls: {fileID: 768215684}
   character: {fileID: 543450652523474021}
+  characterDirection: {x: 0, y: 0, z: 0}
+  mapGen: {fileID: 1921988188}
 --- !u!1001 &792144829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4409,13 +4416,13 @@ MonoBehaviour:
   Ruins: {fileID: 2102555257077500469, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
-  Character: {fileID: 919132148050294495}
+  position: {x: 0, y: 0, z: 0}
   objectsParent: {fileID: 1135768942}
-  tile: {fileID: 55640865268095815, guid: 2413bd3035c067f4fb24f0c3edb115ac, type: 3}
-  _entities: []
+  ruinPrefab: {fileID: -2535112967978043293, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
   mainCamera: {fileID: 963194225}
   cardGame: {fileID: 1778960866}
   Swipe: {fileID: 768215680}
+  swipe: {fileID: 0}
 --- !u!4 &1921988189
 Transform:
   m_ObjectHideFlags: 0

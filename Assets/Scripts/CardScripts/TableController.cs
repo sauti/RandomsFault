@@ -5,6 +5,12 @@ using UnityEngine;
 namespace Default {
     public class TableController : BoardController
     {
+        public GameObject mainCamera;
+        public GameObject cardGame;
+        public GameObject Swipe;
+        public GameObject Ruin;
+        public MapGenerator mapG;
+
         public void initCards(Vector2Int grid, int level)
         {
             _level = level;
@@ -47,7 +53,9 @@ namespace Default {
             
                 if (_cards[i].Card.CardId == CardId.Exit) {
                     Debug.Log("Click Exit");
+                    //  TODO exit
                     initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), _level);
+                    OnCardGameExit();
                     break;
                 }
             }
@@ -110,5 +118,12 @@ namespace Default {
         //     _cells[card.Coord.x, card.Coord.y] = false;
         //     _view.removeCard(card);
         // }
+
+        public void OnCardGameExit(){
+        Debug.Log("Exit Card Game");        
+        mainCamera.SetActive(true);
+        cardGame.gameObject.SetActive(false);
+        Swipe.gameObject.SetActive(true);
+    }
     }
 }
