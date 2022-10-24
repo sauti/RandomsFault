@@ -26,7 +26,8 @@ public class ChestScript : MonoBehaviour
             if((chest.transform.position.x - character.transform.position.x) == 0){
                  if((chest.transform.position.z - character.transform.position.z) == 0){
                 Debug.Log("Tobi Pizda!");
-                mainCamera.SetActive(false);                               
+                mainCamera.SetActive(false);
+                Destroy(chest);                             
             }
         }         
     }     
