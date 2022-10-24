@@ -6,11 +6,12 @@ namespace Default
 {
 public class SwipeTest : MonoBehaviour
 {
-    private List<Vector3> occupiedPositions = new List<Vector3>();
     public Swipe swipeControls;
-    public Transform character;
+    public Char character;
     public Vector3 characterDirection;
     public MapGenerator mapGen;
+
+    private bool isMoving;
        
     private void Start(){       
         characterDirection = mapGen.GetRandomEmptyTile();
@@ -18,7 +19,11 @@ public class SwipeTest : MonoBehaviour
     
     void Update()
     {
-        switch (swipeControls.MoveDir){
+        if (isMoving) {
+            return;
+        }
+
+        switch (swipeControls.MoveDir) {
             case Direction.Up: 
                 if (characterDirection.z < 4)
                     characterDirection += Vector3.forward;
@@ -40,6 +45,7 @@ public class SwipeTest : MonoBehaviour
              break;
 
         }
+        // Debug.Log(character.transform.position.x + " " + characterDirection.x);
         // if (swipeControls.SwipeLeft)
         //     characterDirection += Vector3.left;
         // if (swipeControls.SwipeRight)
@@ -49,14 +55,33 @@ public class SwipeTest : MonoBehaviour
         // if (swipeControls.SwipeDown)
         //     characterDirection += Vector3.back;
 
-        Vector3 movements = character.transform.position =  Vector3.MoveTowards(character.transform.position, characterDirection, 3f * Time.deltaTime);
-        character.transform.LookAt(characterDirection); 
+        if (Vector3.Distance(character.transform.position, characterDirection) != 0 && !isMoving)
+        {
+            StartCoroutine(MoveCharacter());
+        }
          
         // character.transform.position = new Vector3(
         //     Mathf.Clamp(character.position.x, 0f, 4f),
         //     character.transform.position.y,
         //     Mathf.Clamp(character.position.z, 0f, 4f)
         // );        
-    }  
+    }
+
+    private IEnumerator MoveCharacter()
+    {
+        isMoving = true;
+        character.StartMoving();
+        character.transform.LookAt(characterDirection); 
+
+        while (Vector3.Distance(character.transform.position, characterDirection) > 0.01f)
+        {
+            character.transform.position =  Vector3.MoveTowards(character.transform.position, characterDirection, 2.5f * Time.deltaTime);
+            yield return null;
+        }
+
+        character.transform.position = characterDirection;
+        character.StopMoving();
+        isMoving = false;
+    }
 }
 }

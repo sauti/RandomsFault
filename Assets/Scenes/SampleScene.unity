@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeControls: {fileID: 768215684}
-  character: {fileID: 244118683}
+  character: {fileID: 244118682}
   characterDirection: {x: 0, y: 0, z: 0}
   mapGen: {fileID: 1921988188}
 --- !u!1001 &792144829
@@ -2790,6 +2790,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9de2f89922731b64197fa05d187c8324, type: 2}
+    - target: {fileID: 5362756462675939407, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8311802385627825818, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
       propertyPath: m_Name
       value: Character
@@ -2800,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311802385627825818, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
@@ -4650,7 +4654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f85d26a8a846442863f512378339d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterMoves: {fileID: 0}
+  CharacterMoves: {fileID: 244118683}
   gridPrefab: {fileID: 3288978755783601268, guid: 7a88b80a8b9513a4e9bee54d165631c6, type: 3}
   Gargoyle: {fileID: 7736025848792240133, guid: c4029cb55cb3da14486e55300f0b7656, type: 3}
   gargoylesRotationAmount: 2

@@ -31,14 +31,10 @@ namespace Default {
         }
 
         public void Inspect() {
-            // _isInspect = true;
-            // SetLayer("Card");
             _animator.Play("card_closeup");
         }
 
         public void CloseInspect() {
-            // _isInspect = false;
-            // SetLayer("Default");
             _animator.Play("card_state_default");
         }
 
