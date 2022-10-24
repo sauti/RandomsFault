@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 174357778234765112}
   - component: {fileID: 5218068585875049249}
   - component: {fileID: 2561525328826539345}
-  - component: {fileID: 1059072087416920449}
-  - component: {fileID: -995635861525141505}
-  - component: {fileID: 1842780146137095759}
   m_Layer: 0
   m_Name: Ruins
   m_TagString: Untagged
@@ -86,47 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1059072087416920449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102555257077500469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713f0e70280a2fe4f827b80cb3563630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ruins: {fileID: 2102555257077500469}
---- !u!114 &-995635861525141505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102555257077500469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356c57f5f0d170d408b339ce4c4d4bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshes:
-  - {fileID: 4576153622214566291, guid: 686114ddaf680fb47b3284da384380ef, type: 3}
-  - {fileID: 4245882758976152900, guid: e1832839fdd51214688be5c7d1086a64, type: 3}
-  - {fileID: 5542439255975053380, guid: aa1466d8b26143a438d01e1e900fe218, type: 3}
-  - {fileID: 4060288889812200029, guid: 4133cd9eccf751d4cb38cf99effadf8d, type: 3}
---- !u!114 &1842780146137095759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102555257077500469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1358bd0abb92e8b49b617e50784467ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruin: {fileID: 174357778234765112}
-  thisRuin: 1

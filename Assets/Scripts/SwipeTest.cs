@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Default
+{
 public class SwipeTest : MonoBehaviour
 {
+    private List<Vector3> occupiedPositions = new List<Vector3>();
     public Swipe swipeControls;
     public Transform character;
-    private Vector3 characterDirection;
-
-    private void Awake(){
-        characterDirection = new Vector3(Random.Range(0, 5), 0.1f, Random.Range(0, 5));
+    public Vector3 characterDirection;
+    public MapGenerator mapGen;
+       
+    private void Start(){       
+        characterDirection = mapGen.GetRandomEmptyTile();
     }
     
     void Update()
@@ -53,5 +57,6 @@ public class SwipeTest : MonoBehaviour
         //     character.transform.position.y,
         //     Mathf.Clamp(character.position.z, 0f, 4f)
         // );        
-    }    
+    }  
+}
 }
