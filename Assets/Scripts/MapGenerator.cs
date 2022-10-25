@@ -44,7 +44,6 @@ public class MapGenerator : MonoBehaviour
 
    private void Start()
    {        
-        Debug.Log("start");
         CreateMap();
    }
   

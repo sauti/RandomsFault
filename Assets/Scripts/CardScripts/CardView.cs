@@ -11,6 +11,7 @@ namespace Default {
 
         private Renderer _renderer;
         private Animator _animator;
+        private bool isFlipped = false;
 
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
@@ -23,11 +24,21 @@ namespace Default {
             _animator = GetComponent<Animator>();
 
             if (card.IsRotated) {
-                _animator.Play("card_state_default");
+                _animator.SetBool("isFlipped", true);
+                // _animator.Play("card_state_default");
+                isFlipped = true;
             }
 
             SetHealth(card.Card.Health);
             SetDamage(card.Card.Damage);
+        }
+
+        void OnEnable()
+        {
+            Debug.Log("Awake");
+            if (isFlipped) {
+                _animator.SetBool("isFlipped", true);
+            }
         }
 
         public void Inspect() {

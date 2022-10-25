@@ -77,7 +77,7 @@ public class Swipe : MonoBehaviour
     // public bool SwipeUp { get { return swipeUp;}}
     // public bool SwipeDown { get { return swipeDown;}}
 
-    public Direction MoveDir;
+    public Direction MoveDir = Direction.None;
 
 }
 

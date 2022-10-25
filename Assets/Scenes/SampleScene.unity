@@ -755,18 +755,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8311802385627825818, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
   m_PrefabInstance: {fileID: 1217299770}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &244118681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244118680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77dc4097c9e4d4b93cd65b821e08a69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &244118682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1363,6 @@ MonoBehaviour:
   mainCamera: {fileID: 963194225}
   cardGame: {fileID: 1778960866}
   Swipe: {fileID: 768215680}
-  Ruin: {fileID: 2102555257077500469, guid: 5bf292b1e5b666a4a9e434f8f468a99a, type: 3}
   mapG: {fileID: 0}
 --- !u!4 &644160313 stripped
 Transform:
@@ -1867,8 +1854,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -1942,30 +1927,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcc525d120703641b7b3c6a393b2944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac8380f056860f4b853b2d101cf0307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &977029108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2805492343979505358, guid: 7a88b80a8b9513a4e9bee54d165631c6, type: 3}
@@ -3851,11 +3812,9 @@ MonoBehaviour:
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
   position: {x: 0, y: 0, z: 0}
-  objectsParent: {fileID: 1135768942}
   mainCamera: {fileID: 963194225}
   cardGame: {fileID: 1778960866}
   Swipe: {fileID: 768215680}
-  swipe: {fileID: 0}
 --- !u!4 &1921988189
 Transform:
   m_ObjectHideFlags: 0

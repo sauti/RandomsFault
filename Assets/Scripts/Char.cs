@@ -30,7 +30,6 @@ public class Char : MonoBehaviour
 
     public void StartMoving()
     {
-        Debug.Log("Start moving");
         animator.SetBool("isMoving", true);
     }
 

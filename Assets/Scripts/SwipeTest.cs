@@ -71,7 +71,6 @@ public class SwipeTest : MonoBehaviour
     public void PlaceCharacter()
     {
         characterDirection = mapGen.GetRandomEmptyTile();
-        Debug.Log("place char at " + characterDirection.x + " " + characterDirection.z);
     }
 
     private IEnumerator MoveCharacter()

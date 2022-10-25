@@ -10,6 +10,12 @@ namespace Default {
         public GameObject Swipe;
         public MapGenerator mapG;
 
+        void OnEnable()
+        {
+            // todo change levels
+            initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), 0);
+        }
+
         public void initCards(Vector2Int grid, int level)
         {
             _level = level;
@@ -52,8 +58,6 @@ namespace Default {
             
                 if (_cards[i].Card.CardId == CardId.Exit) {
                     Debug.Log("Click Exit");
-                    //  TODO exit
-                    initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), _level);
                     OnCardGameExit();
                     break;
                 }
