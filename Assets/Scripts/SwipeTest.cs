@@ -15,7 +15,6 @@ public class SwipeTest : MonoBehaviour
        
     private void Start()
     {       
-        PlaceCharacter();
     }
     
     void Update()

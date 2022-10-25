@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2762431773996801138, guid: 529edc65c1d7f164caf8abeafa8b3689, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 529edc65c1d7f164caf8abeafa8b3689, type: 3}
       propertyPath: m_Name
       value: Spider
@@ -91,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9de2f89922731b64197fa05d187c8324, type: 2}
+    - target: {fileID: 2853768270042634523, guid: 529edc65c1d7f164caf8abeafa8b3689, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be19a5391d88a8e4a8544ba53dbb8acd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 529edc65c1d7f164caf8abeafa8b3689, type: 3}
 --- !u!1 &2610726315237067597 stripped

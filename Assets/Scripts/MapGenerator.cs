@@ -45,6 +45,7 @@ public class MapGenerator : MonoBehaviour
    private void Start()
    {        
         CreateMap();
+        Swipe.GetComponent<SwipeTest>().PlaceCharacter();
    }
   
    private void Update() {

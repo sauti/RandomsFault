@@ -15,6 +15,12 @@ ModelImporter:
   - first:
       74: 1358262452650834379
     second: Move
+  - first:
+      74: -2106472897782759856
+    second: Idle (1)
+  - first:
+      74: -340894159081124372
+    second: Move (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -45,18 +51,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: _Default
-      takeName: _Default
+      name: Idle (1)
+      takeName: Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
