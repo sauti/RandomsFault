@@ -6,25 +6,26 @@ using UnityEngine.SceneManagement;
 namespace Default{
 public class ExitTileScript : MonoBehaviour
 {
-    public Transform exitTile;
-    GameObject character;
-    // public MapGenerator mapGen;
+    // public GameObject exitTile;
+    private GameObject character;
+    private MapGenerator mapGen;
     // Start is called before the first frame update
     void Start()
     {
         character = GameObject.Find("Character");
-        //mapGen = GameObject.Find("GameManager");
+        mapGen = GameObject.Find("GameManager").GetComponent<MapGenerator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if((exitTile.transform.position.x - character.transform.position.x) == 0){
-            if((exitTile.transform.position.z - character.transform.position.z) == 0)
+        if((gameObject.transform.position.x - character.transform.position.x) == 0){
+            if((gameObject.transform.position.z - character.transform.position.z) == 0)
         {
             Debug.Log("Exit!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            // mapGen.MapCreation();
+            Debug.Log(mapGen == null);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            mapGen.CreateNewLevel();
         }
     }
     }

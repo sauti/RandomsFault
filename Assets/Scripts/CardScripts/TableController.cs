@@ -8,7 +8,6 @@ namespace Default {
         public GameObject mainCamera;
         public GameObject cardGame;
         public GameObject Swipe;
-        public GameObject Ruin;
         public MapGenerator mapG;
 
         public void initCards(Vector2Int grid, int level)
@@ -119,11 +118,12 @@ namespace Default {
         //     _view.removeCard(card);
         // }
 
-        public void OnCardGameExit(){
-        Debug.Log("Exit Card Game");        
-        mainCamera.SetActive(true);
-        cardGame.gameObject.SetActive(false);
-        Swipe.gameObject.SetActive(true);
-    }
+        public void OnCardGameExit()
+        {
+            Debug.Log("Exit Card Game");        
+            mainCamera.SetActive(true);
+            cardGame.gameObject.SetActive(false);
+            Swipe.gameObject.SetActive(true);
+        }
     }
 }

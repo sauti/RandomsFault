@@ -96,5 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8814ba800e16a4d9c2c75a55a8c0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitTile: {fileID: 7163265788826898543}
-  mapGen: {fileID: 0}
+  exitTile: {fileID: 7503798406608587477}

@@ -13,8 +13,9 @@ public class SwipeTest : MonoBehaviour
 
     private bool isMoving;
        
-    private void Start(){       
-        characterDirection = mapGen.GetRandomEmptyTile();
+    private void Start()
+    {       
+        PlaceCharacter();
     }
     
     void Update()
@@ -65,6 +66,12 @@ public class SwipeTest : MonoBehaviour
         //     character.transform.position.y,
         //     Mathf.Clamp(character.position.z, 0f, 4f)
         // );        
+    }
+
+    public void PlaceCharacter()
+    {
+        characterDirection = mapGen.GetRandomEmptyTile();
+        Debug.Log("place char at " + characterDirection.x + " " + characterDirection.z);
     }
 
     private IEnumerator MoveCharacter()
