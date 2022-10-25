@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6108802890727645130}
   - component: {fileID: 8296233685580229376}
   - component: {fileID: 1281830599485540736}
-  - component: {fileID: 4070098733809169477}
   m_Layer: 0
   m_Name: ExitCell
   m_TagString: Untagged
@@ -98,15 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitTile: {fileID: 7163265788826898543}
---- !u!114 &4070098733809169477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503798406608587477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdea5dfaff2eddf43bc565a2a2d13db6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  mapGen: {fileID: 0}

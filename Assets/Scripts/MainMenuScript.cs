@@ -7,20 +7,7 @@ using UnityEngine.UI;
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject loadingScreen;
-    public Image img;
-    
-//     public void StartGame(){
-//         loadingScreen.gameObject.SetActive(true);
-//         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-//         //loadingScreen.SetActive(false);
-//         //StartSceen();
-//                 SceneManager.LoadSceneAsync (SceneManager.GetActiveScene().buildIndex +1);
-
-//     }
-
-//     public void StartSceen(){
-//         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene().buildIndex +1);
-//     }
+    public Image img;    
 
     public void LoadingPanel(){
 

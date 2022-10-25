@@ -9,7 +9,6 @@ public class ChestScript : MonoBehaviour
     private GameObject cardGame;
     private GameObject mainCamera;
     GameObject character;
-    GameObject mainCam;
 
         
    

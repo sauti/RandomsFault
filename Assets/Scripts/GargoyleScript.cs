@@ -25,7 +25,7 @@ public class GargoyleScript : MonoBehaviour
 
                 var cell = Instantiate(Gargoyle, position, Quaternion.identity, objectsParent);
 
-                Gargoyle.name = $"X: {x} Y: {y}";
+                //Gargoyle.name = $"X: {x} Y: {y}";
             }
         }
         
@@ -33,7 +33,7 @@ public class GargoyleScript : MonoBehaviour
             Gargoyle.position += new Vector3(-0.5f, 0, -0.5f);
         }
 
-        StartCoroutine(GargoylesRotate());
+        // StartCoroutine(GargoylesRotate());
     }
 
     // Update is called once per frame
@@ -44,14 +44,14 @@ public class GargoyleScript : MonoBehaviour
         }            
     }
 
-     private IEnumerator GargoylesRotate(){
-        WaitForSeconds Wait = new WaitForSeconds(1 / ticksPerSecond);
+    //  private IEnumerator GargoylesRotate(){
+    //     WaitForSeconds Wait = new WaitForSeconds(1 / ticksPerSecond);
 
-        while (true){
+    //     while (true){
             
-                Gargoyle.transform.Rotate(Vector3.up * gargoylesRotationAmount);
+    //             Gargoyle.transform.Rotate(Vector3.up * gargoylesRotationAmount);
             
-            yield return Wait;
-        }
-    }        
+    //         yield return Wait;
+    //     }
+    // }        
 }

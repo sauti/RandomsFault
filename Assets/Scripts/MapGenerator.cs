@@ -26,16 +26,12 @@ public class MapGenerator : MonoBehaviour
    public Quaternion currentAngle;
 
    private List<Vector3> occupiedPositions = new List<Vector3>();
-   public Vector3 position;
-  
-    // Chars Randomizer
-    //public GameObject Character;
-    //private Vector3 characterDirection;
-   
+   public Vector3 position;  
+    
     [SerializeField] private Transform objectsParent;
 
     //public Tile tile;
-    public RuinID ruinPrefab;
+    //public RuinID ruinPrefab;
 
     //private Vector2 cellSize;
     //[SerializeField] 
@@ -47,9 +43,7 @@ public class MapGenerator : MonoBehaviour
     public SwipeTest swipe;
 
     //public MainMenuScript mainMS;
-    //public var currRuin;
-
-    
+    //public var currRuin;    
 
    private void Start()
    {        
@@ -127,6 +121,7 @@ public class MapGenerator : MonoBehaviour
                 Instantiate(Pillar, position, rotation, wallParent);
             }
         }
+        // MapCreation();
 
         ChestsGen();
         
@@ -144,12 +139,86 @@ public class MapGenerator : MonoBehaviour
 
         if (mainCamera.activeInHierarchy == false){
             OnCardGameStart();        
-        } 
-
-        // if (ruinPrefab.objPos == swipe.characterDirection)
-        // Object.Destroy(ruinPrefab);                   
+        }                          
     }
 
+    // public void MapCreation(){
+    //     var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
+    //     int exitTileX = Random.Range(0, 5);
+    //     int exitTileY = Random.Range(0, 5);
+
+    //     // floor grid
+    //     for(int x  = 0; x < 5; x++)
+    //     {            
+    //         for(int y = 0; y < 5; y++)
+    //         {
+    //             var position = new Vector3(x, 0, y) ;
+    //             Vector3 offsetVector = new Vector3(offset, 0, offset);
+    //             GameObject floorCell;
+    //             if (x == exitTileX && y == exitTileY) {
+    //                 floorCell = Instantiate(ExitTile, position + offsetVector, Quaternion.identity, gridParent);
+    //                 occupiedPositions.Add(position);
+    //                 position = GetRandomEmptyTile();
+    //             } else {
+    //                 floorCell = Instantiate(gridPrefab, position + offsetVector, Quaternion.identity, gridParent);
+    //             }
+    //             floorCell.name = $"X: {x} Y: {y}";
+    //         }
+    //     }
+                
+    //     foreach (Transform gridPrefab in gridParent){
+    //         gridPrefab.position += new Vector3(0.5f, 0, 0.5f);
+    //     }        
+
+    //     // room walls
+    //     for (int i = 0; i < 3; i++)
+    //     {
+    //         for (int x  = 0; x < 5; x++)
+    //         {
+    //             int randomAngle = Random.Range(0, 2) * 180;
+    //             Vector3 position = new Vector3(x, 0, 4.9f);
+    //             Quaternion rotation = Quaternion.Euler(0, randomAngle, 0);
+    //             if (i > 0) {
+    //                 position = new Vector3(-0.9f, 0, x);
+    //                 rotation = Quaternion.Euler(0, randomAngle + 90, 0);
+    //             }
+    //             if (i == 1) {
+    //                 position = new Vector3(4.9f, 0, x);
+    //             }
+    //             Instantiate(Wall, position, rotation, wallParent);
+    //         }
+    //     }
+
+    //     // room edges
+    //     Instantiate(FloorEdge, new Vector3(2, 0, 4.65f), Quaternion.identity, wallParent);
+    //     Instantiate(FloorEdge, new Vector3(-0.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
+    //     Instantiate(FloorEdge, new Vector3(4.65f, 0, 2), Quaternion.Euler(0, -90 ,0), wallParent);
+
+    //     // corner pillars
+    //     var pillarOffset = 5.6f;
+    //     for(int x  = 0; x < 2; x++)
+    //     {            
+    //         var position = new Vector3(x * pillarOffset - 0.8f, 0, pillarOffset - 0.8f);
+    //         Instantiate(CornerPillar, position, Quaternion.identity, wallParent);
+    //     }
+
+    //     // edge pillars
+    //     for(int x  = 0; x < 2; x++)
+    //     {            
+    //         var position = new Vector3(x * 2f + 1f, 0, 4.65f);
+    //         Instantiate(Pillar, position, Quaternion.identity, wallParent);
+    //     }
+    //     for(int x  = 0; x < 2; x++)
+    //     {            
+    //         for(int y = 0; y < 2; y++)
+    //         {
+    //             var position = new Vector3(x * 5.3f - 0.65f, 0, y * 2f + 1f);
+    //             var rotation = Quaternion.Euler(0, Random.Range(0, 1) * 180 + 90, 0);
+    //             Instantiate(Pillar, position, rotation, wallParent);
+    //         }
+    //     }
+    // }
+    
    public void RuinsGen(){
         var ruinsAmount = Random.Range(1, 4);
         for(int i  = 0; i < ruinsAmount; i++)
@@ -157,7 +226,6 @@ public class MapGenerator : MonoBehaviour
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
             var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
-            //ruinPrefab.Init(pos);                                     
         }        
    }
 
@@ -192,8 +260,6 @@ public class MapGenerator : MonoBehaviour
         mainCamera.SetActive(false);
         cardGame.gameObject.SetActive(true);
         Swipe.gameObject.SetActive(false);
-    }
-
-    
+    }    
 }
 }

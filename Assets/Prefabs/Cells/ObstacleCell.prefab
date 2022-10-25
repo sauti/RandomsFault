@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2561525328826539345}
   - component: {fileID: -995635861525141505}
   - component: {fileID: 6711008763556237092}
-  - component: {fileID: -2535112967978043293}
   m_Layer: 0
   m_Name: ObstacleCell
   m_TagString: Untagged
@@ -116,17 +115,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ruins: {fileID: 2102555257077500469}
---- !u!114 &-2535112967978043293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102555257077500469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1358bd0abb92e8b49b617e50784467ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objPos: {x: 0, y: 0, z: 0}
-  swipe: {fileID: 0}
