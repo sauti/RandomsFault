@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Char : MonoBehaviour
 {  
-    
-private void Update() 
+    private Animator animator;
+
+    void Start()
+    {
+        animator = gameObject.GetComponentInChildren<Animator>();
+    }
+
+    private void Update() 
     {
         Ray ray = new Ray(transform.position, - transform.up);
          
@@ -18,5 +24,16 @@ private void Update()
                     Debug.Log("hit Exit");
             }     
         }
+    }
+
+    public void StartMoving()
+    {
+        Debug.Log("Start moving");
+        animator.SetBool("isMoving", true);
+    }
+
+    public void StopMoving()
+    {
+        animator.SetBool("isMoving", false);
     }
 }
