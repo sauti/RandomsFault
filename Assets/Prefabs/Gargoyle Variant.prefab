@@ -25,19 +25,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9068341
+      value: -0.63038194
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0043342137
+      value: -0.0016484351
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.42127573
+      value: 0.77616996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.012646815
+      value: -0.01326688
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -57,3 +57,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
+--- !u!1 &6922087779617737407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
+  m_PrefabInstance: {fileID: 7841149550365325294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7083555257964333525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922087779617737407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f85d26a8a846442863f512378339d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterMoves: {fileID: 0}
+  gridPrefab: {fileID: 0}
+  Gargoyle: {fileID: 0}
+  gargoylesRotationAmount: 2
+  ticksPerSecond: 60
+  gargoylesRotationSpeed: 1
+  gargoyleOffset: 0
+  objectsParent: {fileID: 0}
