@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a331e66511ea7344bf7f2fa71235b99, type: 3}
-  m_Name: Level1
+  m_Name: Lvl1_Ruins
   m_EditorClassIdentifier: 
-  minCards: 5
-  maxCards: 7
+  minCards: 7
+  maxCards: 8
   _cards:
   - _cardId: 0
     _health: 2

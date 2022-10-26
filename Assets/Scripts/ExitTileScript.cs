@@ -9,14 +9,16 @@ public class ExitTileScript : MonoBehaviour
     // public GameObject exitTile;
     private GameObject character;
     private MapGenerator mapGen;
-    // Start is called before the first frame update
+    private GameState gameState;
+
     void Start()
     {
         character = GameObject.Find("Character");
-        mapGen = GameObject.Find("GameManager").GetComponent<MapGenerator>();
+        var gm = GameObject.Find("GameManager");
+        mapGen = gm.GetComponent<MapGenerator>();
+        gameState = gm.GetComponent<GameState>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if((gameObject.transform.position.x - character.transform.position.x) == 0){
@@ -24,7 +26,7 @@ public class ExitTileScript : MonoBehaviour
         {
             Debug.Log("Exit!");
             Debug.Log(mapGen == null);
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameState.StartNextLevel();
             mapGen.CreateNewLevel();
         }
     }

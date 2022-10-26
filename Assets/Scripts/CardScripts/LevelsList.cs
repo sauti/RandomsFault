@@ -7,10 +7,17 @@ namespace Default
     public class LevelsList : ScriptableObject
     {
         [SerializeField] 
-        private List<LevelConfig> list;
+        private List<LevelConfig> ruinsList;
 
-        public LevelConfig GetConfigForLevel(int level) {
-            return list[level];
+        [SerializeField] 
+        private List<LevelConfig> chestsList;
+
+        public LevelConfig GetRuinsConfigForLevel(int level) {
+            return ruinsList[level];
+        }
+
+        public LevelConfig GetChestsConfigForLevel(int level) {
+            return chestsList[level];
         }
     }
 }

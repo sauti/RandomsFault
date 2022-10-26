@@ -9,7 +9,6 @@ namespace Default {
         public Vector2Int handSize = new Vector2Int(4, 2);
         public GameObject tableGo;
         public GameObject handGo;
-        public int level = 1;
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
@@ -20,7 +19,7 @@ namespace Default {
         {
             _tableCtrl = tableGo.GetComponent<TableController>();
             _handCtrl = handGo.GetComponent<HandController>();
-            _tableCtrl.initCards(gridSize, level);
+            _tableCtrl.initCards(gridSize);
             _handCtrl.initCards(handSize);
 
             state = BattleState.PlayerTurn;

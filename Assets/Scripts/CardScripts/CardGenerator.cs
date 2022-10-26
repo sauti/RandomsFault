@@ -17,7 +17,7 @@ namespace Default {
 
         public void Init(int level) {
             _level = level;
-            _levelConfig = levelsListConfig.GetConfigForLevel(level);
+            _levelConfig = levelsListConfig.GetRuinsConfigForLevel(level);
             _defaultThoughts = thoughtsConfig.getDefaultList();
         }
 

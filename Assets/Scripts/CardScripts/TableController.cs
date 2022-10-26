@@ -8,22 +8,24 @@ namespace Default {
         public GameObject mainCamera;
         public GameObject cardGame;
         public GameObject Swipe;
-        public MapGenerator mapG;
+        private MapGenerator mapG;
+        private GameState gameState;
 
         void OnEnable()
         {
-            // todo change levels
-            initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)), 0);
+            gameState = GameObject.Find("GameManager").GetComponent<GameState>();
+            initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)));
         }
 
-        public void initCards(Vector2Int grid, int level)
+        public void initCards(Vector2Int grid)
         {
-            _level = level;
+            // _level = gameState.getLevel(); // TODO
+            _level = 0;
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
             _view = gameObject.GetComponent<BoardView>();
 
-            _cg.Init(level);
+            _cg.Init(_level);
             var cards = _cg.GenerateCardsForLevel();
             foreach (CardData card in cards)
             {
@@ -92,6 +94,7 @@ namespace Default {
         // cards attack a player
         public IEnumerator AttackPlayerWithOpenCards() {
             List<CardData> enemyCards = _cards.FindAll(card => card.IsRotated && card.Card.CanBeKilled);
+            Debug.Log("Found enemy cards:" + enemyCards.Count);
             if (enemyCards.Count > 0) {
                 yield return new WaitForSeconds(0.5f);
                 foreach (CardData card in _cards) {
@@ -115,12 +118,6 @@ namespace Default {
                     return coord;
             }
         }
-
-        // private void RemoveCard(CardData card) {
-        //     _cards.Remove(card);
-        //     _cells[card.Coord.x, card.Coord.y] = false;
-        //     _view.removeCard(card);
-        // }
 
         public void OnCardGameExit()
         {

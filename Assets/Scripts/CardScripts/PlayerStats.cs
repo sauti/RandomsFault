@@ -11,6 +11,14 @@ namespace Default {
         public int Health;
         public int MaxHealth;
         public TMP_Text textObj;
+        
+        private GameUI UI;
+
+        void Awake()
+        {
+            UI = GameObject.Find("GameCanvas").GetComponent<GameUI>();
+            UI.SetHealth(Health);
+        }
 
         public void Heal(int points) {
             Debug.Log("Heal: " + points);
@@ -19,20 +27,20 @@ namespace Default {
             } else {
                 Health += points;
             }
-            textObj.text = Health.ToString();
+            UI.SetHealth(Health);
         }
         
         public void GetDamage(int points) {
             Debug.Log("Get damage: " + points);
             Health -= points;
+            UI.SetHealth(Health);
+
             if (Health <= 0) {
-                textObj.text = "You died :(";
                 Delay();
                 SceneManager.LoadScene("MainMenu");
-            } else {
-                textObj.text = Health.ToString();
             }
         }
+
         public IEnumerator Delay(){
             yield return new WaitForSeconds(1f);
         }

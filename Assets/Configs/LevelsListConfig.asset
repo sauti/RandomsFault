@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63af0b4226b78394d8010c3ba2803f6b, type: 3}
   m_Name: LevelsListConfig
   m_EditorClassIdentifier: 
-  list:
+  ruinsList:
   - {fileID: 11400000, guid: 54a7e4aac8cb18e44bb7d0b4ce79a325, type: 2}
   - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
+  chestsList:
+  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}

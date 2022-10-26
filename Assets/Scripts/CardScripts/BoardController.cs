@@ -18,7 +18,7 @@ namespace Default {
         void Start()
         {
             _view = gameObject.GetComponent<BoardView>();
-            _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+            _playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
             _closeupController = GameObject.Find("CloseupController").GetComponent<CardCloseupController>();
         }
 

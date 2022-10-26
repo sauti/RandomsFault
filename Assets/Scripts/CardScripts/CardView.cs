@@ -50,6 +50,7 @@ namespace Default {
         }
 
         public IEnumerator DealDamageToPlayer() {
+            Debug.Log("Card view attack player");
             yield return new WaitForSeconds(0.5f);
             yield return PlayAnimationAndWait("card_attack_player");
         }
