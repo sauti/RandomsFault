@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    private Entity? entity;
+    private Entity entity;
     [SerializeField]
     private int level = 0;
     private int maxLevel = 9;
@@ -27,12 +27,12 @@ public class GameState : MonoBehaviour
         return level;
     }
 
-    public void SetCurrentEntity(Entity? _entity)
+    public void SetCurrentEntity(Entity _entity)
     {
         entity = _entity;
     }
 
-    public Entity? getCurrentEntity() {
+    public Entity getCurrentEntity() {
         return entity;
     }
 

@@ -24,7 +24,7 @@ namespace Default {
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
 
-            _cg.Init(0);
+            // _cg.Init(0);
             CardData card = _cg.GenerateCardByType(CardId.Attack, new Vector2Int(0, 0), true);
             _cards.Add(card);
             _cells[0, 0] = true;

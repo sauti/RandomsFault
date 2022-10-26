@@ -15,9 +15,13 @@ namespace Default {
         private int _level;
         private List<Thought> _defaultThoughts;
 
-        public void Init(int level) {
+        public void Init(int level, Entity entity) {
             _level = level;
-            _levelConfig = levelsListConfig.GetRuinsConfigForLevel(level);
+            if (entity == Entity.Ruins) {
+                _levelConfig = levelsListConfig.GetRuinsConfigForLevel(level);
+            } else {
+                _levelConfig = levelsListConfig.GetChestsConfigForLevel(level);
+            }
             _defaultThoughts = thoughtsConfig.getDefaultList();
         }
 

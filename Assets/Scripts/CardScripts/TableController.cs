@@ -25,7 +25,7 @@ namespace Default {
             _cards = new List<CardData>();
             _view = gameObject.GetComponent<BoardView>();
 
-            _cg.Init(_level);
+            _cg.Init(_level, gameState.getCurrentEntity());
             var cards = _cg.GenerateCardsForLevel();
             foreach (CardData card in cards)
             {
