@@ -38,7 +38,7 @@ namespace Default {
             _view.GenerateBoard(grid, _cards);
         }
 
-        public void OnClickListener(RaycastHit hit) {
+        public void OnClick(RaycastHit hit) {
             for (var i = 0; i < _cards.Count; i++) {
                 if (_cards[i].Id != hit.transform.name)
                 continue;
@@ -93,7 +93,9 @@ namespace Default {
 
         // cards attack a player
         public IEnumerator AttackPlayerWithOpenCards() {
-            List<CardData> enemyCards = _cards.FindAll(card => card.IsRotated && card.Card.CanBeKilled);
+            List<CardData> enemyCards = _cards.FindAll(card =>
+                card.IsRotated && card.Card.CanBeKilled && card.Card.Damage > 0
+            );
             Debug.Log("Found enemy cards:" + enemyCards.Count);
             if (enemyCards.Count > 0) {
                 yield return new WaitForSeconds(0.5f);

@@ -27,8 +27,8 @@ namespace Default {
 
         protected override void OnClick(RaycastHit hit) {
             if (state == BattleState.PlayerTurn) {
-                _handCtrl.OnClickListener(hit);
-                _tableCtrl.OnClickListener(hit);
+                _handCtrl.OnClick(hit);
+                _tableCtrl.OnClick(hit);
             }
         }
 
@@ -36,7 +36,6 @@ namespace Default {
             if (state == BattleState.PlayerTurn) {
                 _handCtrl.OnLongClick(hit);
                 _tableCtrl.OnLongClick(hit);
-                state = BattleState.Inspect;
             }
         }
 
@@ -60,6 +59,10 @@ namespace Default {
 
         public void SetPlayerTurn() {
             state = BattleState.PlayerTurn;
+        }
+
+        public void SetInspectState() {
+            state = BattleState.Inspect;
         }
 
         public void FlipCard(CardData card) {
