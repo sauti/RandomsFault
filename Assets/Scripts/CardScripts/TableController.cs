@@ -58,8 +58,8 @@ namespace Default {
                     break;
                 }
             
-                if (_cards[i].Card.CardId == CardId.Exit) {
-                    Debug.Log("Click Exit");
+                if (_cards[i].Card.CardId == CardId.WayOut) {
+                    Debug.Log("Click WayOut");
                     OnCardGameExit();
                     break;
                 }

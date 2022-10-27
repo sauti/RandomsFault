@@ -17,7 +17,7 @@ namespace Default
             list = new Dictionary<CardId, List<Thought>>();
 
             list.Add(CardId.Protein, new ProteinThoughts().GetList());
-            list.Add(CardId.Attack, new AttackThoughts().GetList());
+            list.Add(CardId.Scratch, new ScratchThoughts().GetList());
         }
 
         public List<Thought> getListByCardId(CardId cardId) {
