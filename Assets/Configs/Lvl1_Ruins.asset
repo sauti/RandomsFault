@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a331e66511ea7344bf7f2fa71235b99, type: 3}
   m_Name: Lvl1_Ruins
   m_EditorClassIdentifier: 
-  minCards: 7
+  minCards: 5
   maxCards: 8
   _cards:
   - _cardId: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
     minChance: 0
     maxChance: 0
   - _cardId: 4
-    _health: 2
-    _damage: 2
+    _health: 0
+    _damage: 0
     _minAmount: 0
     _chance: 0
     minChance: 0

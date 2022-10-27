@@ -3,9 +3,11 @@ namespace Default
     public enum CardId
     {
         Protein,
-        Attack,
-        Trap,
+        Scratch,
+        StingingOrchid,
         Talpa,
-        Exit
+        WayOut,
+        Nest,
+        Larva
     }
 }
