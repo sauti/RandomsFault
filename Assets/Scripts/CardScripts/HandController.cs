@@ -7,7 +7,7 @@ namespace Default {
     {
         private CardData _selectedCard;
 
-        public void OnClickListener(RaycastHit hit)
+        public void OnClick(RaycastHit hit)
         {
             for (var i = 0; i < _cards.Count; i++) {
                 if (_cards[i].Id != hit.transform.name)

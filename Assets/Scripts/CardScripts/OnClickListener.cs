@@ -29,6 +29,7 @@ public class OnClickListener : MonoBehaviour
                 }  
 
                 clicking = false;
+                totalDownTime = 0;
                 OnLongClick(hit);
             }
         }
@@ -44,6 +45,7 @@ public class OnClickListener : MonoBehaviour
                 }  
 
                 clicking = false;
+                totalDownTime = 0;
                 OnClick(hit);
             }
         }

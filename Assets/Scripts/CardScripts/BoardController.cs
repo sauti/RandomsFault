@@ -9,11 +9,11 @@ namespace Default {
 
         protected BoardView _view;
         protected PlayerStats _playerStats;
+        private CardCloseupController _closeupController;
 
         protected List<CardData> _cards;
         protected bool[,] _cells;
         protected int _level;
-        private CardCloseupController _closeupController;
 
         void Start()
         {
@@ -28,6 +28,9 @@ namespace Default {
                 if (_cards[i].Id != hit.transform.name)
                 continue;
 
+                if (!_cards[i].IsRotated) {
+                    return;
+                }
                 _closeupController.Open(_cards[i]);
             }
         }

@@ -25,7 +25,6 @@ namespace Default {
 
             if (card.IsRotated) {
                 _animator.SetBool("isFlipped", true);
-                // _animator.Play("card_state_default");
                 isFlipped = true;
             }
 
@@ -35,7 +34,6 @@ namespace Default {
 
         void OnEnable()
         {
-            Debug.Log("Awake");
             if (isFlipped) {
                 _animator.SetBool("isFlipped", true);
             }
@@ -50,7 +48,6 @@ namespace Default {
         }
 
         public IEnumerator DealDamageToPlayer() {
-            Debug.Log("Card view attack player");
             yield return new WaitForSeconds(0.5f);
             yield return PlayAnimationAndWait("card_attack_player");
         }

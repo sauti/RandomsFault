@@ -26,6 +26,12 @@ namespace Default {
         private Vector3 defaultPos;
         private Quaternion defaultRotation;
 
+        private CardGameController _cardController;
+
+        void Start() {
+            _cardController = GameObject.Find("CardGameController").GetComponent<CardGameController>();
+        }
+
         public void Open(CardData cardData) {
             card = GameObject.Find(cardData.Id);
             view = card.GetComponent<CardView>();
@@ -35,6 +41,7 @@ namespace Default {
             gameCanvas.SetActive(false);
             canvas.SetActive(true);
 
+            _cardController.SetInspectState();
             SetLayer("Card");
             view.Inspect();
             thought.text = cardData.Card.Thought;
@@ -45,6 +52,7 @@ namespace Default {
             canvas.SetActive(false);
             gameCanvas.SetActive(true);
 
+            _cardController.SetPlayerTurn();
             SetLayer("Default");
             view.CloseInspect();
             view = null;
