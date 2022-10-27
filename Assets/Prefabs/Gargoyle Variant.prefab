@@ -83,6 +83,18 @@ MonoBehaviour:
   gargoyleOffset: 0
   objectsParent: {fileID: 0}
   lightEffect: {fileID: 0}
+--- !u!114 &2646214258652280852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922087779617737407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9208a89a90c3bc342a7aba42e0ac9be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7736025848792240133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}

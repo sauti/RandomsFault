@@ -25,4 +25,9 @@ public class MainMenuScript : MonoBehaviour
         loadingScreen.SetActive(true);
         return null;
     }
+
+    public void QuitGame(){
+        Application.Quit();
+        Debug.Log("QUIT");
+    }
 }
