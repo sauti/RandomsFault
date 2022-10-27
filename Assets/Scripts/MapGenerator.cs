@@ -20,6 +20,7 @@ public class MapGenerator : MonoBehaviour
    public GameObject CornerPillar;
    public GameObject Chest;
    public GameObject Ruins;
+   public GameObject lightEffect;
    public float floorFormingSpeed = 0.1f;
    Quaternion startAngle = Quaternion.Euler (0,0,0);
    Quaternion finishAngle = Quaternion.Euler (-90,0,0);
@@ -166,7 +167,9 @@ public class MapGenerator : MonoBehaviour
         {     
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
+            var lightRotation = Quaternion.Euler(-90, 0, 0);
             var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
+            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
         }        
    }
 
