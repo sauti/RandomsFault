@@ -12,6 +12,7 @@ public class GargoyleScript : MonoBehaviour
     public float gargoylesRotationSpeed = 1f;  
     [SerializeField] private float gargoyleOffset;
     [SerializeField] private Transform objectsParent;
+    [SerializeField] private Transform lightEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,9 @@ public class GargoyleScript : MonoBehaviour
                 var position = new Vector3(x * (gargoyleSize.x + gargoyleOffset), 0, y * (gargoyleSize.z + gargoyleOffset));
 
                 var cell = Instantiate(Gargoyle, position, Quaternion.identity, objectsParent);
+
+                 var lightRotation = Quaternion.Euler(-90, 0, 0);
+            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, objectsParent);
 
                 //Gargoyle.name = $"X: {x} Y: {y}";
             }

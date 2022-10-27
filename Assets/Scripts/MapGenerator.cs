@@ -180,6 +180,8 @@ public class MapGenerator : MonoBehaviour
             Vector3 position = GetRandomEmptyTile(); 
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
             Instantiate(Chest, position, rotation, wallParent);
+            var lightRotation = Quaternion.Euler(-90, 0, 0);
+            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
         }
    }
 

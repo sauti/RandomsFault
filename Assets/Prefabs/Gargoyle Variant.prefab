@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
       propertyPath: m_Name
-      value: 'X: 1 Y: 1'
+      value: Gargoyle Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
@@ -69,16 +69,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6922087779617737407}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88f85d26a8a846442863f512378339d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterMoves: {fileID: 0}
   gridPrefab: {fileID: 0}
-  Gargoyle: {fileID: 0}
+  Gargoyle: {fileID: 7736025848792240133}
   gargoylesRotationAmount: 2
   ticksPerSecond: 60
   gargoylesRotationSpeed: 1
   gargoyleOffset: 0
   objectsParent: {fileID: 0}
+  lightEffect: {fileID: 0}
+--- !u!4 &7736025848792240133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 513d1748b809e784599bbe7ed83c672b, type: 3}
+  m_PrefabInstance: {fileID: 7841149550365325294}
+  m_PrefabAsset: {fileID: 0}
