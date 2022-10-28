@@ -7,7 +7,7 @@ public class GameState : MonoBehaviour
     private Entity entity;
     [SerializeField]
     private int level = 0;
-    private int maxLevel = 9;
+    private int maxLevel = 4;
 
     private GameUI UI;
 
@@ -32,8 +32,14 @@ public class GameState : MonoBehaviour
         entity = _entity;
     }
 
-    public Entity getCurrentEntity() {
+    public Entity getCurrentEntity()
+    {
         return entity;
+    }
+
+    public bool isNextLevelValid()
+    {
+        return level + 1 <= maxLevel;
     }
 
     private void SetLevel(int lvl)

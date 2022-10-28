@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 namespace Default{
 public class ExitTileScript : MonoBehaviour
 {
-    // public GameObject exitTile;
     private GameObject character;
     private MapGenerator mapGen;
     private GameState gameState;
@@ -25,9 +24,12 @@ public class ExitTileScript : MonoBehaviour
             if((gameObject.transform.position.z - character.transform.position.z) == 0)
         {
             Debug.Log("Exit!");
-            Debug.Log(mapGen == null);
-            gameState.StartNextLevel();
-            mapGen.CreateNewLevel();
+            if (gameState.isNextLevelValid()) {
+                gameState.StartNextLevel();
+                mapGen.CreateNewLevel();
+            } else {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
     }
     }

@@ -19,8 +19,7 @@ namespace Default {
 
         public void initCards(Vector2Int grid)
         {
-            // _level = gameState.getLevel(); // TODO
-            _level = 0;
+            _level = gameState.getLevel();
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
             _view = gameObject.GetComponent<BoardView>();

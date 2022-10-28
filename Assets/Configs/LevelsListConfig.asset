@@ -15,5 +15,12 @@ MonoBehaviour:
   ruinsList:
   - {fileID: 11400000, guid: 54a7e4aac8cb18e44bb7d0b4ce79a325, type: 2}
   - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
+  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
+  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
+  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
   chestsList:
+  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
+  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
+  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
+  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
   - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
