@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject loadingScreen;
-    public bool revClick;
+    public bool revClick;    
 
     public void LoadingPanel(){
 

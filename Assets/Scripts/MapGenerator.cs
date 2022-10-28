@@ -41,15 +41,28 @@ public class MapGenerator : MonoBehaviour
     public GameObject Swipe;
 
     //public MainMenuScript mainMS;
-    //public var currRuin;    
+    //public var currRuin;  
+
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private Button gameMenuBtn; 
+    [SerializeField] private Animator roomMenuAnimator; 
 
    private void Start()
    {        
         CreateMap();
         Swipe.GetComponent<SwipeTest>().PlaceCharacter();
+
+        gameMenuBtn.onClick.AddListener(delegate{ToggleMenu(!menuPanel.active);});
    }
-  
-   private void Update() {
+
+    public void ToggleMenu(bool isShown){
+        roomMenuAnimator.gameObject.SetActive(isShown);
+        roomMenuAnimator.SetBool ("SetYou", isShown);
+        // menuPanel.SetActive(!menuPanel.activeSelf);
+    }
+      
+
+        private void Update() {
         foreach (Transform gridPrefab in gridParent){
             currentAngle = startAngle;
             ChangeCurrentFloorAngle();
@@ -208,4 +221,6 @@ public class MapGenerator : MonoBehaviour
         Swipe.gameObject.SetActive(false);
     }    
 }
+
+
 }
