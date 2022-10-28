@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject loadingScreen;
-    public Image img;    
+    public bool revClick;
 
     public void LoadingPanel(){
 
@@ -29,5 +30,9 @@ public class MainMenuScript : MonoBehaviour
     public void QuitGame(){
         Application.Quit();
         Debug.Log("QUIT");
-    }
+    }  
+
+    public void reversClick(){
+        revClick = !revClick;
+    } 
 }
