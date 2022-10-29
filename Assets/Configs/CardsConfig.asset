@@ -56,7 +56,7 @@ MonoBehaviour:
   - _cardId: 5
     _name: 
     _description: 
-    _canBeKilled: 0
+    _canBeKilled: 1
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0

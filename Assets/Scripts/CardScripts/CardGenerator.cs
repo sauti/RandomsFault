@@ -61,6 +61,8 @@ namespace Default {
                 CanHeal = template.CanHeal,
                 IsWeapon = template.IsWeapon,
                 IsTrap = template.IsTrap,
+                SpawnsAfterDeath = cardLevelData != null ? cardLevelData.SpawnsAfterDeath : new List<ChildCard>(),
+                SpawnsEachTurn = cardLevelData != null ? cardLevelData.SpawnsEachTurn : new List<ChildCard>(),
                 Thought = GetRandomThought(cardId),
             };
 

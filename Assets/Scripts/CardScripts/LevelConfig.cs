@@ -26,11 +26,19 @@ namespace Default
         [HideInInspector]
         public int maxChance;
 
+        [SerializeField] 
+        private List<ChildCard> _spawnsEachTurn;
+
+        [SerializeField] 
+        private List<ChildCard> _spawnsAfterDeath;
+
         public CardId CardId => _cardId;
         public int MinAmount => _minAmount;
         public int Chance => _chance;
         public int Health => _health;
         public int Damage => _damage;
+        public List<ChildCard> SpawnsEachTurn => _spawnsEachTurn;
+        public List<ChildCard> SpawnsAfterDeath => _spawnsAfterDeath;
     }
 
     [CreateAssetMenu(menuName = "Cards/LevelConfig")]
