@@ -64,3 +64,4 @@ crashlytics-build.properties
 
 # Ignore Blender backups
 *.blend1
+ProjectSettings/ProjectVersion.txt
