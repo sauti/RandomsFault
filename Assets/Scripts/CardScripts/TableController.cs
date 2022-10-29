@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Default {
     public class TableController : BoardController
@@ -85,16 +86,11 @@ namespace Default {
             card.Card.SetHealth(card.Card.Health - damage);
             if (card.Card.Health <= 0) {
                 CardData childCard = null;
-                if (card.Card.SpawnsAfterDeath.Count > 0) {
-                    CardId cardId = card.Card.SpawnsAfterDeath[0].CardId;
-                    if (cardId != CardId.None) {
-                        childCard = _cg.GenerateCardByType(cardId, card.Coord, true);
-                    }
-                }
+                childCard = _cg.GetChildCardByChance(card.Card.SpawnsAfterDeath, card.Coord);
 
                 RemoveCard(card);
 
-                if (childCard != null) {
+                if (childCard is CardData) {
                     _cards.Add(childCard);
                     _cells[childCard.Coord.x, childCard.Coord.y] = true;
                     _view.addCard(childCard);
@@ -106,15 +102,11 @@ namespace Default {
 
         public IEnumerator SpawnTurnCards()
         {
-            foreach (CardData c in _cards) {
-                Debug.Log(c.Card.CardId + " " + c.Card.SpawnsEachTurn.Count);
-            }
             List<CardData> parentCards = _cards.FindAll(card =>
                 card.IsRotated && card.Card.SpawnsEachTurn.Count > 0
             );
 
             if (parentCards.Count > 0) {
-                yield return new WaitForSeconds(1);
                 foreach (CardData c in parentCards) {
                     Vector2Int coord = FindRandomEmptyCoordOnTable();
                     if (coord.x == -1) {
@@ -122,15 +114,15 @@ namespace Default {
                         continue;
                     }
 
-                    CardId cardId = c.Card.SpawnsEachTurn[0].CardId;
-                    if (cardId == CardId.None) {
-                        continue;
+                    CardData childCard = null;
+                    childCard = _cg.GetChildCardByChance(c.Card.SpawnsEachTurn, coord);
+
+                    if (childCard is CardData) {
+                        yield return new WaitForSeconds(0.5f);
+                        _cards.Add(childCard);
+                        _cells[coord.x, coord.y] = true;
+                        _view.addCard(childCard);
                     }
-                    CardData card = _cg.GenerateCardByType(cardId, coord, true);
-                    _cards.Add(card);
-                    _cells[coord.x, coord.y] = true;
-                    _view.addCard(card);
-                    yield return new WaitForSeconds(0.5f);
                 }
             }
         }

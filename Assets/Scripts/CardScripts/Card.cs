@@ -53,8 +53,8 @@ namespace Default
         public bool CanHeal;
         public bool IsWeapon;
         public bool IsTrap;
-        public List<ChildCard> SpawnsAfterDeath = new List<ChildCard>();
-        public List<ChildCard> SpawnsEachTurn = new List<ChildCard>();
+        public List<CardChance> SpawnsAfterDeath;
+        public List<CardChance> SpawnsEachTurn;
 
         public bool CanPickUp => CanHeal || IsWeapon;
 
@@ -64,13 +64,4 @@ namespace Default
         }
     }
 
-    [Serializable]
-    public class ChildCard
-    {
-        [SerializeField]
-        public CardId CardId;
-
-        [SerializeField]
-        public int chance;
-    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Default {
@@ -28,12 +29,13 @@ namespace Default {
         public List<CardData> GenerateCardsForLevel() {
             int amount = _levelConfig.GetCardsAmount();
             List<CardPerLevelData> conf = _levelConfig.GetCardsConfig();
+            IEnumerable<CardChanceBase> chanceConf = conf;
             List<CardData> cards = new List<CardData>();
             Vector2Int coord = new Vector2Int(0, 0);
             
             List<CardId> types = GenerateRequiredCardTypes(conf, amount);
             if (types.Count < amount) {
-                types.AddRange(GetRandomTypesByChance(conf, amount - types.Count));
+                types.AddRange(GetRandomTypesByChance(chanceConf.ToList(), amount - types.Count));
             }
 
             string debugStr = ""; 
@@ -61,8 +63,8 @@ namespace Default {
                 CanHeal = template.CanHeal,
                 IsWeapon = template.IsWeapon,
                 IsTrap = template.IsTrap,
-                SpawnsAfterDeath = cardLevelData != null ? cardLevelData.SpawnsAfterDeath : new List<ChildCard>(),
-                SpawnsEachTurn = cardLevelData != null ? cardLevelData.SpawnsEachTurn : new List<ChildCard>(),
+                SpawnsAfterDeath = cardLevelData != null ? cardLevelData.SpawnsAfterDeath : new List<CardChance>(),
+                SpawnsEachTurn = cardLevelData != null ? cardLevelData.SpawnsEachTurn : new List<CardChance>(),
                 Thought = GetRandomThought(cardId),
             };
 
@@ -124,11 +126,26 @@ namespace Default {
             return types;
         }
 
-        private List<CardId> GetRandomTypesByChance(List<CardPerLevelData> list, int amount) {
+        public CardData GetChildCardByChance(List<CardChance> list, Vector2Int coord) {
+            CardData childCard = null;
+            IEnumerable<CardChanceBase> chanceConf = list;
+            List<CardChanceBase> baseList = list.ToList<CardChanceBase>();
+
+            if (baseList.Count > 0) {
+                List<CardId> cardIds = GetRandomTypesByChance(baseList, 1);
+                Debug.Log("Spawn card with id " + cardIds[0] + " " + (cardIds[0] == CardId.None));
+                if (cardIds[0] != CardId.None) {
+                    childCard = GenerateCardByType(cardIds[0], coord, true);
+                }
+            }
+            return childCard;
+        }
+
+        public List<CardId> GetRandomTypesByChance(List<CardChanceBase> list, int amount) {
             int chanceSum = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                CardPerLevelData current = list[i];
+                CardChanceBase current = list[i];
                 chanceSum += current.Chance;
                 if (i == 0) {
                     current.minChance = 0;
@@ -150,12 +167,12 @@ namespace Default {
             return cardIds;
         }
 
-        private CardId? GetRandomTypeByChance(List<CardPerLevelData> list, int chanceSum)
+        private CardId? GetRandomTypeByChance(List<CardChanceBase> list, int chanceSum)
         {
             int rand = UnityEngine.Random.Range(0, chanceSum);
             for (int i = 0; i < list.Count; i++)
             {
-                CardPerLevelData current = list[i];
+                CardChanceBase current = list[i];
                 if (rand >= current.minChance && rand < current.maxChance)
                 {
                     return current.CardId;
