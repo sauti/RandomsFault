@@ -59,3 +59,21 @@ MonoBehaviour:
     _damage: 0
     _spawnsEachTurn: []
     _spawnsAfterDeath: []
+  - _cardId: 0
+    _chance: 5
+    minChance: 15
+    maxChance: 20
+    _minAmount: 0
+    _health: 2
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 12
+    _chance: 0
+    minChance: 20
+    maxChance: 20
+    _minAmount: 0
+    _health: 0
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
