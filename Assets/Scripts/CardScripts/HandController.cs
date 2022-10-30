@@ -94,10 +94,17 @@ namespace Default {
 
         private Vector2Int FindEmptyCoordInHand()
         {
-            for (int j = 0; j < _cells.GetLength(1); j++)
+            int rows = _cells.GetLength(1);
+            int cols = _cells.GetLength(0);
+            for (int j = 0; j < rows; j++)
             {
-                for (int i = 0; i < _cells.GetLength(0); i++)
+                for (int i = 0; i < cols; i++)
                 {
+                    // ignore last cell in hand
+                    if (j == rows - 1 && i == cols -1) {
+                        return new Vector2Int(-1, -1);
+                    }
+
                     if (_cells[i, j] == false) {
                         return new Vector2Int(i, j);
                     }
