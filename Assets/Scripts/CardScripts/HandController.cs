@@ -24,7 +24,7 @@ namespace Default {
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
 
-            CardData card = _cg.GenerateCardByType(CardId.Scratch, new Vector2Int(0, 0), true);
+            CardData card = _cg.GenerateHandCard();
             _cards.Add(card);
             _cells[0, 0] = true;
             _view.GenerateBoard(grid, _cards);
@@ -57,6 +57,19 @@ namespace Default {
             _selectedCard = null;
         }
 
+        public void Attack()
+        {
+            if (_selectedCard == null) {
+                return;
+            }
+            if (_selectedCard.Card.Health > 1) {
+                _selectedCard.Card.Health -= 1;
+                _view.DealDamageToCard(_selectedCard);
+            } else {
+                RemoveSelectedCard();
+            }
+        }
+
         public void RemoveSelectedCard() {
             if (_selectedCard == null) {
                 return;
@@ -69,8 +82,6 @@ namespace Default {
             if (_selectedCard == null) {
                 return;
             }
-            
-            Debug.Log(_selectedCard.Card.CanHeal);
             if (_selectedCard.Card.CanHeal) {
                 UseHealCard();
             }
