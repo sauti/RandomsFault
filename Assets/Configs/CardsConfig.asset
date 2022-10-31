@@ -20,6 +20,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 1374627487599883140, guid: 38e4ef5fb4fd6964a9445418edd9c761, type: 3}
   - _cardId: 2
     _name: 
@@ -28,6 +29,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 1
+    _isGem: 0
     _prefab: {fileID: 9037399583315827012, guid: e01da490e36cfc544b1bc319bfdb0ad6, type: 3}
   - _cardId: 1
     _name: 
@@ -36,6 +38,7 @@ MonoBehaviour:
     _isWeapon: 1
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 3776292417895247429, guid: 4ec891e38060a8746997e3bfbd5c72d7, type: 3}
   - _cardId: 0
     _name: 
@@ -44,6 +47,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 1
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 3851372003019900628, guid: c28e24a20f2218240b5339d18f05ee07, type: 3}
   - _cardId: 4
     _name: 
@@ -52,6 +56,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: a5ea47aa8e18b574082ac1e06681248e, type: 3}
   - _cardId: 5
     _name: 
@@ -60,6 +65,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 2fb63ce5a93b093469212ac8ca3140df, type: 3}
   - _cardId: 8
     _name: 
@@ -68,6 +74,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 1
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 20f0f466df1e988459d39dd448aaa002, type: 3}
   - _cardId: 6
     _name: 
@@ -76,6 +83,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: b631c805dd1ef2b43a03b6ea9198b0fa, type: 3}
   - _cardId: 15
     _name: 
@@ -84,6 +92,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 52c30821e19c1eb4aae689f33ef626ca, type: 3}
   - _cardId: 18
     _name: 
@@ -92,6 +101,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: cab37b54690ea9841af7a919767bf162, type: 3}
   - _cardId: 19
     _name: 
@@ -100,6 +110,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 0bdc60d719715a94eb738b45f8112355, type: 3}
   - _cardId: 11
     _name: 
@@ -108,6 +119,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 1
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 6e59f1692c3a3e34d84b021ee95f86ca, type: 3}
   - _cardId: 12
     _name: 
@@ -116,6 +128,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 1
     _prefab: {fileID: 8234385486033655754, guid: 2fe23f9c6eb37a34181a9d821e5747fb, type: 3}
   - _cardId: 13
     _name: 
@@ -124,6 +137,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 1
     _prefab: {fileID: 8234385486033655754, guid: 445a9d5fc1548aa4aa94c0eb9b0c2316, type: 3}
   - _cardId: 14
     _name: 
@@ -132,6 +146,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 1
     _prefab: {fileID: 8234385486033655754, guid: 1a4f18807a36e1c49b299f0adef163f2, type: 3}
   - _cardId: 7
     _name: 
@@ -140,6 +155,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 1
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 5d0f4359990b0d3428cc2c52ab3defcf, type: 3}
   - _cardId: 9
     _name: 
@@ -148,6 +164,7 @@ MonoBehaviour:
     _isWeapon: 1
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: 0965e4fa6d0be024abfd1d5e25790d20, type: 3}
   - _cardId: 10
     _name: 
@@ -156,6 +173,7 @@ MonoBehaviour:
     _isWeapon: 1
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: b1e92ebb5b82e4642a3bc83ca0ec414e, type: 3}
   - _cardId: 16
     _name: 
@@ -164,6 +182,7 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: de4f943e30c876040ba31afb19163632, type: 3}
   - _cardId: 17
     _name: 
@@ -172,4 +191,5 @@ MonoBehaviour:
     _isWeapon: 0
     _canHeal: 0
     _isTrap: 0
+    _isGem: 0
     _prefab: {fileID: 8234385486033655754, guid: ffa42a760ad6c0e48bdfed0621ab4531, type: 3}
