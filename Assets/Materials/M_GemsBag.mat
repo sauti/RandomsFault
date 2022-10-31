@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HandBag Material
+  m_Name: M_GemsBag
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _METALLICGLOSSMAP
@@ -23,7 +23,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 9ad3d63dee4f2684c9d4ccc97f563ace, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71648ae066be91d41ac69811d6f760ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -43,11 +43,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 73c8eb33dfee5bf43b5eb5fd0b9c1ed2, type: 3}
+        m_Texture: {fileID: 2800000, guid: af0f4211829ed534bbe1281f04fcdd65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: efaa7a461c6636441954dc1b65e59903, type: 3}
+        m_Texture: {fileID: 2800000, guid: a48aee6d3faf61c4786517410de23443, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:

@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Default
 {
     [Serializable]
-    public class CardPerLevelData {
+    public class CardPerLevelData: CardChanceBase {
         [SerializeField] 
-        private CardId _cardId;
+        private int _minAmount;
 
         [SerializeField] 
         private int _health;
@@ -16,21 +16,16 @@ namespace Default
         private int _damage;
 
         [SerializeField] 
-        private int _minAmount;
+        private List<CardChance> _spawnsEachTurn;
 
         [SerializeField] 
-        private int _chance;
+        private List<CardChance> _spawnsAfterDeath;
 
-        [HideInInspector]
-        public int minChance;
-        [HideInInspector]
-        public int maxChance;
-
-        public CardId CardId => _cardId;
         public int MinAmount => _minAmount;
-        public int Chance => _chance;
         public int Health => _health;
         public int Damage => _damage;
+        public List<CardChance> SpawnsEachTurn => _spawnsEachTurn;
+        public List<CardChance> SpawnsAfterDeath => _spawnsAfterDeath;
     }
 
     [CreateAssetMenu(menuName = "Cards/LevelConfig")]

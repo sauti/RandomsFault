@@ -53,6 +53,8 @@ namespace Default
         public bool CanHeal;
         public bool IsWeapon;
         public bool IsTrap;
+        public List<CardChance> SpawnsAfterDeath;
+        public List<CardChance> SpawnsEachTurn;
 
         public bool CanPickUp => CanHeal || IsWeapon;
 
@@ -61,4 +63,5 @@ namespace Default
             Health = val;
         }
     }
+
 }

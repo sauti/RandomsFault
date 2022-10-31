@@ -79,6 +79,7 @@ namespace Default {
             _handCtrl.DeselectCard();
             Debug.Log("Enemy turn...");
             yield return _tableCtrl.AttackPlayerWithOpenCards();
+            yield return _tableCtrl.SpawnTurnCards();
             state = BattleState.PlayerTurn;
             Debug.Log("Your turn...");
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Default {
     public class TableController : BoardController
@@ -84,9 +85,45 @@ namespace Default {
             Debug.Log("Attack " + damage);
             card.Card.SetHealth(card.Card.Health - damage);
             if (card.Card.Health <= 0) {
+                CardData childCard = null;
+                childCard = _cg.GetChildCardByChance(card.Card.SpawnsAfterDeath, card.Coord);
+
                 RemoveCard(card);
+
+                if (childCard is CardData) {
+                    _cards.Add(childCard);
+                    _cells[childCard.Coord.x, childCard.Coord.y] = true;
+                    _view.addCard(childCard);
+                }
             } else {
                 _view.DealDamageToCard(card);
+            }
+        }
+
+        public IEnumerator SpawnTurnCards()
+        {
+            List<CardData> parentCards = _cards.FindAll(card =>
+                card.IsRotated && card.Card.SpawnsEachTurn.Count > 0
+            );
+
+            if (parentCards.Count > 0) {
+                foreach (CardData c in parentCards) {
+                    Vector2Int coord = FindRandomEmptyCoordOnTable();
+                    if (coord.x == -1) {
+                        Debug.Log("No free space for spawn.");
+                        continue;
+                    }
+
+                    CardData childCard = null;
+                    childCard = _cg.GetChildCardByChance(c.Card.SpawnsEachTurn, coord);
+
+                    if (childCard is CardData) {
+                        yield return new WaitForSeconds(0.5f);
+                        _cards.Add(childCard);
+                        _cells[coord.x, coord.y] = true;
+                        _view.addCard(childCard);
+                    }
+                }
             }
         }
 
@@ -95,11 +132,9 @@ namespace Default {
             List<CardData> enemyCards = _cards.FindAll(card =>
                 card.IsRotated && card.Card.CanBeKilled && card.Card.Damage > 0
             );
-            Debug.Log("Found enemy cards:" + enemyCards.Count);
             if (enemyCards.Count > 0) {
                 yield return new WaitForSeconds(0.5f);
-                foreach (CardData card in _cards) {
-                    if (!card.IsRotated || !card.Card.CanBeKilled) continue;
+                foreach (CardData card in enemyCards) {
                     _playerStats.GetDamage(card.Card.Damage);
                     yield return _view.DealDamageWithCard(card);
                 }
@@ -109,8 +144,11 @@ namespace Default {
 
         private Vector2Int FindRandomEmptyCoordOnTable()
         {
-            while (true)
+            int iterations = _cells.GetLength(0) * _cells.GetLength(1);
+            int i = 0;
+            while (i <= iterations)
             {
+                i++;
                 var coord = new Vector2Int(
                     Random.Range(0, _cells.GetLength(0)),
                     Random.Range(0, _cells.GetLength(1))
@@ -118,6 +156,8 @@ namespace Default {
                 if (_cells[coord.x, coord.y] == false)
                     return coord;
             }
+
+            return new Vector2Int(-1, -1);
         }
 
         public void OnCardGameExit()

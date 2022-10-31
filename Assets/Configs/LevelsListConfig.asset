@@ -15,12 +15,12 @@ MonoBehaviour:
   ruinsList:
   - {fileID: 11400000, guid: 54a7e4aac8cb18e44bb7d0b4ce79a325, type: 2}
   - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
-  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
-  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
-  - {fileID: 11400000, guid: 3672f837af2575945af263d4f47f2065, type: 2}
+  - {fileID: 11400000, guid: 1001da1d1666dd94786992e8e56704d4, type: 2}
+  - {fileID: 11400000, guid: bab760b9d2458c24389033856dada307, type: 2}
+  - {fileID: 11400000, guid: 7afbbd5792feafc4d9749efe2a88bc68, type: 2}
   chestsList:
   - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
-  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
-  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
-  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
-  - {fileID: 11400000, guid: 73c7ff986169a7a46a2388a9e89b691e, type: 2}
+  - {fileID: 11400000, guid: 3d16a4f49c7c975469e3dc57ce3ac3b9, type: 2}
+  - {fileID: 11400000, guid: e32c79d2248fbf845adbcedc04fc1e91, type: 2}
+  - {fileID: 11400000, guid: e1982361a562ed94fac87946f0597265, type: 2}
+  - {fileID: 11400000, guid: ca69d2a5e80083a48b50f8ef8bb1b7e6, type: 2}
