@@ -61,7 +61,7 @@ namespace Default
         public List<CardChance> SpawnsAfterDeath;
         public List<CardChance> SpawnsEachTurn;
 
-        public bool CanPickUp => CanHeal || IsWeapon;
+        public bool CanPickUp => CanHeal || IsWeapon || IsGem;
 
         public void SetHealth(int val)
         {
