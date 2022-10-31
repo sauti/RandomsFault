@@ -75,9 +75,14 @@ namespace Default {
             }
         }
 
-        public void PickUp(CardData card)
+        public IEnumerator PickUp(CardData card)
         {
-            RemoveCard(card);
+            if (card.Card.IsGem) {
+                yield return _view.PickUpGem(card);
+                RemoveCard(card);
+            } else {
+                RemoveCard(card);
+            }
         }
 
         // player attacks a card on the table

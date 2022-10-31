@@ -41,7 +41,7 @@ namespace Default {
 
         public void TryPickUp(CardData card) {
             if (_handCtrl.CanPickUp()) {
-                _tableCtrl.PickUp(card);
+                StartCoroutine(_tableCtrl.PickUp(card));
                 _handCtrl.PickUp(card);
                 TriggerEnemyTurn();
             }
@@ -53,7 +53,7 @@ namespace Default {
                 return;
             }
             _tableCtrl.Attack(card, selectedCard.Card.Damage);
-            _handCtrl.RemoveSelectedCard();
+            _handCtrl.Attack();
             TriggerEnemyTurn();
         }
 
