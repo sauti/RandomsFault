@@ -58,7 +58,6 @@ public class MapGenerator : MonoBehaviour
     public void ToggleMenu(bool isShown){
         roomMenuAnimator.gameObject.SetActive(isShown);
         roomMenuAnimator.SetBool ("SetYou", isShown);
-        // menuPanel.SetActive(!menuPanel.activeSelf);
     }
       
 
