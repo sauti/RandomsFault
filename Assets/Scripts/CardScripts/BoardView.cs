@@ -43,6 +43,11 @@ namespace Default {
             c.GetComponent<CardView>().Flip();
         }
 
+        public IEnumerator PickUpGem(CardData card) {
+            GameObject c = _findCard(card);
+            yield return c.GetComponent<CardView>().MoveGemToBag();
+        }
+
         public void removeCard(CardData card) {
             GameObject c = _findCard(card);
             Destroy(c);

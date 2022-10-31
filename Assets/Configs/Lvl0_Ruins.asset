@@ -16,44 +16,113 @@ MonoBehaviour:
   maxCards: 6
   _cards:
   - _cardId: 1
-    _health: 0
-    _damage: 1
-    _minAmount: 0
     _chance: 4
     minChance: 0
     maxChance: 4
+    _minAmount: 0
+    _health: 0
+    _damage: 1
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
   - _cardId: 2
-    _health: 0
-    _damage: 1
-    _minAmount: 0
-    _chance: 4
+    _chance: 3
     minChance: 4
-    maxChance: 8
+    maxChance: 7
+    _minAmount: 0
+    _health: 0
+    _damage: 1
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
   - _cardId: 3
+    _chance: 2
+    minChance: 7
+    maxChance: 9
+    _minAmount: 0
     _health: 1
     _damage: 1
-    _minAmount: 0
-    _chance: 4
-    minChance: 8
-    maxChance: 12
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
   - _cardId: 4
+    _chance: 0
+    minChance: 9
+    maxChance: 9
+    _minAmount: 1
     _health: 0
     _damage: 0
-    _minAmount: 1
-    _chance: 0
-    minChance: 12
-    maxChance: 12
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
   - _cardId: 5
+    _chance: 2
+    minChance: 9
+    maxChance: 11
+    _minAmount: 0
     _health: 1
     _damage: 0
-    _minAmount: 0
-    _chance: 1
-    minChance: 12
-    maxChance: 13
+    _spawnsEachTurn:
+    - _cardId: 6
+      _chance: 1
+      minChance: 0
+      maxChance: 1
+    _spawnsAfterDeath:
+    - _cardId: 8
+      _chance: 1
+      minChance: 0
+      maxChance: 1
   - _cardId: 6
+    _chance: 0
+    minChance: 11
+    maxChance: 11
+    _minAmount: 0
+    _health: 1
+    _damage: 1
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 17
+    _chance: 4
+    minChance: 11
+    maxChance: 15
+    _minAmount: 0
+    _health: 0
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 15
+    _chance: 5
+    minChance: 15
+    maxChance: 20
+    _minAmount: 0
     _health: 1
     _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath:
+    - _cardId: 11
+      _chance: 1
+      minChance: 0
+      maxChance: 1
+  - _cardId: 9
+    _chance: 5
+    minChance: 20
+    maxChance: 25
     _minAmount: 0
-    _chance: 1
-    minChance: 13
-    maxChance: 14
+    _health: 0
+    _damage: 1
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 8
+    _chance: 0
+    minChance: 25
+    maxChance: 25
+    _minAmount: 0
+    _health: 2
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 11
+    _chance: 0
+    minChance: 25
+    maxChance: 25
+    _minAmount: 0
+    _health: 2
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []

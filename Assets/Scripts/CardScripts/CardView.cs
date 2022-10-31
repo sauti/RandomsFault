@@ -39,6 +39,12 @@ namespace Default {
             }
         }
 
+        public IEnumerator MoveGemToBag()
+        {
+            // todo add animation of card moving to bag
+            yield return new WaitForSeconds(0.5f);
+        }
+
         public void Inspect() {
             _animator.Play("card_closeup");
         }

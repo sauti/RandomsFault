@@ -30,6 +30,9 @@ namespace Default
         private bool _isTrap;
 
         [SerializeField] 
+        private bool _isGem;
+
+        [SerializeField] 
         private GameObject _prefab;
 
         public CardId CardId => _cardId;
@@ -40,6 +43,7 @@ namespace Default
         public bool CanHeal => _canHeal;
         public bool IsWeapon => _isWeapon;
         public bool IsTrap => _isTrap;
+        public bool IsGem => _isGem;
     }
 
     public class Card
@@ -53,10 +57,11 @@ namespace Default
         public bool CanHeal;
         public bool IsWeapon;
         public bool IsTrap;
+        public bool IsGem;
         public List<CardChance> SpawnsAfterDeath;
         public List<CardChance> SpawnsEachTurn;
 
-        public bool CanPickUp => CanHeal || IsWeapon;
+        public bool CanPickUp => CanHeal || IsWeapon || IsGem;
 
         public void SetHealth(int val)
         {

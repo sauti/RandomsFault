@@ -11,6 +11,7 @@ namespace Default {
         public CardsConfig cardsConfig;
         public LevelsList levelsListConfig;
         public ThoughtsConfig thoughtsConfig;
+        public LevelConfig handConfig;
 
         private LevelConfig _levelConfig;
         private int _level;
@@ -49,9 +50,14 @@ namespace Default {
             return cards;
         }
 
-        public CardData GenerateCardByType(CardId cardId, Vector2Int coord, bool IsRotated = false) {
+        public CardData GenerateHandCard()
+        {
+            return GenerateCardByType(CardId.Scratch, new Vector2Int(0, 0), true, true);
+        }
+
+        public CardData GenerateCardByType(CardId cardId, Vector2Int coord, bool IsRotated = false, bool IsHand = false) {
             CardTemplate template = cardsConfig.GetByType(cardId);
-            CardPerLevelData cardLevelData = _levelConfig.GetCardConfig(cardId);
+            CardPerLevelData cardLevelData = IsHand ? handConfig.GetCardConfig(cardId) : _levelConfig.GetCardConfig(cardId);
 
             var card = new Card()
             {
@@ -63,6 +69,7 @@ namespace Default {
                 CanHeal = template.CanHeal,
                 IsWeapon = template.IsWeapon,
                 IsTrap = template.IsTrap,
+                IsGem = template.IsGem,
                 SpawnsAfterDeath = cardLevelData != null ? cardLevelData.SpawnsAfterDeath : new List<CardChance>(),
                 SpawnsEachTurn = cardLevelData != null ? cardLevelData.SpawnsEachTurn : new List<CardChance>(),
                 Thought = GetRandomThought(cardId),
