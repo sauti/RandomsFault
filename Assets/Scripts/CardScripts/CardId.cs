@@ -22,6 +22,7 @@ namespace Default
         PileOfBones,
         PileOfBones_2,
         Skull,
-        Skull_2
+        Skull_2,
+        Murena
     }
 }

@@ -15,38 +15,48 @@ MonoBehaviour:
   minCards: 5
   maxCards: 8
   _cards:
-  - _cardId: 0
-    _health: 2
+  - _cardId: 4
+    _chance: 0
+    minChance: 0
+    maxChance: 0
+    _minAmount: 1
+    _health: 0
     _damage: 0
-    _minAmount: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 1
     _chance: 1
     minChance: 0
     maxChance: 0
-  - _cardId: 1
+    _minAmount: 0
     _health: 0
     _damage: 1
-    _minAmount: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 0
     _chance: 1
     minChance: 0
     maxChance: 0
+    _minAmount: 0
+    _health: 2
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
   - _cardId: 2
+    _chance: 1
+    minChance: 0
+    maxChance: 0
+    _minAmount: 0
     _health: 0
     _damage: 2
-    _minAmount: 0
-    _chance: 1
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
+  - _cardId: 3
+    _chance: 0
     minChance: 0
     maxChance: 0
-  - _cardId: 3
+    _minAmount: 0
     _health: 2
     _damage: 2
-    _minAmount: 0
-    _chance: 0
-    minChance: 0
-    maxChance: 0
-  - _cardId: 4
-    _health: 0
-    _damage: 0
-    _minAmount: 0
-    _chance: 0
-    minChance: 0
-    maxChance: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
