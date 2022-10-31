@@ -35,8 +35,4 @@ public class MainMenuScript : MonoBehaviour
     public void reversClick(){
         revClick = !revClick;
     } 
-
-    public void OnMainMenuClick(){
-        SceneManager.LoadScene("MainMenu");
-    }
 }
