@@ -16,9 +16,10 @@ namespace Default {
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
             GameObject cardGo = gameObject.transform.Find("Card").gameObject;
+            GameObject itemParent = cardGo.transform.Find("Item").gameObject;
 
-            GameObject item = Instantiate(card.Card.Prefab, cardGo.transform, false);
-            item.transform.position = gameObject.transform.position;
+            GameObject item = Instantiate(card.Card.Prefab, itemParent.transform);
+            item.transform.position = itemParent.transform.position;
 
             _renderer = cardGo.GetComponent<Renderer>();
             _animator = GetComponent<Animator>();
@@ -55,7 +56,7 @@ namespace Default {
 
         public IEnumerator DealDamageToPlayer() {
             // yield return new WaitForSeconds(0.1f);
-            yield return PlayAnimationAndWait("card_attack_player", 0.4f);
+            yield return PlayAnimationAndWait("card_attack_player", 0.5f);
         }
 
         public void Flip() {
