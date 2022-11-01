@@ -43,7 +43,7 @@ namespace Default {
             if (_handCtrl.CanPickUp()) {
                 StartCoroutine(_tableCtrl.PickUp(card));
                 _handCtrl.PickUp(card);
-                TriggerEnemyTurn();
+                // TriggerEnemyTurn();
             }
         }
 
@@ -54,7 +54,7 @@ namespace Default {
             }
             _tableCtrl.Attack(card, selectedCard.Card.Damage);
             _handCtrl.Attack();
-            TriggerEnemyTurn();
+            // TriggerEnemyTurn();
         }
 
         public void SetPlayerTurn() {

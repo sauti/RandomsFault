@@ -123,7 +123,7 @@ namespace Default {
                     childCard = _cg.GetChildCardByChance(c.Card.SpawnsEachTurn, coord);
 
                     if (childCard is CardData) {
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.3f);
                         _cards.Add(childCard);
                         _cells[coord.x, coord.y] = true;
                         _view.addCard(childCard);

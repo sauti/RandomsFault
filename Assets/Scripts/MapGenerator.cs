@@ -181,7 +181,7 @@ public class MapGenerator : MonoBehaviour
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
             var lightRotation = Quaternion.Euler(-90, 0, 0);
             var currRuin = GameObject.Instantiate(Ruins, position, rotation, wallParent);
-            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
+            // var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
         }        
    }
 
@@ -193,7 +193,7 @@ public class MapGenerator : MonoBehaviour
             var rotation = Quaternion.Euler(0, Random.Range(0, 360) ,0);
             Instantiate(Chest, position, rotation, wallParent);
             var lightRotation = Quaternion.Euler(-90, 0, 0);
-            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
+            // var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, wallParent);
         }
    }
 

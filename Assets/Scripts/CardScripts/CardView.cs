@@ -54,12 +54,12 @@ namespace Default {
         }
 
         public IEnumerator DealDamageToPlayer() {
-            yield return new WaitForSeconds(0.5f);
-            yield return PlayAnimationAndWait("card_attack_player");
+            // yield return new WaitForSeconds(0.1f);
+            yield return PlayAnimationAndWait("card_attack_player", 0.4f);
         }
 
         public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip"));
+            StartCoroutine(PlayAnimationAndWait("card_flip", 0.6f));
         }
 
         public void PlayCloseupAnimation() {
@@ -98,10 +98,10 @@ namespace Default {
             }
         }
 
-        private IEnumerator PlayAnimationAndWait(string anim) {
+        private IEnumerator PlayAnimationAndWait(string anim, float length) {
             _animator.Play(anim);
-            float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSecondsRealtime(animationLength);
+            // float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSecondsRealtime(length);
         }
     }
 }
