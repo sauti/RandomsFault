@@ -27,7 +27,7 @@ public class GargoyleScript : MonoBehaviour
                 var cell = Instantiate(Gargoyle, position, Quaternion.identity, objectsParent);
 
                  var lightRotation = Quaternion.Euler(-90, 0, 0);
-            var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, objectsParent);
+            // var currLightEffect = GameObject.Instantiate(lightEffect, position, lightRotation, objectsParent);
 
                 //Gargoyle.name = $"X: {x} Y: {y}";
             }
