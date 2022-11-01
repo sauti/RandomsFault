@@ -51,7 +51,7 @@ MonoBehaviour:
     _damage: 0
     _spawnsEachTurn: []
     _spawnsAfterDeath:
-    - _cardId: 0
+    - _cardId: 11
       _chance: 1
       minChance: 0
       maxChance: 1
