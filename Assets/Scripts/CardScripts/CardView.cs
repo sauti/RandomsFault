@@ -59,7 +59,7 @@ namespace Default {
         }
 
         public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip", 0.6f));
+            StartCoroutine(PlayAnimationAndWait("card_flip", 0.7f));
         }
 
         public void PlayCloseupAnimation() {
