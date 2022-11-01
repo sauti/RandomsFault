@@ -64,3 +64,12 @@ MonoBehaviour:
     _damage: 0
     _spawnsEachTurn: []
     _spawnsAfterDeath: []
+  - _cardId: 7
+    _chance: 0
+    minChance: 6
+    maxChance: 6
+    _minAmount: 0
+    _health: 0
+    _damage: 0
+    _spawnsEachTurn: []
+    _spawnsAfterDeath: []
