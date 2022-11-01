@@ -138,7 +138,7 @@ namespace Default {
                 card.IsRotated && card.Card.CanBeKilled && card.Card.Damage > 0
             );
             if (enemyCards.Count > 0) {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.7f);
                 foreach (CardData card in enemyCards) {
                     _playerStats.GetDamage(card.Card.Damage);
                     yield return _view.DealDamageWithCard(card);
