@@ -54,7 +54,7 @@ namespace Default {
         }
 
         public IEnumerator DealDamageToPlayer() {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             yield return PlayAnimationAndWait("card_attack_player");
         }
 
