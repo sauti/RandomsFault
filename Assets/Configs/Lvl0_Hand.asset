@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a331e66511ea7344bf7f2fa71235b99, type: 3}
   m_Name: Lvl0_Hand
   m_EditorClassIdentifier: 
-  minCards: 2
-  maxCards: 3
+  minCards: 1
+  maxCards: 1
   _cards:
   - _cardId: 1
     _chance: 0
     minChance: 0
-    maxChance: 5
-    _minAmount: 0
+    maxChance: 0
+    _minAmount: 1
     _health: 3
     _damage: 1
     _spawnsEachTurn: []
