@@ -11,10 +11,12 @@ namespace Default {
         public GameObject Swipe;
         private MapGenerator mapG;
         private GameState gameState;
+        private GemsController gems;
 
         void OnEnable()
         {
             gameState = GameObject.Find("GameManager").GetComponent<GameState>();
+            gems = GameObject.Find("Gems").GetComponent<GemsController>();
             initCards(new Vector2Int(_cells.GetLength(0), _cells.GetLength(1)));
         }
 
@@ -79,6 +81,7 @@ namespace Default {
         {
             if (card.Card.IsGem) {
                 yield return _view.PickUpGem(card);
+                gems.PickUpGem(card.Card.CardId);
                 RemoveCard(card);
             } else {
                 RemoveCard(card);
@@ -171,6 +174,7 @@ namespace Default {
             mainCamera.SetActive(true);
             cardGame.gameObject.SetActive(false);
             Swipe.gameObject.SetActive(true);
+            gems.AddGemsToWeb();
         }
     }
 }

@@ -38,6 +38,9 @@ namespace Default {
 
         public void PickUp(CardData card)
         {
+            if (card.Card.IsGem) {
+                return;
+            }
             Vector2Int coord = FindEmptyCoordInHand();
             card.Coord = coord;
             Debug.Log("Pick up: " + card.Card.CardId);
