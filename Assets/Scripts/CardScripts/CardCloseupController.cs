@@ -7,8 +7,9 @@ using TMPro;
 namespace Default {
     public class CardCloseupController : MonoBehaviour
     {
-        public GameObject canvas;
+        public GameObject closeupView;
         public GameObject gameCanvas;
+        public GameObject gameLight;
         public GameObject cardPrefab;
         public GameObject cardParent;
         public TMP_Text thought;
@@ -39,7 +40,8 @@ namespace Default {
             defaultRotation = card.transform.rotation;
 
             gameCanvas.SetActive(false);
-            canvas.SetActive(true);
+            gameLight.SetActive(false);
+            closeupView.SetActive(true);
 
             _cardController.SetInspectState();
             SetLayer("Card");
@@ -49,8 +51,9 @@ namespace Default {
         }
 
         public void Close() {
-            canvas.SetActive(false);
+            closeupView.SetActive(false);
             gameCanvas.SetActive(true);
+            gameLight.SetActive(true);
 
             _cardController.SetPlayerTurn();
             SetLayer("Default");
