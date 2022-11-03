@@ -7,10 +7,10 @@ namespace Default {
     {
         public List<GameObject> gemsGo;
 
-        public GameObject web;
-        public GameObject bag;
-        public GameObject slotsParent;
-        public GameObject bagSlotsParent;
+        public GameObject goalGo;
+        public GameObject bagGo;
+        public GameObject goalSlotsGo;
+        public GameObject bagSlotsGo;
 
         private Dictionary<int, List<GameObject>> slots = new Dictionary<int, List<GameObject>>();
         private Dictionary<int, List<GameObject>> bagSlots = new Dictionary<int, List<GameObject>>();
@@ -18,86 +18,18 @@ namespace Default {
         private List<CardId> pickedUpGems = new List<CardId>();
         private List<int> goalGems = new List<int>();
 
-        private List<CardId> allGemIds = new List<CardId>
-        {
-            CardId.Gemstone_1,
-            CardId.Gemstone_2,
-            CardId.Gemstone_3,
-            CardId.Gemstone_4,
-            CardId.Gemstone_5,
-        };
+        public List<CardId> allGemIds = new List<CardId>();
 
         void Start()
         {
-            var i = 0;
-            foreach (Transform childSlots in slotsParent.transform)
-            {
-                List<GameObject> list = new List<GameObject>();
-                foreach (Transform slot in childSlots.transform)
-                {
-                    list.Add(slot.gameObject);
-                }
-                slots.Add(i, list);
-                i++;
-                int randomIndex = Random.Range(0, allGemIds.Count);
-                goalGems.Add(randomIndex);
-            }
+            saveSlots(goalSlotsGo, slots);
+            saveSlots(bagSlotsGo, bagSlots);
 
-            var j = 0;
-            foreach (Transform childSlots in bagSlotsParent.transform)
-            {
-                List<GameObject> list = new List<GameObject>();
-                foreach (Transform slot in childSlots.transform)
-                {
-                    list.Add(slot.gameObject);
-                }
-                bagSlots.Add(j, list);
-                j++;
-            }
+            pickUniqueColorsForSlots();
 
-            InstantiateGoalGems();
+            InstantiateGems(slots, true);
+            InstantiateGems(bagSlots, false);
         }
-
-        private void InstantiateGoalGems()
-        {
-            foreach(var item in slots)
-            {
-                int goalGemIndex = goalGems[item.Key];
-                foreach (var slot in item.Value)
-                {
-                    Instantiate(gemsGo[goalGemIndex], slot.transform);
-                }
-            }
-
-            foreach(var item in bagSlots)
-            {
-                int goalGemIndex = goalGems[item.Key];
-                foreach (var slot in item.Value)
-                {
-                    Instantiate(gemsGo[goalGemIndex], slot.transform);
-                    slot.SetActive(false);
-                }
-            }
-        }
-
-        // public void PickUpGem(CardId cardId)
-        // {
-        //     pickedUpGems.Add(cardId);
-        // }
-
-        // public void AddGemsToWeb()
-        // {
-        //     // Debug.Log("picked gems" + pickedUpGems.Count);
-        //     // if (pickedUpGems.Count == 0) {
-        //     //     return;
-        //     // }
-        //     // web.SetActive(!web.activeSelf);
-        //     // foreach (CardId gem in pickedUpGems)
-        //     // {
-        //     //     AddGem();
-        //     // }
-        //     // pickedUpGems.Clear();
-        // }
 
         public void PickUpGem(CardId cardId)
         {
@@ -122,13 +54,53 @@ namespace Default {
         }
 
         public void toggleWeb() {
-            bag.SetActive(false);
-            web.SetActive(!web.activeSelf);
+            bagGo.SetActive(false);
+            goalGo.SetActive(!goalGo.activeSelf);
         }
 
         public void toggleBag() {
-            web.SetActive(false);
-            bag.SetActive(!bag.activeSelf);
+            goalGo.SetActive(false);
+            bagGo.SetActive(!bagGo.activeSelf);
+        }
+
+        private void pickUniqueColorsForSlots()
+        {
+            foreach (var slot in slots)
+            {
+                int randomIndex = Random.Range(0, allGemIds.Count);
+                while (goalGems.IndexOf(randomIndex) > -1) {
+                    randomIndex = Random.Range(0, allGemIds.Count);
+                }
+                Debug.Log("Add random Index " + randomIndex);
+                goalGems.Add(randomIndex);
+            }
+        }
+
+        private void saveSlots(GameObject _slotsParent, Dictionary<int, List<GameObject>> _targetList)
+        {
+            int i = 0;
+            foreach (Transform childSlots in _slotsParent.transform)
+            {
+                List<GameObject> list = new List<GameObject>();
+                foreach (Transform slot in childSlots.transform)
+                {
+                    list.Add(slot.gameObject);
+                }
+                _targetList.Add(i, list);
+                i++;
+            }
+        }
+
+        private void InstantiateGems(Dictionary<int, List<GameObject>> _slots, bool active) {
+            foreach(var item in _slots)
+            {
+                int goalGemIndex = goalGems[item.Key];
+                foreach (var slot in item.Value)
+                {
+                    Instantiate(gemsGo[goalGemIndex], slot.transform);
+                    slot.SetActive(active);
+                }
+            }
         }
     }
 }
