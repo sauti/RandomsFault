@@ -35,18 +35,21 @@ namespace Default {
         {
             int gemIndex = allGemIds.FindIndex(x => x == cardId);
             int indexInGoal = goalGems.FindIndex(x => x == gemIndex);
-            if (gemIndex == -1) {
+
+            if (indexInGoal == -1) {
                 Debug.Log("Cant pick up this gem");
                 return;
             }
 
-            int i = 0;
-            var slots = bagSlots[i];
+            var slots = bagSlots[indexInGoal];
+            var i = 0;
             while (i < slots.Count) {
                 i++;
                 int randomIndex = Random.Range(0, slots.Count);
+                Debug.Log("try put into index " + randomIndex);
                 GameObject slot = slots[randomIndex];
                 if (!slot.activeSelf) {
+                    Debug.Log("Done put " + randomIndex);
                     slot.SetActive(true);
                     return;
                 }
@@ -97,7 +100,8 @@ namespace Default {
                 int goalGemIndex = goalGems[item.Key];
                 foreach (var slot in item.Value)
                 {
-                    Instantiate(gemsGo[goalGemIndex], slot.transform);
+                    var go = Instantiate(gemsGo[goalGemIndex], slot.transform);
+                    go.layer = LayerMask.NameToLayer("Web");
                     slot.SetActive(active);
                 }
             }
