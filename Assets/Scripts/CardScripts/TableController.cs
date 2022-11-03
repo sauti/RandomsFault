@@ -174,7 +174,6 @@ namespace Default {
             mainCamera.SetActive(true);
             cardGame.gameObject.SetActive(false);
             Swipe.gameObject.SetActive(true);
-            gems.AddGemsToWeb();
         }
     }
 }

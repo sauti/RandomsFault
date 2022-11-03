@@ -8,6 +8,7 @@ namespace Default {
         public List<GameObject> gemsGo;
 
         public GameObject web;
+        public GameObject bag;
         public GameObject slotsParent;
         public GameObject bagSlotsParent;
 
@@ -42,7 +43,7 @@ namespace Default {
                 goalGems.Add(randomIndex);
             }
 
-            var i = 0;
+            var j = 0;
             foreach (Transform childSlots in bagSlotsParent.transform)
             {
                 List<GameObject> list = new List<GameObject>();
@@ -50,8 +51,8 @@ namespace Default {
                 {
                     list.Add(slot.gameObject);
                 }
-                bagSlots.Add(i, list);
-                i++;
+                bagSlots.Add(j, list);
+                j++;
             }
 
             InstantiateGoalGems();
@@ -67,52 +68,67 @@ namespace Default {
                     Instantiate(gemsGo[goalGemIndex], slot.transform);
                 }
             }
-            // for (int i = 0; i < slots.Count; i++) 
-            // {
-            //     List<GameObject> list = slots[i];
-            //     foreach (GameObject slot in list)
-            //     {
-            //         int goalGemIndex = goalGems[i];
-            //         Instantiate(gemsGo[goalGemIndex], slot.transform);
-            //     }
-            // }
+
+            foreach(var item in bagSlots)
+            {
+                int goalGemIndex = goalGems[item.Key];
+                foreach (var slot in item.Value)
+                {
+                    Instantiate(gemsGo[goalGemIndex], slot.transform);
+                    slot.SetActive(false);
+                }
+            }
         }
+
+        // public void PickUpGem(CardId cardId)
+        // {
+        //     pickedUpGems.Add(cardId);
+        // }
+
+        // public void AddGemsToWeb()
+        // {
+        //     // Debug.Log("picked gems" + pickedUpGems.Count);
+        //     // if (pickedUpGems.Count == 0) {
+        //     //     return;
+        //     // }
+        //     // web.SetActive(!web.activeSelf);
+        //     // foreach (CardId gem in pickedUpGems)
+        //     // {
+        //     //     AddGem();
+        //     // }
+        //     // pickedUpGems.Clear();
+        // }
 
         public void PickUpGem(CardId cardId)
         {
-            pickedUpGems.Add(cardId);
-        }
+            int gemIndex = allGemIds.FindIndex(x => x == cardId);
+            int indexInGoal = goalGems.FindIndex(x => x == gemIndex);
+            if (gemIndex == -1) {
+                Debug.Log("Cant pick up this gem");
+                return;
+            }
 
-        public void AddGemsToWeb()
-        {
-            // Debug.Log("picked gems" + pickedUpGems.Count);
-            // if (pickedUpGems.Count == 0) {
-            //     return;
-            // }
-            // web.SetActive(!web.activeSelf);
-            // foreach (CardId gem in pickedUpGems)
-            // {
-            //     AddGem();
-            // }
-            // pickedUpGems.Clear();
-        }
-
-        public void AddGem()
-        {
-            // int i = 0;
-            // while (i < slotsB.Count) {
-            //     i++;
-            //     int randomIndex = Random.Range(0, slotsB.Count);
-            //     GameObject slot = slotsB[randomIndex];
-            //     if (!slot.activeSelf) {
-            //         slot.SetActive(true);
-            //         return;
-            //     }
-            // }
+            int i = 0;
+            var slots = bagSlots[i];
+            while (i < slots.Count) {
+                i++;
+                int randomIndex = Random.Range(0, slots.Count);
+                GameObject slot = slots[randomIndex];
+                if (!slot.activeSelf) {
+                    slot.SetActive(true);
+                    return;
+                }
+            }
         }
 
         public void toggleWeb() {
+            bag.SetActive(false);
             web.SetActive(!web.activeSelf);
+        }
+
+        public void toggleBag() {
+            web.SetActive(false);
+            bag.SetActive(!bag.activeSelf);
         }
     }
 }
