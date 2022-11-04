@@ -59,6 +59,26 @@ MonoBehaviour:
       _chance: 3
       minChance: 1
       maxChance: 4
+    - _cardId: 12
+      _chance: 50
+      minChance: 4
+      maxChance: 54
+    - _cardId: 13
+      _chance: 50
+      minChance: 54
+      maxChance: 104
+    - _cardId: 14
+      _chance: 50
+      minChance: 104
+      maxChance: 154
+    - _cardId: 21
+      _chance: 50
+      minChance: 154
+      maxChance: 204
+    - _cardId: 22
+      _chance: 50
+      minChance: 204
+      maxChance: 254
   - _cardId: 16
     _chance: 10
     minChance: 30

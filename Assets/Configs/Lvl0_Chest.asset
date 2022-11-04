@@ -50,6 +50,22 @@ MonoBehaviour:
       _chance: 1
       minChance: 1
       maxChance: 2
+    - _cardId: 13
+      _chance: 1
+      minChance: 2
+      maxChance: 3
+    - _cardId: 14
+      _chance: 1
+      minChance: 3
+      maxChance: 4
+    - _cardId: 21
+      _chance: 1
+      minChance: 4
+      maxChance: 5
+    - _cardId: 22
+      _chance: 1
+      minChance: 5
+      maxChance: 6
   - _cardId: 16
     _chance: 4
     minChance: 9

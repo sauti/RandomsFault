@@ -186,7 +186,7 @@ public class MapGenerator : MonoBehaviour
    }
 
    public void ChestsGen(){
-    int chestsAmount = Random.Range(1, 4);
+    int chestsAmount = Random.Range(3, 5);
         for(int i  = 0; i < chestsAmount; i++)
         {     
             Vector3 position = GetRandomEmptyTile(); 
