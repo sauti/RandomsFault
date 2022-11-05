@@ -43,23 +43,11 @@ public class MapGenerator : MonoBehaviour
     //public MainMenuScript mainMS;
     //public var currRuin;  
 
-    [SerializeField] private GameObject menuPanel;
-    [SerializeField] private Button gameMenuBtn; 
-    [SerializeField] private Animator roomMenuAnimator; 
-
    private void Start()
    {        
         CreateMap();
         Swipe.GetComponent<SwipeTest>().PlaceCharacter();
-
-        gameMenuBtn.onClick.AddListener(delegate{ToggleMenu(!menuPanel.active);});
    }
-
-    public void ToggleMenu(bool isShown){
-        roomMenuAnimator.gameObject.SetActive(isShown);
-        roomMenuAnimator.SetBool ("SetYou", isShown);
-    }
-      
 
         private void Update() {
         foreach (Transform gridPrefab in gridParent){

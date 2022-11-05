@@ -7,15 +7,23 @@ using TMPro;
 public class GameUI : MonoBehaviour
 {
     public TMP_Text levelLabel;
-    public TMP_Text healthLabel;
+    public GameObject[] hearts;
 
     public void SetLevel(int level)
     {
-        levelLabel.text = level.ToString();
+        levelLabel.text = (level + 1).ToString();
     }
     
     public void SetHealth(int health)
     {
-        healthLabel.text = health.ToString();
+        Debug.Log(health);
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health) {
+                hearts[i].SetActive(true);
+            } else {
+                hearts[i].SetActive(false);
+            }
+        }
     }
 }
