@@ -16094,7 +16094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeupView: {fileID: 198605101}
-  gameCanvas: {fileID: 25485669}
+  gameCanvas: {fileID: 352050746}
   gameLight: {fileID: 371751024}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   cardParent: {fileID: 207845286}
@@ -16154,7 +16154,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -30, y: -30}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2048742003
 MonoBehaviour:
