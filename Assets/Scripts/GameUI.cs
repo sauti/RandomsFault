@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameUI : MonoBehaviour
+namespace Default
+{
+    public class GameUI : MonoBehaviour
 {
     public TMP_Text levelLabel;
     public GameObject[] hearts;
+    public GameObject avatarHighlight;
 
     public void SetLevel(int level)
     {
@@ -26,4 +29,15 @@ public class GameUI : MonoBehaviour
             }
         }
     }
+
+    public void SelectCard(CardData card)
+    {
+        avatarHighlight.SetActive(card.Card.CanHeal);
+    }
+
+    public void DeselectCard()
+    {
+        avatarHighlight.SetActive(false);
+    }
+}
 }

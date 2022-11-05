@@ -14,6 +14,13 @@ namespace Default {
         private List<GameObject> _cards = new List<GameObject>();
         private GameObject[,] _cells;
 
+        private GameUI UI;
+
+        void Start()
+        {
+            UI = GameObject.Find("GameCanvas").GetComponent<GameUI>();
+        }
+
         private void ClearBoard()
         {
             if (_cells != null) {
@@ -64,14 +71,19 @@ namespace Default {
         public void selectCard(CardData card) {
             foreach (var go in _cards) {
                 if (go.name == card.Id) {
+                    Debug.Log("Do select");
+                    UI.SelectCard(card);
                     go.GetComponent<CardView>().SelectCard();
                 } else {
+                    Debug.Log("UNDO elect");
+                    UI.DeselectCard();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
         }
 
         public void resetSelection() {
+            UI.DeselectCard();
             foreach (var go in _cards) {
                 go.GetComponent<CardView>().DeselectCard();
             }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Default {
 public class ChestScript : MonoBehaviour
 {
      public GameObject chest;
@@ -33,4 +34,5 @@ public class ChestScript : MonoBehaviour
             }
         }         
     }     
+}
 }

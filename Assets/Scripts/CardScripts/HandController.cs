@@ -85,15 +85,13 @@ namespace Default {
             if (_selectedCard == null) {
                 return;
             }
-            if (_selectedCard.Card.CanHeal) {
-                UseHealCard();
-            }
         }
 
-        private void UseHealCard() {
-            Debug.Log("Heal: " + _selectedCard.Card.Health);
-            _playerStats.Heal(_selectedCard.Card.Health);
-            RemoveSelectedCard();
+        public void UseHealCard() {
+            if (_selectedCard != null && _selectedCard.Card.CanHeal) {
+                _playerStats.Heal(_selectedCard.Card.Health);
+                RemoveSelectedCard();
+            }
         }
 
         private void SelectCard(CardData card)

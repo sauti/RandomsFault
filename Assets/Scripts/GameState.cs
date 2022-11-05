@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Default {
 public class GameState : MonoBehaviour
 {
     private Entity entity;
@@ -52,4 +53,5 @@ public class GameState : MonoBehaviour
 public enum Entity {
     Chest,
     Ruins
+}
 }

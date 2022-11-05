@@ -28,6 +28,7 @@ namespace Default {
                 Health += points;
             }
             UI.SetHealth(Health);
+            UI.DeselectCard();
         }
         
         public void GetDamage(int points) {

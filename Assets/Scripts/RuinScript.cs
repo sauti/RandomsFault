@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace Default {
 public class RuinScript : MonoBehaviour
 {
     public GameObject Ruins;
@@ -36,4 +37,4 @@ public class RuinScript : MonoBehaviour
         }         
     }     
 }
-
+}
