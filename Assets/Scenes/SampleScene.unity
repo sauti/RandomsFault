@@ -1672,6 +1672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d781af932c9d21b4fab18923d62050b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickDuration: 1
 --- !u!4 &244118683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2621965686155545183, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
@@ -1691,6 +1692,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 5
   MaxHealth: 5
+--- !u!65 &244118685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244118680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.34, z: 0}
 --- !u!1 &249053528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8754,7 +8768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &780684159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8955,7 +8969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUI: {fileID: 352050746}
   cardUI: {fileID: 1778960866}
-  gemsUI: {fileID: 780684158}
+  gemsGoal: {fileID: 45424179}
+  gemsBag: {fileID: 887888526}
   levelLabel: {fileID: 295838075}
   hearts:
   - {fileID: 144588559}

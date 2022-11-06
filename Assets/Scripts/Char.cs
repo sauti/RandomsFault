@@ -4,28 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Char : MonoBehaviour
+namespace Default
+{
+public class Char : OnClickListener
 {  
     private Animator animator;
+    private GameUI UI;
 
     void Start()
     {
+        UI = GameObject.Find("UI").GetComponent<GameUI>();
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
-    private void Update() 
+    protected override void OnClick(RaycastHit hit)
     {
-        // Ray ray = new Ray(transform.position, - transform.up);
-         
-        // RaycastHit hit; 
-
-        // if (Physics.Raycast(ray, out hit)){
-        //     if (hit.collider.gameObject.GetComponent<ExitTileScript>()){
-        //             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //             mapGen.MapCreation();
-        //             Debug.Log("hit Exit");
-        //     }     
-        // }
+        if (hit.transform.name == "Character") {
+            UI.ToggleGemsGoal();
+        }
     }
 
     public void StartMoving()
@@ -37,5 +33,6 @@ public class Char : MonoBehaviour
     {
         animator.SetBool("isMoving", false);
     }
+}
 }
 

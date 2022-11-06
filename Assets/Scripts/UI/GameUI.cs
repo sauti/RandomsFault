@@ -10,7 +10,8 @@ namespace Default
 {
     public GameObject gameUI;
     public GameObject cardUI;
-    public GameObject gemsUI;
+    public GameObject gemsGoal;
+    public GameObject gemsBag;
 
     public TMP_Text levelLabel;
     public GameObject[] hearts;
@@ -18,23 +19,30 @@ namespace Default
 
     public void EnterCardGame()
     {
-        gemsUI.SetActive(false);
+        gemsGoal.SetActive(false);
         gameUI.SetActive(true);
-        // cardUI.SetActive(false);
     }
 
     public void EnterRoom()
     {
-        gemsUI.SetActive(true);
+        gemsBag.SetActive(false);
         gameUI.SetActive(true);
-        // cardUI.SetActive(false);
     }
 
     public void EnterCardInspect()
     {
-        gemsUI.SetActive(false);
+        gemsBag.SetActive(false);
         gameUI.SetActive(false);
-        // cardUI.SetActive(false);
+    }
+
+    public void ToggleGemsGoal()
+    {
+        gemsGoal.SetActive(!gemsGoal.activeSelf);
+    }
+
+    public void ToggleGemsBag()
+    {
+        gemsBag.SetActive(!gemsBag.activeSelf);
     }
 
     public void SetLevel(int level)
