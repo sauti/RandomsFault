@@ -54,11 +54,7 @@ public class MapGenerator : MonoBehaviour
             currentAngle = startAngle;
             ChangeCurrentFloorAngle();
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
-        } 
-
-        if (mainCamera.activeInHierarchy == false){
-            OnCardGameStart();        
-        }                          
+        }                       
     }
 
     public void CreateNewLevel()
@@ -200,13 +196,7 @@ public class MapGenerator : MonoBehaviour
     if(currentAngle.eulerAngles.x == startAngle.eulerAngles.x){
                 currentAngle = finishAngle;
             }
-   }   
-
-    public void OnCardGameStart(){
-        mainCamera.SetActive(false);
-        cardGame.gameObject.SetActive(true);
-        Swipe.gameObject.SetActive(false);
-    }    
+   }
 }
 
 

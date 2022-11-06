@@ -10,13 +10,12 @@ namespace Default {
     {
         public int Health;
         public int MaxHealth;
-        public TMP_Text textObj;
         
         private GameUI UI;
 
         void Awake()
         {
-            UI = GameObject.Find("GameCanvas").GetComponent<GameUI>();
+            UI = GameObject.Find("UI").GetComponent<GameUI>();
             UI.SetHealth(Health);
         }
 

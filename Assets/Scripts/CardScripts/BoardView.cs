@@ -18,7 +18,7 @@ namespace Default {
 
         void Start()
         {
-            UI = GameObject.Find("GameCanvas").GetComponent<GameUI>();
+            UI = GameObject.Find("UI").GetComponent<GameUI>();
         }
 
         private void ClearBoard()

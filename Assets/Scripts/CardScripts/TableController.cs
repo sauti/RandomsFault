@@ -6,9 +6,6 @@ using System.Linq;
 namespace Default {
     public class TableController : BoardController
     {
-        public GameObject mainCamera;
-        public GameObject cardGame;
-        public GameObject Swipe;
         private MapGenerator mapG;
         private GameState gameState;
         private GemsController gems;
@@ -170,10 +167,7 @@ namespace Default {
 
         public void OnCardGameExit()
         {
-            Debug.Log("Exit Card Game");        
-            mainCamera.SetActive(true);
-            cardGame.gameObject.SetActive(false);
-            Swipe.gameObject.SetActive(true);
+            gameState.OnCardGameExit();
         }
     }
 }

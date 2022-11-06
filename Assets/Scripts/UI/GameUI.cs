@@ -8,9 +8,34 @@ namespace Default
 {
     public class GameUI : MonoBehaviour
 {
+    public GameObject gameUI;
+    public GameObject cardUI;
+    public GameObject gemsUI;
+
     public TMP_Text levelLabel;
     public GameObject[] hearts;
     public GameObject avatarHighlight;
+
+    public void EnterCardGame()
+    {
+        gemsUI.SetActive(false);
+        // gameUI.SetActive(true);
+        // cardUI.SetActive(false);
+    }
+
+    public void EnterRoom()
+    {
+        // gemsUI.SetActive(true);
+        // gameUI.SetActive(true);
+        // cardUI.SetActive(false);
+    }
+
+    public void EnterCardInspect()
+    {
+        // gemsUI.SetActive(false);
+        // gameUI.SetActive(false);
+        // cardUI.SetActive(false);
+    }
 
     public void SetLevel(int level)
     {
