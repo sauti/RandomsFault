@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameUIScript : MonoBehaviour
+public class MenuPanel : MonoBehaviour
 {
     public void OnMMclick(){
         SceneManager.LoadScene("MainMenu");
