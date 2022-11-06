@@ -74,6 +74,7 @@ public class SwipeTest : MonoBehaviour
 
     private IEnumerator MoveCharacter()
     {
+        Debug.Log("Start moveing");
         isMoving = true;
         character.StartMoving();
         character.transform.LookAt(characterDirection); 
@@ -84,6 +85,7 @@ public class SwipeTest : MonoBehaviour
             yield return null;
         }
 
+        Debug.Log("stop moving");
         character.transform.position = characterDirection;
         character.StopMoving();
         isMoving = false;

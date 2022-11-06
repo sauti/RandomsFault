@@ -8,11 +8,11 @@ public class ChestScript : MonoBehaviour
      public GameObject chest;
     private GameState gameState;
     GameObject character;
-
-        
+    GameObject mainCamera;
    
     void Start()
     {
+        mainCamera = GameObject.Find("MainCamera");
         character = GameObject.Find("Character");
         gameState = GameObject.Find("GameManager").GetComponent<GameState>();
     }
@@ -23,8 +23,9 @@ public class ChestScript : MonoBehaviour
             if((chest.transform.position.x - character.transform.position.x) == 0){
                  if((chest.transform.position.z - character.transform.position.z) == 0){
                 Debug.Log("Tobi Pizda!");
-                gameState.OnCardGameStart(Entity.Chest);
-                Destroy(chest);                             
+                mainCamera.SetActive(false);
+                Destroy(chest);
+                gameState.SetCurrentEntity(Entity.Chest);                             
             }
         }         
     }     

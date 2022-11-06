@@ -37,8 +37,8 @@ public class MapGenerator : MonoBehaviour
     //private List<EntityView> _entities;
 
     public GameObject mainCamera;
-    public GameObject cardGame;
     public GameObject Swipe;
+    public GameState gameState;
 
     //public MainMenuScript mainMS;
     //public var currRuin;  
@@ -54,6 +54,10 @@ public class MapGenerator : MonoBehaviour
             currentAngle = startAngle;
             ChangeCurrentFloorAngle();
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
+        }
+
+        if (mainCamera.activeInHierarchy == false){
+            gameState.OnCardGameStart();        
         }                       
     }
 

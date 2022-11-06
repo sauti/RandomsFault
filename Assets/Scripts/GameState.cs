@@ -32,6 +32,11 @@ public class GameState : MonoBehaviour
         return level;
     }
 
+    public void SetCurrentEntity(Entity _entity)
+    {
+        entity = _entity;
+    }
+
     public Entity getCurrentEntity()
     {
         return entity;
@@ -57,11 +62,10 @@ public class GameState : MonoBehaviour
         UI.EnterRoom();
     }
 
-    public void OnCardGameStart(Entity _entity)
+    public void OnCardGameStart()
     {
-        entity = _entity;
-        cardGame.SetActive(true);
         swipe.gameObject.SetActive(false);
+        cardGame.SetActive(true);
         mainCamera.SetActive(false);
         UI.EnterCardGame();
     }

@@ -11,9 +11,11 @@ public class RuinScript : MonoBehaviour
     private GameObject cardGame;
     private GameState gameState;
     GameObject character;
+    GameObject mainCamera;
    
     void Start()
     {
+        mainCamera = GameObject.Find("MainCamera");
         character = GameObject.Find("Character");
         gameState = GameObject.Find("GameManager").GetComponent<GameState>();
     }
@@ -23,7 +25,8 @@ public class RuinScript : MonoBehaviour
             if((Ruins.transform.position.x - character.transform.position.x) == 0){
                  if((Ruins.transform.position.z - character.transform.position.z) == 0){
                 Debug.Log("Tobi Pizda!");
-                gameState.OnCardGameStart(Entity.Ruins);
+                mainCamera.SetActive(false);
+                gameState.SetCurrentEntity(Entity.Ruins);
                 Destroy(Ruins);                              
             }
         }         

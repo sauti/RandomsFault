@@ -15193,9 +15193,9 @@ MonoBehaviour:
   floorFormingSpeed: 0.05
   currentAngle: {x: 0, y: 0, z: 0, w: 0}
   position: {x: 0, y: 0, z: 0}
-  mainCamera: {fileID: 0}
-  cardGame: {fileID: 0}
+  mainCamera: {fileID: 963194225}
   Swipe: {fileID: 768215680}
+  gameState: {fileID: 1921988195}
 --- !u!4 &1921988189
 Transform:
   m_ObjectHideFlags: 0
