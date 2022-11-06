@@ -19,21 +19,21 @@ namespace Default
     public void EnterCardGame()
     {
         gemsUI.SetActive(false);
-        // gameUI.SetActive(true);
+        gameUI.SetActive(true);
         // cardUI.SetActive(false);
     }
 
     public void EnterRoom()
     {
-        // gemsUI.SetActive(true);
-        // gameUI.SetActive(true);
+        gemsUI.SetActive(true);
+        gameUI.SetActive(true);
         // cardUI.SetActive(false);
     }
 
     public void EnterCardInspect()
     {
-        // gemsUI.SetActive(false);
-        // gameUI.SetActive(false);
+        gemsUI.SetActive(false);
+        gameUI.SetActive(false);
         // cardUI.SetActive(false);
     }
 
