@@ -9,9 +9,10 @@ namespace Default
     public class GameUI : MonoBehaviour
 {
     public GameObject gameUI;
-    public GameObject cardUI;
+    public GameObject cardGameUI;
     public GameObject gemsGoal;
     public GameObject gemsBag;
+    public GameObject gameLight;
 
     public TMP_Text levelLabel;
     public GameObject[] hearts;
@@ -19,13 +20,16 @@ namespace Default
 
     public void EnterCardGame()
     {
+        Debug.Log("Enter card game");
         gemsGoal.SetActive(false);
         gameUI.SetActive(true);
+        gameLight.SetActive(true);
     }
 
     public void EnterRoom()
     {
         gemsBag.SetActive(false);
+        cardGameUI.SetActive(false);
         gameUI.SetActive(true);
     }
 
@@ -33,6 +37,8 @@ namespace Default
     {
         gemsBag.SetActive(false);
         gameUI.SetActive(false);
+        cardGameUI.SetActive(false);
+        gameLight.SetActive(false);
     }
 
     public void ToggleGemsGoal()
@@ -65,11 +71,13 @@ namespace Default
 
     public void SelectCard(CardData card)
     {
+        cardGameUI.SetActive(true);
         avatarHighlight.SetActive(card.Card.CanHeal);
     }
 
     public void DeselectCard()
     {
+        cardGameUI.SetActive(false);
         avatarHighlight.SetActive(false);
     }
 }

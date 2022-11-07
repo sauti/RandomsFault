@@ -9,7 +9,7 @@ namespace Default {
 
         protected BoardView _view;
         protected PlayerStats _playerStats;
-        private CardCloseupController _closeupController;
+        private CardInspectController _inspectController;
 
         protected List<CardData> _cards;
         protected bool[,] _cells;
@@ -19,7 +19,7 @@ namespace Default {
         {
             _view = gameObject.GetComponent<BoardView>();
             _playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-            _closeupController = GameObject.Find("CloseupController").GetComponent<CardCloseupController>();
+            _inspectController = GameObject.Find("CardInspectController").GetComponent<CardInspectController>();
         }
 
         public void OnLongClick(RaycastHit hit)
@@ -31,7 +31,7 @@ namespace Default {
                 if (!_cards[i].IsRotated) {
                     return;
                 }
-                _closeupController.Open(_cards[i]);
+                _inspectController.Open(_cards[i]);
             }
         }
 

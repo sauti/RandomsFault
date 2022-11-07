@@ -5,11 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace Default {
-    public class CardCloseupController : MonoBehaviour
+    public class CardInspectController : MonoBehaviour
     {
-        public GameObject closeupView;
-        public GameObject gameCanvas;
-        public GameObject gameLight;
+        public GameObject inspectView;
         public GameObject cardPrefab;
         public GameObject cardParent;
         public TMP_Text thought;
@@ -28,9 +26,11 @@ namespace Default {
         private Quaternion defaultRotation;
 
         private CardGameController _cardController;
+        private GameUI UI;
 
         void Start() {
             _cardController = GameObject.Find("CardGameController").GetComponent<CardGameController>();
+            UI = GameObject.Find("UI").GetComponent<GameUI>();
         }
 
         public void Open(CardData cardData) {
@@ -39,11 +39,10 @@ namespace Default {
             defaultPos = card.transform.position;
             defaultRotation = card.transform.rotation;
 
-            gameCanvas.SetActive(false);
-            gameLight.SetActive(false);
-            closeupView.SetActive(true);
+            inspectView.SetActive(true);
 
             _cardController.SetInspectState();
+            UI.EnterCardInspect();
             SetLayer("Card");
             view.Inspect();
             thought.text = cardData.Card.Thought;
@@ -51,11 +50,10 @@ namespace Default {
         }
 
         public void Close() {
-            closeupView.SetActive(false);
-            gameCanvas.SetActive(true);
-            gameLight.SetActive(true);
+            inspectView.SetActive(false);
 
             _cardController.SetPlayerTurn();
+            UI.EnterCardGame();
             SetLayer("Default");
             view.CloseInspect();
             view = null;

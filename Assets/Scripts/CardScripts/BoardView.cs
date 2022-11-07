@@ -59,6 +59,7 @@ namespace Default {
             GameObject c = _findCard(card);
             Destroy(c);
             _cards.Remove(c);
+            UI.DeselectCard();
         }
 
         public void addCard(CardData card) {
