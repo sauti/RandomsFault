@@ -56,9 +56,9 @@ public class MapGenerator : MonoBehaviour
             gridPrefab.transform.rotation = Quaternion.Slerp (gridPrefab.transform.rotation, currentAngle, floorFormingSpeed);
         }
 
-        if (mainCamera.activeInHierarchy == false){
-            gameState.OnCardGameStart();        
-        }                       
+        // if (mainCamera.activeInHierarchy == false){
+        //     gameState.OnCardGameStart();        
+        // }                       
     }
 
     public void CreateNewLevel()

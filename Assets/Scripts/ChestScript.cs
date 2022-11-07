@@ -24,8 +24,9 @@ public class ChestScript : MonoBehaviour
                  if((chest.transform.position.z - character.transform.position.z) == 0){
                 Debug.Log("Tobi Pizda!");
                 mainCamera.SetActive(false);
-                Destroy(chest);
-                gameState.SetCurrentEntity(Entity.Chest);                             
+                gameState.SetCurrentEntity(Entity.Chest);
+                gameState.OnCardGameStart();
+                Destroy(chest);                            
             }
         }         
     }     

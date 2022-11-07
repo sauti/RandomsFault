@@ -27,6 +27,7 @@ public class RuinScript : MonoBehaviour
                 Debug.Log("Tobi Pizda!");
                 mainCamera.SetActive(false);
                 gameState.SetCurrentEntity(Entity.Ruins);
+                gameState.OnCardGameStart();
                 Destroy(Ruins);                              
             }
         }         
