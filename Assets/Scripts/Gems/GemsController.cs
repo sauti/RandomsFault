@@ -1,22 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
+    [Serializable]
+    public class Gem
+    {
+        [SerializeField]
+        public CardId cardId;
+
+        [SerializeField]
+        public GameObject gemPrefab;
+
+        [SerializeField]
+        public Color color;
+    }
+
     public class GemsController : MonoBehaviour
     {
-        public List<GameObject> gemsGo;
-
+        public List<Gem> gemsConfig;
         public GameObject goalSlotsGo;
         public GameObject bagSlotsGo;
 
         private Dictionary<int, List<GameObject>> slots = new Dictionary<int, List<GameObject>>();
         private Dictionary<int, List<GameObject>> bagSlots = new Dictionary<int, List<GameObject>>();
 
-        private List<CardId> pickedUpGems = new List<CardId>();
-        private List<int> goalGems = new List<int>();
-
-        public List<CardId> allGemIds = new List<CardId>();
+        private List<CardId> goal = new List<CardId>();
 
         void Start()
         {
@@ -25,17 +35,15 @@ namespace Default {
 
             pickUniqueColorsForSlots();
 
-            InstantiateGems(slots, true);
-            InstantiateGems(bagSlots, false);
+            InstantiateGoalSlots(slots);
+            InstantiateGems(bagSlots);
         }
 
         public void PickUpGem(CardId cardId)
         {
-            int gemIndex = allGemIds.FindIndex(x => x == cardId);
-            int indexInGoal = goalGems.FindIndex(x => x == gemIndex);
-
+            int indexInGoal = goal.IndexOf(cardId);
             if (indexInGoal == -1) {
-                Debug.Log("Cant pick up this gem");
+                Debug.Log("Cant pick up this gem: " + cardId);
                 return;
             }
 
@@ -43,11 +51,9 @@ namespace Default {
             var i = 0;
             while (i < slots.Count) {
                 i++;
-                int randomIndex = Random.Range(0, slots.Count);
-                Debug.Log("try put into index " + randomIndex);
+                int randomIndex = UnityEngine.Random.Range(0, slots.Count);
                 GameObject slot = slots[randomIndex];
                 if (!slot.activeSelf) {
-                    Debug.Log("Done put " + randomIndex);
                     slot.SetActive(true);
                     return;
                 }
@@ -58,12 +64,11 @@ namespace Default {
         {
             foreach (var slot in slots)
             {
-                int randomIndex = Random.Range(0, allGemIds.Count);
-                while (goalGems.IndexOf(randomIndex) > -1) {
-                    randomIndex = Random.Range(0, allGemIds.Count);
+                int i = UnityEngine.Random.Range(0, gemsConfig.Count);
+                while (goal.IndexOf(gemsConfig[i].cardId) > -1) {
+                    i = UnityEngine.Random.Range(0, gemsConfig.Count);
                 }
-                Debug.Log("Add random Index " + randomIndex);
-                goalGems.Add(randomIndex);
+                goal.Add(gemsConfig[i].cardId);
             }
         }
 
@@ -82,17 +87,38 @@ namespace Default {
             }
         }
 
-        private void InstantiateGems(Dictionary<int, List<GameObject>> _slots, bool active) {
+        private void InstantiateGoalSlots(Dictionary<int, List<GameObject>> _slots) {
             foreach(var item in _slots)
             {
-                int goalGemIndex = goalGems[item.Key];
+                CardId cardId = goal[item.Key];
+                Gem gem = getGemByCardId(cardId);
                 foreach (var slot in item.Value)
                 {
-                    var go = Instantiate(gemsGo[goalGemIndex], slot.transform);
-                    go.layer = LayerMask.NameToLayer("Web");
-                    slot.SetActive(active);
+                    // todo instantiate gems
+                    // var go = Instantiate(gem.gemPrefab, slot.transform);
+                    // go.layer = LayerMask.NameToLayer("Web");
+                    slot.GetComponent<Renderer>().material.SetColor("_Color", gem.color);
                 }
             }
+        }
+
+        private void InstantiateGems(Dictionary<int, List<GameObject>> _slots) {
+            foreach(var item in _slots)
+            {
+                CardId cardId = goal[item.Key];
+                Gem gem = getGemByCardId(cardId);
+                foreach (var slot in item.Value)
+                {
+                    var go = Instantiate(gem.gemPrefab, slot.transform);
+                    go.layer = LayerMask.NameToLayer("Web");
+                    slot.SetActive(false);
+                }
+            }
+        }
+
+        private Gem getGemByCardId(CardId cardId)
+        {
+            return gemsConfig.Find(g => g.cardId == cardId);
         }
     }
 }
