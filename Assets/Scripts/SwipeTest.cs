@@ -85,6 +85,11 @@ public class SwipeTest : MonoBehaviour
             yield return null;
         }
 
+        StopMoving();
+    }
+
+    public void StopMoving()
+    {
         Debug.Log("stop moving");
         character.transform.position = characterDirection;
         character.StopMoving();

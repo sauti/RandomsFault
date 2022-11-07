@@ -64,6 +64,7 @@ public class GameState : MonoBehaviour
 
     public void OnCardGameStart()
     {
+        swipe.GetComponent<SwipeTest>().StopMoving();
         swipe.gameObject.SetActive(false);
         cardGame.SetActive(true);
         mainCamera.SetActive(false);
