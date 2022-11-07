@@ -12,14 +12,11 @@ public class SwipeTest : MonoBehaviour
     public MapGenerator mapGen;
 
     private bool isMoving;
-       
-    private void Start()
-    {       
-    }
-    
+    private bool isPaused;
+
     void Update()
     {
-        if (isMoving) {
+        if (isMoving || isPaused) {
             return;
         }
 
@@ -55,7 +52,7 @@ public class SwipeTest : MonoBehaviour
         // if (swipeControls.SwipeDown)
         //     characterDirection += Vector3.back;
 
-        if (Vector3.Distance(character.transform.position, characterDirection) != 0 && !isMoving)
+        if (Vector3.Distance(character.transform.position, characterDirection) != 0 && !isMoving && !isPaused)
         {
             StartCoroutine(MoveCharacter());
         }
@@ -79,7 +76,7 @@ public class SwipeTest : MonoBehaviour
         character.StartMoving();
         character.transform.LookAt(characterDirection); 
 
-        while (Vector3.Distance(character.transform.position, characterDirection) > 0.01f)
+        while (Vector3.Distance(character.transform.position, characterDirection) > 0.01f && !isPaused)
         {
             character.transform.position =  Vector3.MoveTowards(character.transform.position, characterDirection, 2.5f * Time.deltaTime);
             yield return null;
@@ -94,6 +91,18 @@ public class SwipeTest : MonoBehaviour
         character.transform.position = characterDirection;
         character.StopMoving();
         isMoving = false;
+    }
+
+    public void PauseMove()
+    {
+        Debug.Log("pause moving");
+        isPaused = true;
+    }
+
+    public void ResumeMove()
+    {
+        Debug.Log("pause moving");
+        isPaused = false;
     }
 }
 }
