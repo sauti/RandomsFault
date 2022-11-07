@@ -13,20 +13,13 @@ namespace Default
     public GameObject gemsGoal;
     public GameObject gemsBag;
     public GameObject gameLight;
+    public GameObject cardGameLight;
 
     public TMP_Text levelLabel;
     public GameObject[] hearts;
     public GameObject avatarHighlight;
 
     private bool isCardGame;
-
-    public void EnterCardGame()
-    {
-        isCardGame = true;
-        gemsGoal.SetActive(false);
-        gameUI.SetActive(true);
-        gameLight.SetActive(true);
-    }
 
     public void EnterRoom()
     {
@@ -36,12 +29,22 @@ namespace Default
         gameUI.SetActive(true);
     }
 
+    public void EnterCardGame()
+    {
+        isCardGame = true;
+        gemsGoal.SetActive(false);
+        gameUI.SetActive(true);
+        gameLight.SetActive(true);
+        cardGameLight.SetActive(true);
+    }
+
     public void EnterCardInspect()
     {
         gemsBag.SetActive(false);
         gameUI.SetActive(false);
         cardGameUI.SetActive(false);
         gameLight.SetActive(false);
+        cardGameLight.SetActive(false);
     }
 
     public void ToggleGemsGoal()

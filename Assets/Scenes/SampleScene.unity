@@ -8221,6 +8221,7 @@ MonoBehaviour:
   gemsGoal: {fileID: 1310907944}
   gemsBag: {fileID: 966290870}
   gameLight: {fileID: 1466485865}
+  cardGameLight: {fileID: 371751024}
   levelLabel: {fileID: 295838075}
   hearts:
   - {fileID: 144588559}

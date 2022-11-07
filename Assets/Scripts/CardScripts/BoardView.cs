@@ -76,8 +76,8 @@ namespace Default {
                     UI.SelectCard(card);
                     go.GetComponent<CardView>().SelectCard();
                 } else {
-                    Debug.Log("UNDO elect");
-                    UI.DeselectCard();
+                    // Debug.Log("UNDO elect");
+                    // UI.DeselectCard();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
