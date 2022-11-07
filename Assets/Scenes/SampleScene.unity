@@ -371,11 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd41d2bb8eeb8d949b41dd3d0eb56cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &45424179 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 12960712779818803, guid: aeef40fd97b056f408971b580ce9beca, type: 3}
-  m_PrefabInstance: {fileID: 990548076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &80007226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,7 +1420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d781af932c9d21b4fab18923d62050b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longClickDuration: 1
 --- !u!4 &244118683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2621965686155545183, guid: 7f65e86f01b4fc44f98fcffc24ce210d, type: 3}
@@ -8706,11 +8700,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882577548}
   m_CullTransparentMesh: 1
---- !u!1 &887888526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 12960712779818803, guid: aeef40fd97b056f408971b580ce9beca, type: 3}
-  m_PrefabInstance: {fileID: 823711602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &910560888
 GameObject:
   m_ObjectHideFlags: 0
@@ -11562,8 +11551,6 @@ MonoBehaviour:
   - {fileID: 8234385486033655754, guid: 1a4f18807a36e1c49b299f0adef163f2, type: 3}
   - {fileID: 8234385486033655754, guid: 61d80839708325043992fec0ccd064d6, type: 3}
   - {fileID: 8234385486033655754, guid: f785db1b531f08c4189564dbf8157dad, type: 3}
-  goalGo: {fileID: 45424179}
-  bagGo: {fileID: 887888526}
   goalSlotsGo: {fileID: 1622817735}
   bagSlotsGo: {fileID: 2088975659}
   allGemIds: 0c0000000d0000000e0000001500000016000000
@@ -12823,6 +12810,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1560801600}
         m_TargetAssemblyTypeName: Default.HandController, Assembly-CSharp
         m_MethodName: UseHealCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 806903202}
+        m_TargetAssemblyTypeName: Default.GameUI, Assembly-CSharp
+        m_MethodName: ToggleGemsGoal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

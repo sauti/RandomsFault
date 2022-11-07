@@ -18,9 +18,11 @@ namespace Default
     public GameObject[] hearts;
     public GameObject avatarHighlight;
 
+    private bool isCardGame;
+
     public void EnterCardGame()
     {
-        Debug.Log("Enter card game");
+        isCardGame = true;
         gemsGoal.SetActive(false);
         gameUI.SetActive(true);
         gameLight.SetActive(true);
@@ -28,6 +30,7 @@ namespace Default
 
     public void EnterRoom()
     {
+        isCardGame = false;
         gemsBag.SetActive(false);
         cardGameUI.SetActive(false);
         gameUI.SetActive(true);
@@ -43,7 +46,9 @@ namespace Default
 
     public void ToggleGemsGoal()
     {
-        gemsGoal.SetActive(!gemsGoal.activeSelf);
+        if (!isCardGame) {
+            gemsGoal.SetActive(!gemsGoal.activeSelf);
+        }
     }
 
     public void ToggleGemsBag()

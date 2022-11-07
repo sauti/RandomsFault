@@ -7,8 +7,6 @@ namespace Default {
     {
         public List<GameObject> gemsGo;
 
-        public GameObject goalGo;
-        public GameObject bagGo;
         public GameObject goalSlotsGo;
         public GameObject bagSlotsGo;
 
@@ -54,16 +52,6 @@ namespace Default {
                     return;
                 }
             }
-        }
-
-        public void toggleWeb() {
-            bagGo.SetActive(false);
-            goalGo.SetActive(!goalGo.activeSelf);
-        }
-
-        public void toggleBag() {
-            goalGo.SetActive(false);
-            bagGo.SetActive(!bagGo.activeSelf);
         }
 
         private void pickUniqueColorsForSlots()

@@ -6,22 +6,13 @@ using UnityEngine.SceneManagement;
 
 namespace Default
 {
-public class Char : OnClickListener
+public class Char : MonoBehaviour
 {  
     private Animator animator;
-    private GameUI UI;
 
     void Start()
     {
-        UI = GameObject.Find("UI").GetComponent<GameUI>();
         animator = gameObject.GetComponentInChildren<Animator>();
-    }
-
-    protected override void OnClick(RaycastHit hit)
-    {
-        if (hit.transform.name == "Character") {
-            UI.ToggleGemsGoal();
-        }
     }
 
     public void StartMoving()
