@@ -23,10 +23,6 @@ namespace Default {
             _view = gameObject.GetComponent<BoardView>();
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
-
-            CardData card = _cg.GenerateHandCard();
-            _cards.Add(card);
-            _cells[0, 0] = true;
             _view.GenerateBoard(grid, _cards);
         }
 
