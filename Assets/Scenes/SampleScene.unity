@@ -7286,7 +7286,7 @@ GameObject:
   - component: {fileID: 494932249}
   - component: {fileID: 494932248}
   m_Layer: 8
-  m_Name: GoalCanvas
+  m_Name: BagCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9329,7 +9329,7 @@ GameObject:
   - component: {fileID: 987637618}
   - component: {fileID: 987637617}
   m_Layer: 8
-  m_Name: Web
+  m_Name: Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9368,14 +9368,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8396226, g: 0.76569355, b: 0.76569355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 708d908adf62f4b44a3c4f737ad92add, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24233f9e37614634788f461a7c8a7b8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10390,6 +10390,10 @@ PrefabInstance:
     - target: {fileID: 12960712779818803, guid: 3736c77e4ba843a47a6dd6672c3180cd, type: 3}
       propertyPath: m_Name
       value: BagCollection
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584322533294233677, guid: 3736c77e4ba843a47a6dd6672c3180cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3736c77e4ba843a47a6dd6672c3180cd, type: 3}
@@ -11498,15 +11502,8 @@ MonoBehaviour:
   - cardId: 22
     gemPrefab: {fileID: 8234385486033655754, guid: f785db1b531f08c4189564dbf8157dad, type: 3}
     color: {r: 0.6318676, g: 0.29874206, b: 1, a: 1}
-  gemsGo:
-  - {fileID: 8234385486033655754, guid: 2fe23f9c6eb37a34181a9d821e5747fb, type: 3}
-  - {fileID: 8234385486033655754, guid: 445a9d5fc1548aa4aa94c0eb9b0c2316, type: 3}
-  - {fileID: 8234385486033655754, guid: 1a4f18807a36e1c49b299f0adef163f2, type: 3}
-  - {fileID: 8234385486033655754, guid: 61d80839708325043992fec0ccd064d6, type: 3}
-  - {fileID: 8234385486033655754, guid: f785db1b531f08c4189564dbf8157dad, type: 3}
   goalSlotsGo: {fileID: 1622817735}
   bagSlotsGo: {fileID: 1971448950}
-  allGemIds: 0c0000000d0000000e0000001500000016000000
 --- !u!1 &1680302603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5780450575039569457, guid: 3e7beeef0c34a8c41ae87a67176cfe6f, type: 3}
