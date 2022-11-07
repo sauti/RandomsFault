@@ -25,6 +25,10 @@ namespace Default
         Skull_2,
         Murena,
         Gemstone_4,
-        Gemstone_5
+        Gemstone_5,
+        Beebread_2,
+        Beebread_3,
+        Protein_2,
+        Protein_3
     }
 }
