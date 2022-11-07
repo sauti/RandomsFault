@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    [SerializeField] private GameObject menu;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject swipe;
 
@@ -21,7 +22,7 @@ public class MenuButton : MonoBehaviour
 
     public void ToggleMenu(bool isShown){
         swipe.gameObject.SetActive(!isShown);
-        menuPanel.SetActive(isShown);
+        menu.SetActive(isShown);
         animator.SetBool("SetYou", isShown);
     }
 }
