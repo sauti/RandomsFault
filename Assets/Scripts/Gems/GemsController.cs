@@ -24,6 +24,7 @@ namespace Default {
         public GameObject bagSlotsGo;
 
         private Dictionary<int, List<GameObject>> slots = new Dictionary<int, List<GameObject>>();
+        // private Dictionary<int, List<int>> usedSlots = new Dictionary<int, List<int>>();
         private Dictionary<int, List<GameObject>> bagSlots = new Dictionary<int, List<GameObject>>();
 
         private List<CardId> goal = new List<CardId>();
@@ -52,16 +53,27 @@ namespace Default {
                 return;
             }
 
-            var slots = bagSlots[indexInGoal];
+            var _bagRow = bagSlots[indexInGoal];
+            var _goalRow = slots[indexInGoal];
             var i = 0;
-            while (i < slots.Count) {
+            Gem gem = getGemByCardId(cardId);
+            
+            while (i < _bagRow.Count) {
                 i++;
                 int randomIndex = UnityEngine.Random.Range(0, slots.Count);
-                GameObject slot = slots[randomIndex];
-                if (!slot.activeSelf) {
-                    slot.SetActive(true);
+                GameObject bagSlot = _bagRow[randomIndex];
+                GameObject goalSlot = _goalRow[randomIndex];
+                if (!bagSlot.activeSelf) {
+                    bagSlot.SetActive(true);
+                    goalSlot.GetComponent<Renderer>().material.color = Color.clear;
+                    goalSlot.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+
+                    var go = Instantiate(gem.gemPrefab, goalSlot.transform);
+                    go.layer = LayerMask.NameToLayer("Web");
                     return;
                 }
+
+
             }
         }
 

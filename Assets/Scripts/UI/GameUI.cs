@@ -25,6 +25,7 @@ namespace Default
     public void EnterRoom()
     {
         isCardGame = false;
+        gemsGoal.SetActive(true);
         gemsBag.SetActive(false);
         cardGameUI.SetActive(false);
         gameUI.SetActive(true);
