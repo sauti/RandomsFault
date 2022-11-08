@@ -2,15 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+namespace Default {
 public class OnClickListener : MonoBehaviour
 {
     private bool clicking = false;
     private float totalDownTime = 0;
     public float longClickDuration = 1;
 
+    protected GameUI UI;
+
+    void Awake()
+    {
+        UI = GameObject.Find("UI").GetComponent<GameUI>();
+    }
+
     protected void Update()
     {
+        if (UI.isUIOverlay) {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             totalDownTime = 0;
@@ -54,4 +65,5 @@ public class OnClickListener : MonoBehaviour
     protected virtual void OnClick(RaycastHit hit) {}
 
     protected virtual void OnLongClick(RaycastHit hit) {}
+}
 }

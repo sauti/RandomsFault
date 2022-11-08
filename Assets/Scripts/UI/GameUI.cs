@@ -20,6 +20,7 @@ namespace Default
     public GameObject avatarHighlight;
 
     private bool isCardGame;
+    public bool isUIOverlay;
 
     public void EnterRoom()
     {
@@ -50,13 +51,23 @@ namespace Default
     public void ToggleGemsGoal()
     {
         if (!isCardGame) {
+            isUIOverlay = !gemsGoal.activeSelf;
             gemsGoal.SetActive(!gemsGoal.activeSelf);
         }
     }
 
-    public void ToggleGemsBag()
+    public void OpenGemsBag()
     {
-        gemsBag.SetActive(!gemsBag.activeSelf);
+        if (!gemsBag.activeSelf) {
+            gemsBag.SetActive(true);
+            isUIOverlay = true;
+        }
+    }
+
+    public void CloseGemsBag()
+    {
+        gemsBag.SetActive(false);
+        isUIOverlay = false;
     }
 
     public void SetLevel(int level)
@@ -87,6 +98,11 @@ namespace Default
     {
         cardGameUI.SetActive(false);
         avatarHighlight.SetActive(false);
+    }
+
+    public void SetIsUIOverlay(bool isActive)
+    {
+        isUIOverlay = isActive;
     }
 }
 }

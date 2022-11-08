@@ -14,6 +14,7 @@ public class MenuButton : MonoBehaviour
     private Button btn;
     private Animator animator; 
     private SwipeTest swipeController;
+    private GameUI UI;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class MenuButton : MonoBehaviour
         btn.onClick.AddListener(delegate{ToggleMenu(!menuPanel.active);});
         animator = menuPanel.GetComponent<Animator>();
         swipeController = swipe.GetComponent<SwipeTest>();
+        UI = GameObject.Find("UI").GetComponent<GameUI>();
     }
 
     public void ToggleMenu(bool isShown) {
@@ -29,6 +31,7 @@ public class MenuButton : MonoBehaviour
         } else {
             swipeController.ResumeMove();
         }
+        UI.SetIsUIOverlay(isShown);
         menu.SetActive(isShown);
         animator.SetBool("SetYou", isShown);
     }
