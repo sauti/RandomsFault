@@ -39,6 +39,11 @@ namespace Default {
             InstantiateGems(bagSlots);
         }
 
+        public bool isInGoal(CardId cardId)
+        {
+            return goal.IndexOf(cardId) > -1;
+        }
+
         public void PickUpGem(CardId cardId)
         {
             int indexInGoal = goal.IndexOf(cardId);

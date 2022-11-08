@@ -40,7 +40,7 @@ namespace Default {
         }
 
         public void TryPickUp(CardData card) {
-            if (_handCtrl.CanPickUp()) {
+            if (_handCtrl.CanPickUp(card)) {
                 StartCoroutine(_tableCtrl.PickUp(card));
                 _handCtrl.PickUp(card);
                 // TriggerEnemyTurn();

@@ -6,6 +6,12 @@ namespace Default {
     public class HandController : BoardController
     {
         private CardData _selectedCard;
+        private GemsController gems;
+
+        new void Start() {
+            base.Start();
+            gems = GameObject.Find("Gems").GetComponent<GemsController>();
+        }
 
         public void OnClick(RaycastHit hit)
         {
@@ -20,16 +26,19 @@ namespace Default {
 
         public void initCards(Vector2Int grid)
         {
-            _view = gameObject.GetComponent<BoardView>();
             _cells = new bool[grid.x, grid.y];
             _cards = new List<CardData>();
             _view.GenerateBoard(grid, _cards);
         }
 
-        public bool CanPickUp() 
+        public bool CanPickUp(CardData card) 
         {
-            Vector2Int coord = FindEmptyCoordInHand();
-            return coord.x != -1;
+            if (card.Card.IsGem) {
+                return gems.isInGoal(card.Card.CardId);
+            } else {
+                Vector2Int coord = FindEmptyCoordInHand();
+                return coord.x != -1;
+            }
         }
 
         public void PickUp(CardData card)

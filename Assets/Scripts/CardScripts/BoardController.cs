@@ -15,7 +15,7 @@ namespace Default {
         protected bool[,] _cells;
         protected int _level;
 
-        void Start()
+        protected void Start()
         {
             _view = gameObject.GetComponent<BoardView>();
             _playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
