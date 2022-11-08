@@ -54,6 +54,10 @@ namespace Default {
             _animator.Play("card_state_default");
         }
 
+        public void FailPickup() {
+            _animator.Play("card_fail_pickup");
+        }
+
         public IEnumerator DealDamageToPlayer() {
             // yield return new WaitForSeconds(0.1f);
             yield return PlayAnimationAndWait("card_attack_player", 0.5f);

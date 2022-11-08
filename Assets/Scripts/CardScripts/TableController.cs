@@ -85,6 +85,11 @@ namespace Default {
             }
         }
 
+        public void FailPickup(CardData card)
+        {
+            _view.FailPickup(card);
+        }
+
         // player attacks a card on the table
         public void Attack(CardData card, int damage) {
             Debug.Log("Attack " + damage);

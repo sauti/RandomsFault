@@ -76,8 +76,6 @@ namespace Default {
                     UI.SelectCard(card);
                     go.GetComponent<CardView>().SelectCard();
                 } else {
-                    // Debug.Log("UNDO elect");
-                    // UI.DeselectCard();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
@@ -88,6 +86,11 @@ namespace Default {
             foreach (var go in _cards) {
                 go.GetComponent<CardView>().DeselectCard();
             }
+        }
+
+        public void FailPickup(CardData card) {
+            GameObject c = _findCard(card);
+            c.GetComponent<CardView>().FailPickup();
         }
 
         // player attacks a card

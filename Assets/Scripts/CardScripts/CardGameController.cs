@@ -44,6 +44,8 @@ namespace Default {
                 StartCoroutine(_tableCtrl.PickUp(card));
                 _handCtrl.PickUp(card);
                 // TriggerEnemyTurn();
+            } else {
+                _tableCtrl.FailPickup(card);
             }
         }
 
