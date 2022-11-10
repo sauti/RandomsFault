@@ -20,6 +20,8 @@ namespace Default {
     public class GemsController : MonoBehaviour
     {
         public List<Gem> gemsConfig;
+        public GameObject goalParentGo;
+        public List<GameObject> goalOptionPrefabs;
         public GameObject goalSlotsGo;
         public GameObject bagSlotsGo;
 
@@ -31,6 +33,8 @@ namespace Default {
 
         void Start()
         {
+            selectGoalForGame();
+
             saveSlots(goalSlotsGo, slots);
             saveSlots(bagSlotsGo, bagSlots);
 
@@ -38,6 +42,13 @@ namespace Default {
 
             InstantiateGoalSlots(slots);
             InstantiateGems(bagSlots);
+        }
+
+        private void selectGoalForGame()
+        {
+            int i = UnityEngine.Random.Range(0, goalOptionPrefabs.Count);
+            GameObject go = Instantiate(goalOptionPrefabs[i], goalParentGo.transform);
+            goalSlotsGo = go.transform.Find("Slots").gameObject;
         }
 
         public bool isInGoal(CardId cardId)
