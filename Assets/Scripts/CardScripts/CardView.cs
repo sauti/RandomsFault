@@ -11,7 +11,9 @@ namespace Default {
 
         private Renderer _renderer;
         private Animator _animator;
+        public GameObject Card;
         private bool isFlipped = false;
+        public Transform Table;
 
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
@@ -72,11 +74,27 @@ namespace Default {
         }
 
         public void SelectCard() {
+            bool IsWeapon = true;
+            bool isFlipped = true;
+            bool CanBeKilled = true;
             _animator.SetBool("isSelected", true);
+
+            if (IsWeapon){
+                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
+            }
+
+            // Debug.Log("PKL");
+            // foreach (var Card in Table){
+            //     if (CanBeKilled && isFlipped){
+            //         Debug.Log("killing light");
+            //         this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");                    
+            //     }
+            // }
         }
 
         public void DeselectCard() {
             _animator.SetBool("isSelected", false);
+            this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");
         }
 
         public void SetHealth(int health) {
@@ -108,5 +126,11 @@ namespace Default {
             // float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSecondsRealtime(length);
         }
+
+        public void  OnHighLight(){
+            Debug.Log("ONhighLited");
+            GameObject card = Card;
+            card.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
+        } 
     }
 }
