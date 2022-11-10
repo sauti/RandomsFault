@@ -4,44 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    [Serializable]
-    public class Gem
-    {
-        [SerializeField]
-        public CardId cardId;
-
-        [SerializeField]
-        public GameObject gemPrefab;
-
-        [SerializeField]
-        public Color color;
-    }
-
     public class GemsController : MonoBehaviour
     {
         public List<Gem> gemsConfig;
-        public GameObject goalParentGo;
         public List<GameObject> goalOptionPrefabs;
-        public GameObject goalSlotsGo;
-        public GameObject bagSlotsGo;
+        public GameObject goalParentGo;
+        public GemsBagController bagController;
 
+        private GameObject goalSlotsGo;
         private Dictionary<int, List<GameObject>> slots = new Dictionary<int, List<GameObject>>();
-        // private Dictionary<int, List<int>> usedSlots = new Dictionary<int, List<int>>();
-        private Dictionary<int, List<GameObject>> bagSlots = new Dictionary<int, List<GameObject>>();
-
         private List<CardId> goal = new List<CardId>();
+        private List<Gem> pendingGems = new List<Gem>();
 
         void Start()
         {
             selectGoalForGame();
-
             saveSlots(goalSlotsGo, slots);
-            saveSlots(bagSlotsGo, bagSlots);
-
             pickUniqueColorsForSlots();
 
             InstantiateGoalSlots(slots);
-            InstantiateGems(bagSlots);
         }
 
         private void selectGoalForGame()
@@ -64,28 +45,13 @@ namespace Default {
                 return;
             }
 
-            var _bagRow = bagSlots[indexInGoal];
             var _goalRow = slots[indexInGoal];
-            var i = 0;
             Gem gem = getGemByCardId(cardId);
-            
-            while (i < _bagRow.Count) {
-                i++;
-                int randomIndex = UnityEngine.Random.Range(0, slots.Count);
-                GameObject bagSlot = _bagRow[randomIndex];
-                GameObject goalSlot = _goalRow[randomIndex];
-                if (!bagSlot.activeSelf) {
-                    bagSlot.SetActive(true);
-                    goalSlot.GetComponent<Renderer>().material.color = Color.clear;
-                    goalSlot.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+            bagController.AddGem(gem.gemPrefab);
+            pendingGems.Add(gem);
 
-                    var go = Instantiate(gem.gemPrefab, goalSlot.transform);
-                    go.layer = LayerMask.NameToLayer("Web");
-                    return;
-                }
-
-
-            }
+            // todo 
+            InstantiatePendingGems();
         }
 
         private void pickUniqueColorsForSlots()
@@ -122,26 +88,32 @@ namespace Default {
                 Gem gem = getGemByCardId(cardId);
                 foreach (var slot in item.Value)
                 {
-                    // todo instantiate gems
-                    // var go = Instantiate(gem.gemPrefab, slot.transform);
-                    // go.layer = LayerMask.NameToLayer("Web");
                     slot.GetComponent<Renderer>().material.SetColor("_Color", gem.color);
                 }
             }
         }
 
-        private void InstantiateGems(Dictionary<int, List<GameObject>> _slots) {
-            foreach(var item in _slots)
-            {
-                CardId cardId = goal[item.Key];
-                Gem gem = getGemByCardId(cardId);
-                foreach (var slot in item.Value)
-                {
-                    var go = Instantiate(gem.gemPrefab, slot.transform);
-                    go.layer = LayerMask.NameToLayer("Web");
-                    slot.SetActive(false);
+        private void InstantiatePendingGems() {
+            foreach(Gem gem in pendingGems) {
+                int indexInGoal = goal.IndexOf(gem.cardId);
+                var row = slots[indexInGoal];
+                if (row.Count == 0) {
+                    Debug.Log("No free space for gem: " + gem.cardId);
+                    continue;
                 }
+                
+                int randomIndex = UnityEngine.Random.Range(0, row.Count);
+                var slot = row[randomIndex];
+
+                slot.GetComponent<Renderer>().material.color = Color.clear;
+                slot.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
+                var go = Instantiate(gem.gemPrefab, slot.transform);
+                go.layer = LayerMask.NameToLayer("Web");
+
+                slots[indexInGoal].RemoveAt(randomIndex);
             }
+
+            pendingGems.Clear();
         }
 
         private Gem getGemByCardId(CardId cardId)
