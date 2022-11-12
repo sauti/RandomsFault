@@ -2816,7 +2816,7 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
-  Table: {fileID: 0}
+  Table: {fileID: 558377118}
 --- !u!114 &558377120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4403,7 +4403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 2, y: 8.93, z: -2.12}
+  m_LocalPosition: {x: 2, y: 9.67, z: -2.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6295,7 +6295,7 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
-  Table: {fileID: 0}
+  Table: {fileID: 558377118}
 --- !u!114 &1560801600
 MonoBehaviour:
   m_ObjectHideFlags: 0
