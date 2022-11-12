@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: e78e49c5c734d6649865a6f18b41f469, type: 3}
   - {fileID: 2800000, guid: bceb6b3aa471b5842801099f16f2e5f1, type: 3}
   _healthTextures:
-  - {fileID: 2800000, guid: b183708df968b904abf0f76f92c1a094, type: 3}
+  - {fileID: 2800000, guid: 2de1761be38639748922fc8b4e2b88a5, type: 3}
   - {fileID: 2800000, guid: 09428c07c79b7924f85df794e9d70f31, type: 3}
   - {fileID: 2800000, guid: 28799fdb7244d72408eb0f870682001c, type: 3}
   - {fileID: 2800000, guid: d2636fa15b0eaed4b89653b38f31142c, type: 3}

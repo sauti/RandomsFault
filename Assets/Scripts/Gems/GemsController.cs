@@ -9,7 +9,6 @@ namespace Default {
         public List<Gem> gemsConfig;
         public List<GameObject> goalOptionPrefabs;
         public GameObject goalParentGo;
-        public GemsBagController bagController;
 
         private GameObject goalSlotsGo;
         private Dictionary<int, List<GameObject>> slots = new Dictionary<int, List<GameObject>>();
@@ -47,7 +46,6 @@ namespace Default {
 
             var _goalRow = slots[indexInGoal];
             Gem gem = getGemByCardId(cardId);
-            bagController.AddGem(gem.gemPrefab);
             pendingGems.Add(gem);
 
             // todo 
