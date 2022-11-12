@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statsTexturesConfig: {fileID: 11400000, guid: 09e9a7e8961bc0e4dbac35b27e8e04cc, type: 2}
   Card: {fileID: 2763590687593123711}
+  Table: {fileID: 0}
 --- !u!95 &6098850477432645386
 Animator:
   serializedVersion: 4
