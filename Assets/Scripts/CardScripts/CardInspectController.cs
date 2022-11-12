@@ -15,12 +15,11 @@ namespace Default {
         private GameObject card;
         private CardView view;
         
-        private float duration = 0.2f;
+        private float duration = 0.15f;
 
         private Vector3 inspectPos = new Vector3(15, 3, -1);
         private Quaternion inspectRotation = Quaternion.Euler(-90, 180, 180);
         private float targetScale = 5;
-        private float scaleModifier = 1;
         
         private Vector3 defaultPos;
         private Quaternion defaultRotation;
@@ -46,7 +45,7 @@ namespace Default {
             SetLayer("Card");
             view.Inspect();
             thought.text = cardData.Card.Thought;
-            StartCoroutine(LerpTransform(inspectPos, inspectRotation, targetScale, duration));
+            StartCoroutine(AnimUtils.MoveToTarget(card, inspectPos, inspectRotation, targetScale, duration));
         }
 
         public void Close() {
@@ -57,7 +56,7 @@ namespace Default {
             SetLayer("Default");
             view.CloseInspect();
             view = null;
-            StartCoroutine(LerpTransform(defaultPos, defaultRotation, 1, duration));
+            StartCoroutine(AnimUtils.MoveToTarget(card, defaultPos, defaultRotation, 1, duration));
         }
 
         private void SetLayer(string layer)
@@ -68,25 +67,6 @@ namespace Default {
             foreach (var child in children)
             {
                 child.gameObject.layer = layerIndex;
-            }
-        }
-
-        IEnumerator LerpTransform(Vector3 targetPosition, Quaternion targetRotation, float targetScale, float duration)
-        {
-            float time = 0;
-            float startValue = 1;
-            Vector3 startPosition = card.transform.position;
-            Quaternion startRotation = transform.rotation;
-            Vector3 startScale = transform.localScale;
-
-            while (time < duration)
-            {
-                card.transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
-                card.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / duration);
-                scaleModifier = Mathf.Lerp(startValue, targetScale, time / duration);
-                card.transform.localScale = startScale * scaleModifier;
-                time += Time.deltaTime;
-                yield return null;
             }
         }
     }

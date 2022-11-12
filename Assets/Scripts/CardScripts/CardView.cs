@@ -44,8 +44,8 @@ namespace Default {
 
         public IEnumerator MoveGemToBag()
         {
-            // todo add animation of card moving to bag
-            yield return new WaitForSeconds(0.5f);
+            yield return StartCoroutine(AnimUtils.MoveToTarget(gameObject, new Vector3(15.92f, 1.595f, -2.495f), Quaternion.Euler(-30, 0, 0), 0.7f, 0.2f));
+            yield return StartCoroutine(AnimUtils.MoveToTarget(gameObject, new Vector3(15.94f, 1.1f, -3.295f), Quaternion.Euler(-30, 0, 0), 0.5f, 0.1f));
         }
 
         public void Inspect() {
@@ -66,7 +66,7 @@ namespace Default {
         }
 
         public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip", 0.7f));
+            StartCoroutine(PlayAnimationAndWait("card_flip", 0.5f));
         }
 
         public void PlayCloseupAnimation() {
