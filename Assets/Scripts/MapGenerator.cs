@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
    Quaternion finishAngle = Quaternion.Euler (-90,0,0);
    public Quaternion currentAngle;
 
-   private List<Vector3> occupiedPositions;
+   private List<Vector3> occupiedPositions = new List<Vector3>();
    public Vector3 position;  
 
     //public Tile tile;
@@ -64,8 +64,9 @@ public class MapGenerator : MonoBehaviour
     public void CreateNewLevel()
     {
         DestroyMap();
+        occupiedPositions = new List<Vector3>();
+        occupiedPositions.Add(Swipe.GetComponent<SwipeTest>().getCharPosition());
         CreateMap();
-        Swipe.GetComponent<SwipeTest>().PlaceCharacter();
     }
 
     private void DestroyMap()
@@ -82,7 +83,6 @@ public class MapGenerator : MonoBehaviour
     {
 
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
-        occupiedPositions = new List<Vector3>();
         int exitTileX = Random.Range(0, 5);
         int exitTileY = Random.Range(0, 5);
 
