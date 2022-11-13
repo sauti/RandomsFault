@@ -12,8 +12,9 @@ namespace Default {
         private Renderer _renderer;
         private Animator _animator;
         public GameObject Card;
-        private bool isFlipped = false;
+        public bool isFlipped;
         public Transform Table;
+        private BoardView bv;
 
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
@@ -66,7 +67,8 @@ namespace Default {
         }
 
         public void Flip() {
-            StartCoroutine(PlayAnimationAndWait("card_flip", 0.5f));
+            StartCoroutine(PlayAnimationAndWait("card_flip", 0.7f));
+            isFlipped = true;
         }
 
         public void PlayCloseupAnimation() {
@@ -74,27 +76,25 @@ namespace Default {
         }
 
         public void SelectCard() {
-            bool IsWeapon = true;
-            bool isFlipped = true;
-            bool CanBeKilled = true;
             _animator.SetBool("isSelected", true);
-
-            if (IsWeapon){
-                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
-            }
-
-            // Debug.Log("PKL");
-            // foreach (var Card in Table){
-            //     if (CanBeKilled && isFlipped){
-            //         Debug.Log("killing light");
-            //         this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");                    
-            //     }
-            // }
+            
+                Debug.Log("hand light");
+                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION"); 
+                // bv.OnBoardHighLight();                                  
         }
+
+        // public void OnBoardHighLight(){
+        //     foreach (GameObject Card in Table){
+        //         Debug.Log($"board emission ");
+        //         Card.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
+        //     }
+        // }
+
+        
 
         public void DeselectCard() {
             _animator.SetBool("isSelected", false);
-            this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");
+            GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");
         }
 
         public void SetHealth(int health) {
@@ -126,11 +126,5 @@ namespace Default {
             // float animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSecondsRealtime(length);
         }
-
-        public void  OnHighLight(){
-            Debug.Log("ONhighLited");
-            GameObject card = Card;
-            card.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
-        } 
     }
 }
