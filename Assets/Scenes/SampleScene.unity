@@ -2815,8 +2815,9 @@ MonoBehaviour:
   parent: {fileID: 558377117}
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
-  padding: {x: 0.6, y: 0.9}
-  Table: {fileID: 558377118}
+  padding: {x: 0.65, y: 0.9}
+  Table: {fileID: 558377117}
+  isSelected: 0
 --- !u!114 &558377120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6295,7 +6296,8 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
-  Table: {fileID: 558377118}
+  Table: {fileID: 558377117}
+  isSelected: 0
 --- !u!114 &1560801600
 MonoBehaviour:
   m_ObjectHideFlags: 0
