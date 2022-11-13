@@ -7727,6 +7727,18 @@ MonoBehaviour:
   mainCamera: {fileID: 963194225}
   Swipe: {fileID: 768215680}
   gameState: {fileID: 1921988195}
+  ruinsRandomConfig:
+  - {x: 1, y: 2}
+  - {x: 2, y: 3}
+  - {x: 3, y: 4}
+  - {x: 4, y: 5}
+  - {x: 5, y: 6}
+  chestsRandomConfig:
+  - {x: 3, y: 4}
+  - {x: 3, y: 4}
+  - {x: 2, y: 3}
+  - {x: 2, y: 3}
+  - {x: 1, y: 3}
 --- !u!4 &1921988189
 Transform:
   m_ObjectHideFlags: 0

@@ -40,6 +40,9 @@ public class MapGenerator : MonoBehaviour
     public GameObject Swipe;
     public GameState gameState;
 
+    public List<Vector2> ruinsRandomConfig = new List<Vector2>();
+    public List<Vector2> chestsRandomConfig = new List<Vector2>();
+
     //public MainMenuScript mainMS;
     //public var currRuin;  
 
@@ -161,8 +164,9 @@ public class MapGenerator : MonoBehaviour
         RuinsGen(); 
     }
     
-   public void RuinsGen(){
-        var ruinsAmount = Random.Range(1, 4);
+   public void RuinsGen() {
+        Vector2 amount = ruinsRandomConfig.ElementAtOrDefault(gameState.getLevel());
+        var ruinsAmount = Random.Range(amount.x, amount.y);
         for(int i  = 0; i < ruinsAmount; i++)
         {     
             Vector3 position = GetRandomEmptyTile(); 
@@ -174,7 +178,8 @@ public class MapGenerator : MonoBehaviour
    }
 
    public void ChestsGen(){
-    int chestsAmount = Random.Range(3, 5);
+        Vector2 amount = chestsRandomConfig.ElementAtOrDefault(gameState.getLevel());
+        var chestsAmount = Random.Range(amount.x, amount.y);
         for(int i  = 0; i < chestsAmount; i++)
         {     
             Vector3 position = GetRandomEmptyTile(); 

@@ -67,7 +67,6 @@ public class SwipeTest : MonoBehaviour
     public void PlaceCharacter()
     {
         characterDirection = mapGen.GetRandomEmptyTile();
-        Debug.Log(characterDirection);
     }
 
     public Vector3 getCharPosition()
