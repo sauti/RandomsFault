@@ -165,7 +165,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 0
-    _prefab: {fileID: 8234385486033655754, guid: 0965e4fa6d0be024abfd1d5e25790d20, type: 3}
+    _prefab: {fileID: 3851372003019900628, guid: a19ffdea460ac6948883bb33160e2de5, type: 3}
   - _cardId: 10
     _name: 
     _description: 
@@ -174,7 +174,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 0
-    _prefab: {fileID: 8234385486033655754, guid: b1e92ebb5b82e4642a3bc83ca0ec414e, type: 3}
+    _prefab: {fileID: 3851372003019900628, guid: 7188dfbcb8b41b74d8db031df71ea888, type: 3}
   - _cardId: 16
     _name: 
     _description: 
