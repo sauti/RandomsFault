@@ -129,7 +129,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 1
-    _prefab: {fileID: 8234385486033655754, guid: 2fe23f9c6eb37a34181a9d821e5747fb, type: 3}
+    _prefab: {fileID: 3285272606688506503, guid: 01e6ec6809e4db849a3095bdf93e6e9d, type: 3}
   - _cardId: 13
     _name: 
     _description: 
@@ -138,7 +138,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 1
-    _prefab: {fileID: 8234385486033655754, guid: 445a9d5fc1548aa4aa94c0eb9b0c2316, type: 3}
+    _prefab: {fileID: 3285272606688506503, guid: 1ad10697da28a8f4dbf12edb76ffc635, type: 3}
   - _cardId: 14
     _name: 
     _description: 
@@ -147,7 +147,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 1
-    _prefab: {fileID: 8234385486033655754, guid: 1a4f18807a36e1c49b299f0adef163f2, type: 3}
+    _prefab: {fileID: 3285272606688506503, guid: 7c737058f5f5563458c941b0346e4c58, type: 3}
   - _cardId: 7
     _name: 
     _description: 
@@ -165,7 +165,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 0
-    _prefab: {fileID: 8234385486033655754, guid: 0965e4fa6d0be024abfd1d5e25790d20, type: 3}
+    _prefab: {fileID: 3851372003019900628, guid: a19ffdea460ac6948883bb33160e2de5, type: 3}
   - _cardId: 10
     _name: 
     _description: 
@@ -174,7 +174,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 0
-    _prefab: {fileID: 8234385486033655754, guid: b1e92ebb5b82e4642a3bc83ca0ec414e, type: 3}
+    _prefab: {fileID: 3851372003019900628, guid: 7188dfbcb8b41b74d8db031df71ea888, type: 3}
   - _cardId: 16
     _name: 
     _description: 
@@ -210,7 +210,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 1
-    _prefab: {fileID: 8234385486033655754, guid: 61d80839708325043992fec0ccd064d6, type: 3}
+    _prefab: {fileID: 3285272606688506503, guid: 6e4c955beb77a7348b0edd1bafeeb182, type: 3}
   - _cardId: 22
     _name: 
     _description: 
@@ -219,7 +219,7 @@ MonoBehaviour:
     _canHeal: 0
     _isTrap: 0
     _isGem: 1
-    _prefab: {fileID: 8234385486033655754, guid: f785db1b531f08c4189564dbf8157dad, type: 3}
+    _prefab: {fileID: 3285272606688506503, guid: 0b78acea26dba554c94c2356f9c51fdc, type: 3}
   - _cardId: 25
     _name: 
     _description: 

@@ -10,8 +10,7 @@ namespace Default
 {
     public GameObject gameUI;
     public GameObject cardGameUI;
-    public GameObject gemsGoal;
-    public GameObject gemsBag;
+    public GemsUI gemsUI;
     public GameObject gameLight;
     public GameObject cardGameLight;
 
@@ -25,8 +24,7 @@ namespace Default
     public void EnterRoom()
     {
         isCardGame = false;
-        gemsGoal.SetActive(true);
-        gemsBag.SetActive(false);
+        gemsUI.OpenBag(false);
         cardGameUI.SetActive(false);
         gameUI.SetActive(true);
     }
@@ -34,41 +32,33 @@ namespace Default
     public void EnterCardGame()
     {
         isCardGame = true;
-        gemsGoal.SetActive(false);
         gameUI.SetActive(true);
         gameLight.SetActive(true);
         cardGameLight.SetActive(true);
+        gemsUI.CloseBag();
     }
 
     public void EnterCardInspect()
     {
-        gemsBag.SetActive(false);
+        gemsUI.CloseBag();
         gameUI.SetActive(false);
         cardGameUI.SetActive(false);
         gameLight.SetActive(false);
         cardGameLight.SetActive(false);
     }
 
-    public void ToggleGemsGoal()
-    {
-        if (!isCardGame) {
-            isUIOverlay = !gemsGoal.activeSelf;
-            gemsGoal.SetActive(!gemsGoal.activeSelf);
-        }
-    }
-
     public void OpenGemsBag()
     {
-        if (!gemsBag.activeSelf) {
-            gemsBag.SetActive(true);
-            isUIOverlay = true;
-        }
+        gemsUI.OpenBag(true);
+        isUIOverlay = true;
     }
 
     public void CloseGemsBag()
     {
-        gemsBag.SetActive(false);
-        isUIOverlay = false;
+        if (isCardGame) {
+            gemsUI.CloseBag();
+            isUIOverlay = false;
+        }
     }
 
     public void SetLevel(int level)

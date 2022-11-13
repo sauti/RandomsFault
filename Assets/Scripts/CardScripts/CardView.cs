@@ -22,7 +22,7 @@ namespace Default {
             GameObject itemParent = cardGo.transform.Find("Item").gameObject;
 
             GameObject item = Instantiate(card.Card.Prefab, itemParent.transform);
-            item.transform.position = itemParent.transform.position;
+            // item.transform.position = itemParent.transform.position;
 
             _renderer = cardGo.GetComponent<Renderer>();
             _animator = GetComponent<Animator>();
@@ -45,8 +45,8 @@ namespace Default {
 
         public IEnumerator MoveGemToBag()
         {
-            // todo add animation of card moving to bag
-            yield return new WaitForSeconds(0.5f);
+            yield return StartCoroutine(AnimUtils.MoveToTarget(gameObject, new Vector3(15.92f, 1.595f, -2.495f), Quaternion.Euler(-30, 0, 0), 0.7f, 0.2f));
+            yield return StartCoroutine(AnimUtils.MoveToTarget(gameObject, new Vector3(15.94f, 1.1f, -3.295f), Quaternion.Euler(-30, 0, 0), 0.5f, 0.1f));
         }
 
         public void Inspect() {

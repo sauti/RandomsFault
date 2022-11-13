@@ -79,7 +79,7 @@ namespace Default {
             if (card.Card.IsGem) {
                 yield return _view.PickUpGem(card);
                 gems.PickUpGem(card.Card.CardId);
-                RemoveCard(card);
+                // RemoveCard(card);
             } else {
                 RemoveCard(card);
             }
