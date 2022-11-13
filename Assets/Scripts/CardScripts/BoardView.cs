@@ -84,7 +84,7 @@ namespace Default {
                     OnBoardHighLight();                          
                 } else {
                     Debug.Log("off");
-                    OnBoardDeHighLight();
+                    // OnBoardDeHighLight();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
