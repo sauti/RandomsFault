@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Default {
     public class BoardView : MonoBehaviour
     {
+        // [SerializeField]
         public GameObject parent;
         public GameObject cellPrefab;
         public GameObject cardPrefab;
@@ -19,6 +20,7 @@ namespace Default {
         public GameObject Table;
         private CardView CV;
         private Card crd;
+        public bool isSelected = false;
 
         void Start()
         {
@@ -79,9 +81,10 @@ namespace Default {
                     Debug.Log("Do select");
                     UI.SelectCard(card);
                     go.GetComponent<CardView>().SelectCard();                    
-                    OnBoardHighLight();
+                    OnBoardHighLight();                          
                 } else {
                     Debug.Log("off");
+                    OnBoardDeHighLight();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
@@ -89,17 +92,25 @@ namespace Default {
 
         public void OnBoardHighLight(){
             foreach (Transform child in Table.transform){
+                foreach (Transform subchild in child.transform){  
+                    if (subchild.GetComponent<CardView>().isFlipped == true){
+                        foreach (Transform Card in subchild.transform){
+                            Debug.Log(Card.gameObject.name); 
+                            Card.GetComponent<MeshRenderer>().sharedMaterial.EnableKeyword("_EMISSION");
+                        }
+                    }                    
+                }                
+            }
+        }      
+
+        public void OnBoardDeHighLight(){
+                        Debug.Log($"deselect + Card.gameObject.name"); 
+            foreach (Transform child in Table.transform){
                 foreach (Transform subchild in child.transform){
                     foreach (Transform Card in subchild.transform){
-                        Debug.Log(Card.gameObject.name); 
-                        Card.GetComponent<MeshRenderer>().sharedMaterial.EnableKeyword("_EMISSION");
-                    }
-                    
-                }
-                // if (CV.isFlipped == true)
-                // {                    
-                    // Table.gameObject.
-                // }                  
+                        Card.GetComponent<MeshRenderer>().sharedMaterial.DisableKeyword("_EMISSION");
+                    }                    
+                }                             
             }
         }        
 

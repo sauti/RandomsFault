@@ -12,9 +12,9 @@ namespace Default {
         private Renderer _renderer;
         private Animator _animator;
         public GameObject Card;
-        public bool isFlipped;
-        public Transform Table;
-        private BoardView bv;
+        public bool isFlipped;        
+        private BoardView boardView;
+        public GameObject cardParent;
 
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
@@ -79,23 +79,13 @@ namespace Default {
             _animator.SetBool("isSelected", true);
             
                 Debug.Log("hand light");
-                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION"); 
-                // bv.OnBoardHighLight();                                  
-        }
-
-        // public void OnBoardHighLight(){
-        //     foreach (GameObject Card in Table){
-        //         Debug.Log($"board emission ");
-        //         Card.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
-        //     }
-        // }
-
-        
+                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
+        }         
 
         public void DeselectCard() {
             _animator.SetBool("isSelected", false);
-            GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");
-        }
+            this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");                  
+        }        
 
         public void SetHealth(int health) {
             SetStat("Health", health);
