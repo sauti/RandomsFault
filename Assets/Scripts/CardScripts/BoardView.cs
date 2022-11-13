@@ -15,7 +15,10 @@ namespace Default {
         private GameObject[,] _cells;
 
         private GameUI UI;
-        public Transform Table;
+        [SerializeField]
+        public GameObject Table;
+        private CardView CV;
+        private Card crd;
 
         void Start()
         {
@@ -73,12 +76,10 @@ namespace Default {
         public void selectCard(CardData card) {
             foreach (var go in _cards) {
                 if (go.name == card.Id) {
-                    bool IsWeapon = true;
                     Debug.Log("Do select");
                     UI.SelectCard(card);
-                    go.GetComponent<CardView>().SelectCard();
-                    if (IsWeapon)
-                        HighLight();
+                    go.GetComponent<CardView>().SelectCard();                    
+                    OnBoardHighLight();
                 } else {
                     Debug.Log("off");
                     go.GetComponent<CardView>().DeselectCard();
@@ -86,16 +87,19 @@ namespace Default {
             }
         }
 
-        public void HighLight(){
-            //Debug.Log("highLited");
-            bool isFlipped = true;
-            bool CanBeKilled = true;
-            foreach (var Card in Table){
-                if (isFlipped && CanBeKilled){
-                    Debug.Log("killing light");
-                    gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");                    
+        public void OnBoardHighLight(){
+            foreach (Transform child in Table.transform){
+                foreach (Transform subchild in child.transform){
+                    foreach (Transform Card in subchild.transform){
+                        Debug.Log(Card.gameObject.name); 
+                        Card.GetComponent<MeshRenderer>().sharedMaterial.EnableKeyword("_EMISSION");
+                    }
+                    
                 }
-
+                // if (CV.isFlipped == true)
+                // {                    
+                    // Table.gameObject.
+                // }                  
             }
         }        
 
