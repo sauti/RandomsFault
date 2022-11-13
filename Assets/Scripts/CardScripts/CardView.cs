@@ -21,7 +21,7 @@ namespace Default {
             GameObject itemParent = cardGo.transform.Find("Item").gameObject;
 
             GameObject item = Instantiate(card.Card.Prefab, itemParent.transform);
-            item.transform.position = itemParent.transform.position;
+            // item.transform.position = itemParent.transform.position;
 
             _renderer = cardGo.GetComponent<Renderer>();
             _animator = GetComponent<Animator>();
