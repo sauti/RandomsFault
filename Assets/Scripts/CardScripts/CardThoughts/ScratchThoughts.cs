@@ -7,8 +7,8 @@ namespace Default {
     {
         public ScratchThoughts()
         {
-            Add("Strong attack!", new List<int>() { 0, 1 });
-            Add("Awesome attack!", new List<int>() { 0, 1 });
+            Add("Looks like a claw gauntlet weapon", new List<int>() { 0, 1 });
+            Add("Perfect fit for my claws", new List<int>() { 1, 2 });
         }
     }
 }

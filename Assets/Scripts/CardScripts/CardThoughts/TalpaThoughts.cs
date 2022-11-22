@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Default {
-    public class ProteinThoughts: CardThoughts
+    public class TalpaThoughts: CardThoughts
     {
-        public ProteinThoughts() : base()
+        public TalpaThoughts() : base()
         {
-            Add("Easy-to-digest high quality protein", new List<int>() { 0, 1 });
+            Add("Yuck, you smell like my auntie", new List<int>() { 0, 1 });
             Add("Protein jelly, yammy", new List<int>() { 1, 2 });
         }
     }

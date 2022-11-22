@@ -18,6 +18,9 @@ namespace Default
 
             list.Add(CardId.Protein, new ProteinThoughts().GetList());
             list.Add(CardId.Scratch, new ScratchThoughts().GetList());
+            list.Add(CardId.Talpa, new TalpaThoughts().GetList());
+            list.Add(CardId.StingingOrchid, new StingingOrchidThoughts().GetList());
+            list.Add(CardId.Murena, new MurenaThoughts().GetList());
         }
 
         public List<Thought> getListByCardId(CardId cardId) {
