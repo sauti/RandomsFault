@@ -21,6 +21,8 @@ namespace Default
             list.Add(CardId.Talpa, new TalpaThoughts().GetList());
             list.Add(CardId.StingingOrchid, new StingingOrchidThoughts().GetList());
             list.Add(CardId.Murena, new MurenaThoughts().GetList());
+            list.Add(CardId.HuntingOrchid, new HuntingOrchidThoughts().GetList());
+            list.Add(CardId.WayOut, new WayOutThoughts().GetList());
         }
 
         public List<Thought> getListByCardId(CardId cardId) {
