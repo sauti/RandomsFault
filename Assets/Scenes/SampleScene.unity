@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2816,8 +2816,6 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.65, y: 0.9}
-  Table: {fileID: 558377117}
-  isSelected: 0
 --- !u!114 &558377120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6296,8 +6294,6 @@ MonoBehaviour:
   cellPrefab: {fileID: 6082618294398624491, guid: 45ea575b593b2854a88db803a76553bd, type: 3}
   cardPrefab: {fileID: 7380846610041216367, guid: 12f833c6bf6ebab4d8a6a04a4c2cd7b6, type: 3}
   padding: {x: 0.6, y: 0.9}
-  Table: {fileID: 558377117}
-  isSelected: 0
 --- !u!114 &1560801600
 MonoBehaviour:
   m_ObjectHideFlags: 0

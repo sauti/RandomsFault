@@ -9,7 +9,6 @@ public class Swipe : MonoBehaviour
     private Vector2 startTouch, swipeDelta;
 
     private void Update(){
-        //tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
         MoveDir = Direction.None;
         tap = false;
         
@@ -33,7 +32,7 @@ public class Swipe : MonoBehaviour
             }   
         }
 
-        // Calc distance
+        // Dist
         swipeDelta = Vector2.zero;
         if (isDraging){
             if(Input.touches.Length > 0)
@@ -42,9 +41,9 @@ public class Swipe : MonoBehaviour
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
         }
 
-        // Did we cross the dead zone?
+        // Crossing the dead zone?
         if(swipeDelta.magnitude > 125){
-            // Wich direction
+            // Direction
             float x = swipeDelta.x;
             float y = swipeDelta.y;
             if(Mathf.Abs(x) > Mathf.Abs(y)){
@@ -68,17 +67,9 @@ public class Swipe : MonoBehaviour
     private void Reset() {
         startTouch = swipeDelta = Vector2.zero;
         isDraging = false;
-    }
-
-    public bool Tap { get { return tap; }}
-    public Vector2 SwipeDelta {get {return swipeDelta;}}
-    // public bool SwipeLeft { get { return swipeLeft;}}
-    // public bool SwipeRight { get { return swipeRight;}}
-    // public bool SwipeUp { get { return swipeUp;}}
-    // public bool SwipeDown { get { return swipeDown;}}
+    }   
 
     public Direction MoveDir = Direction.None;
-
 }
 
 public enum Direction{

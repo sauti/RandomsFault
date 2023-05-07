@@ -12,6 +12,7 @@ namespace Default {
 
         private TableController _tableCtrl;
         private HandController _handCtrl;
+        private CardView cardView;
         
         private BattleState state = BattleState.Start;
 
@@ -84,6 +85,18 @@ namespace Default {
             yield return _tableCtrl.SpawnTurnCards();
             state = BattleState.PlayerTurn;
             Debug.Log("Your turn...");
+        }
+
+        public void OnHandCardSelect(CardData card){
+            foreach (Transform child in tableGo.transform){
+                foreach (Transform subchild in child.transform){  
+                        foreach (Transform Card in subchild.transform){
+                            Debug.Log(Card.gameObject.name + " cgc");
+                            cardView.outline.gameObject.SetActive(card.IsRotated); 
+                            // cardView.OutlineActive(card);
+                        }                        
+                    }
+            }
         }
     }
 }

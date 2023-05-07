@@ -41,27 +41,12 @@ public class SwipeTest : MonoBehaviour
                     characterDirection += Vector3.right;             
              break;
 
-        }
-        // Debug.Log(character.transform.position.x + " " + characterDirection.x);
-        // if (swipeControls.SwipeLeft)
-        //     characterDirection += Vector3.left;
-        // if (swipeControls.SwipeRight)
-        //     characterDirection += Vector3.right;
-        // if (swipeControls.SwipeUp)
-        //     characterDirection += Vector3.forward;
-        // if (swipeControls.SwipeDown)
-        //     characterDirection += Vector3.back;
+        }        
 
         if (Vector3.Distance(character.transform.position, characterDirection) != 0 && !isMoving && !isPaused)
         {
             StartCoroutine(MoveCharacter());
-        }
-         
-        // character.transform.position = new Vector3(
-        //     Mathf.Clamp(character.position.x, 0f, 4f),
-        //     character.transform.position.y,
-        //     Mathf.Clamp(character.position.z, 0f, 4f)
-        // );        
+        }      
     }
 
     public void PlaceCharacter()

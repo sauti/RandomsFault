@@ -16,15 +16,13 @@ namespace Default {
         private GameObject[,] _cells;
 
         private GameUI UI;
-        [SerializeField]
-        public GameObject Table;
-        private CardView CV;
-        private Card crd;
-        public bool isSelected = false;
+        private TableController _tableController;
+        private CardGameController cardGameController;        
 
         void Start()
         {
             UI = GameObject.Find("UI").GetComponent<GameUI>();
+            _tableController = GameObject.Find("Table").GetComponent<TableController>();
         }
 
         private void ClearBoard()
@@ -80,39 +78,48 @@ namespace Default {
                 if (go.name == card.Id) {
                     Debug.Log("Do select");
                     UI.SelectCard(card);
-                    go.GetComponent<CardView>().SelectCard();                    
-                    OnBoardHighLight();                          
+                    go.GetComponent<CardView>().SelectCard();
+                    if (card.Card.IsWeapon){
+                        HighLightCard(card);
+                    }                 
                 } else {
                     Debug.Log("off");
-                    // OnBoardDeHighLight();
                     go.GetComponent<CardView>().DeselectCard();
                 }
             }
         }
 
-        public void OnBoardHighLight(){
-            foreach (Transform child in Table.transform){
-                foreach (Transform subchild in child.transform){  
-                    if (subchild.GetComponent<CardView>().isFlipped == true){
-                        foreach (Transform Card in subchild.transform){
-                            Debug.Log(Card.gameObject.name); 
-                            Card.GetComponent<MeshRenderer>().sharedMaterial.EnableKeyword("_EMISSION");
-                        }
-                    }                    
-                }                
-            }
-        }      
+        public void HighLightCard(CardData card) {
+            GameObject c = _findCard(card);
+            //c.GetComponent<CardView>().Flip();
+            // _tableController.OnBoardHighLight();
+            _tableController.OnBoardHighLight(card);
 
-        public void OnBoardDeHighLight(){
-                        Debug.Log($"deselect + Card.gameObject.name"); 
-            foreach (Transform child in Table.transform){
-                foreach (Transform subchild in child.transform){
-                    foreach (Transform Card in subchild.transform){
-                        Card.GetComponent<MeshRenderer>().sharedMaterial.DisableKeyword("_EMISSION");
-                    }                    
-                }                             
-            }
-        }        
+        }
+
+        // public void OnBoardHighLight(){
+        //     foreach (Transform child in Table.transform){
+        //         foreach (Transform subchild in child.transform){  
+        //             if (subchild.GetComponent<CardView>().isFlipped == true){
+        //                 foreach (Transform Card in subchild.transform){
+        //                     Debug.Log(Card.gameObject.name); 
+        //                     Card.GetComponent<MeshRenderer>().sharedMaterial.EnableKeyword("_EMISSION");
+        //                 }
+        //             }                    
+        //         }                
+        //     }
+        // }      
+
+        // public void OnBoardDeHighLight(){
+        //                 Debug.Log($"deselect + Card.gameObject.name"); 
+        //     foreach (Transform child in Table.transform){
+        //         foreach (Transform subchild in child.transform){
+        //             foreach (Transform Card in subchild.transform){
+        //                 Card.GetComponent<MeshRenderer>().sharedMaterial.DisableKeyword("_EMISSION");
+        //             }                    
+        //         }                             
+        //     }
+        // }        
 
         public void resetSelection() {
             UI.DeselectCard();

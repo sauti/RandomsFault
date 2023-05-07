@@ -9,6 +9,11 @@ namespace Default {
         private MapGenerator mapG;
         private GameState gameState;
         private GemsController gems;
+        private CardGameController _cardController;
+
+        private void Awake() {        
+            _cardController = GameObject.Find("CardGameController").GetComponent<CardGameController>();
+        }
 
         void OnEnable()
         {
@@ -64,6 +69,15 @@ namespace Default {
                 }
             }
         }
+
+        public void OnBoardHighLight(CardData card){  
+                foreach (CardData childCard in _cards){                
+                    if (childCard.IsRotated == true && childCard.Card.CanBeKilled == true){
+                            Debug.Log(childCard.Card.CardId); 
+                            _cardController.OnHandCardSelect(card);
+                }                
+            }            
+        }        
 
         public void FlipCard(CardData card) {
             Debug.Log("Flip " + card.Card.CardId);
@@ -169,6 +183,7 @@ namespace Default {
 
             return new Vector2Int(-1, -1);
         }
+
 
         public void OnCardGameExit()
         {

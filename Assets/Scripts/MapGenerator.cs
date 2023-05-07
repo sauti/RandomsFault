@@ -84,7 +84,6 @@ public class MapGenerator : MonoBehaviour
 
     private void CreateMap()
     {
-
         var cellSize = gridPrefab.GetComponent<MeshRenderer>().bounds.size;
         int exitTileX = Random.Range(0, 5);
         int exitTileY = Random.Range(0, 5);

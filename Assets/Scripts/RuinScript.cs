@@ -22,8 +22,7 @@ public class RuinScript : MonoBehaviour
     
     void Update()
     {                   
-            if((Ruins.transform.position.x - character.transform.position.x) == 0){
-                 if((Ruins.transform.position.z - character.transform.position.z) == 0){
+            if(Ruins.transform.position == character.transform.position){                // (Ruins.transform.position.x - character.transform.position.x) == 0                 
                 Debug.Log("Tobi Pizda!");
                 mainCamera.SetActive(false);
                 gameState.SetCurrentEntity(Entity.Ruins);
@@ -33,4 +32,4 @@ public class RuinScript : MonoBehaviour
         }         
     }     
 }
-}
+

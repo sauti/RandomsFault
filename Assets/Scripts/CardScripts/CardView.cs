@@ -12,10 +12,10 @@ namespace Default {
         private Renderer _renderer;
         private Animator _animator;
         public GameObject Card;
-        public bool isFlipped;        
-        private BoardView boardView;
-        public GameObject cardParent;
-
+        public GameObject outline;
+        private bool isFlipped;  
+        private CardGameController _cardGameController;      
+        
         public void SetInitialData(CardData card) {
             gameObject.name = card.Id;
             GameObject cardGo = gameObject.transform.Find("Card").gameObject;
@@ -77,14 +77,17 @@ namespace Default {
 
         public void SelectCard() {
             _animator.SetBool("isSelected", true);
+            // if (card.Card.IsWeapon){
+            //             _tableController.OnBoardHighLight();
+            //         }   
             
-                Debug.Log("hand light");
-                this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
+                //Debug.Log("hand light");
+                // this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.EnableKeyword("_EMISSION");
         }         
 
         public void DeselectCard() {
             _animator.SetBool("isSelected", false);
-            this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");                  
+            // this.gameObject.GetComponentInChildren<Renderer>().sharedMaterial.DisableKeyword("_EMISSION");                  
         }        
 
         public void SetHealth(int health) {
@@ -109,6 +112,12 @@ namespace Default {
                     }
                 }
             }
+        }
+
+        public void OutlineActive(CardData card){
+            Debug.Log("card view debug");
+            outline.gameObject.SetActive(card.IsRotated);
+            // outline.gameObject.SetActive(card.Card.CanBeKilled);
         }
 
         private IEnumerator PlayAnimationAndWait(string anim, float length) {
